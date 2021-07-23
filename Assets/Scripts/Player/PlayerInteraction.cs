@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public float maxDistance = 2f;
+
+    public Text interactText;
 
     private Transform playerCamera;
 
@@ -42,19 +45,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-            if (interactable != null)
-            {
-                SetFocus(interactable);
-            }
-            else
-            {
-                ResetFocus();
-            }
+            if (interactable != null) SetFocus(interactable);
+            else ResetFocus();
         }
-        else
-        {
-            ResetFocus();
-        }
+        else ResetFocus();
     }
 
     private void DoInteract(InputAction.CallbackContext obj)
@@ -69,10 +63,15 @@ public class PlayerInteraction : MonoBehaviour
     public void SetFocus(Interactable newFocus)
     {
         focus = newFocus;
+
+        interactText.gameObject.SetActive(true);
+        interactText.text = focus.interactText;
     }
 
     public void ResetFocus()
     {
         focus = null;
+
+        interactText.gameObject.SetActive(false);
     }
 }
