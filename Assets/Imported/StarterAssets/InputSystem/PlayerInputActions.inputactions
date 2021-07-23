@@ -22,18 +22,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
+                    "id": "cbe82dd1-54f8-4efa-8901-ac0912b17538",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Sprint",
-                    "type": "PassThrough",
-                    "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -173,45 +165,23 @@
                 },
                 {
                     "name": "",
-                    "id": "1bd55a0b-761e-4ae4-89ae-8ec127e08a29",
-                    "path": "<Keyboard>/space",
+                    "id": "5f324398-0151-4011-9334-8a24f3018c88",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Jump",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "9f973413-5e27-4239-acee-38c4a63feeba",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "8496d0cd-5476-4bbb-b7b4-c39c8568edd3",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dc65b89f-9bd3-43fb-92af-d0d87ba5faa4",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c8fcd86e-dcfd-4f88-8e93-b638cdbf3320",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Sprint",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
