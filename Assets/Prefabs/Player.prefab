@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2800461362314713470}
   - component: {fileID: 2800461362314713464}
   - component: {fileID: 2800461362314713465}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 2800461362421871062}
   - component: {fileID: 2800461362421871063}
   - component: {fileID: 2800461362421871057}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 2800461363314565579}
   - component: {fileID: 2800461363314565576}
   - component: {fileID: 2800461363314565577}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 2800461364038020576}
   - component: {fileID: 2800461364038020578}
   - component: {fileID: 2800461364038020579}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: InteractKeyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 7919577511563656429}
   - component: {fileID: 5857391897785049245}
   - component: {fileID: 5857391897785049235}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -719,9 +719,9 @@ GameObject:
   - component: {fileID: 7783821300111389828}
   - component: {fileID: 7783821300111389835}
   - component: {fileID: 7783821300111389829}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

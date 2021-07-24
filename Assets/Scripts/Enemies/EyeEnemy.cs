@@ -38,7 +38,7 @@ public class EyeEnemy : MonoBehaviour
     private AudioSource audioSource;
     private float originalVolume;
 
-    private Vector3 originalPosition;
+    private Transform playerTransform;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class EyeEnemy : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         originalVolume = audioSource.volume;
 
-        originalPosition = transform.position;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -130,6 +130,21 @@ public class EyeEnemy : MonoBehaviour
 
         audioSource.volume = originalVolume;
         audioSource.Play();
+    }
+
+    public void PlayerStayInVision()
+    {
+        if (!isTrackingPlayer)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    PlayerEnterVision();
+                }
+            }
+        }
     }
 
     public void PlayerExitVision()
