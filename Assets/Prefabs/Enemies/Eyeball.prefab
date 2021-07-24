@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3
   m_Range: 30
   m_SpotAngle: 60
   m_InnerSpotAngle: 6
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3cf97cf0619dc4381c31c4d19ee94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyeEnemy: {fileID: 919132148554232625}
 --- !u!1 &1980038547839371840
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,3 +333,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a8788e359cfb54b8aa7df6dad427a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRotation: 90
+  maxRotation: 270
+  rotateSpeed: 30
+  rotateWaitTime: 3
+  playerTrackWaitTime: 3
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  trackingColor: {r: 1, g: 0, b: 0, a: 1}
+  lightConeMat: {fileID: 2100000, guid: 404ec1db9ce3b0744b5d49c9f2c00af5, type: 2}
+  eyeLight: {fileID: 960602857}
