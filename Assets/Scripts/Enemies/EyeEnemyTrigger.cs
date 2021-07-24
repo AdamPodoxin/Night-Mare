@@ -6,14 +6,6 @@ public class EyeEnemyTrigger : MonoBehaviour
 {
     public EyeEnemy eyeEnemy;
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            eyeEnemy.PlayerEnterVision();
-        }
-    }*/
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
