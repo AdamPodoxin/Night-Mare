@@ -35,6 +35,11 @@ public class EyeEnemy : MonoBehaviour
     private float xRot, yRot, zRot;
     private bool hasReachedMin, hasReachedMax;
 
+    private AudioSource audioSource;
+    private float originalVolume;
+
+    private Vector3 originalPosition;
+
     private void Start()
     {
         ResetRotateTimer();
@@ -44,6 +49,11 @@ public class EyeEnemy : MonoBehaviour
 
         xRot = transform.eulerAngles.x;
         zRot = transform.eulerAngles.z;
+
+        audioSource = GetComponent<AudioSource>();
+        originalVolume = audioSource.volume;
+
+        originalPosition = transform.position;
     }
 
     private void Update()
@@ -72,7 +82,6 @@ public class EyeEnemy : MonoBehaviour
             if (isTrackingPlayer)
             {
                 playerTrackTimer -= Time.deltaTime;
-
                 if (playerTrackTimer <= 0f) CallDemon();
             }
             else
@@ -86,6 +95,11 @@ public class EyeEnemy : MonoBehaviour
                     StartRotate();
                 }
             }
+        }
+
+        if (!isTrackingPlayer)
+        {
+            audioSource.volume -= Time.deltaTime;
         }
     }
 
@@ -113,6 +127,9 @@ public class EyeEnemy : MonoBehaviour
 
         SetColors(trackingColor);
         StopRotate();
+
+        audioSource.volume = originalVolume;
+        audioSource.Play();
     }
 
     public void PlayerExitVision()
@@ -130,7 +147,9 @@ public class EyeEnemy : MonoBehaviour
         print("Called demon");
 
         playerTrackTimer = playerTrackWaitTime;
+        isTrackingPlayer = false;
 
+        SetColors(normalColor);
         ResetPlayerTimer();
         StartRotate();
     }
