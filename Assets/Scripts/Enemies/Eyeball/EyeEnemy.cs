@@ -26,13 +26,12 @@ public class EyeEnemy : MonoBehaviour
 
     private bool isRotating = false;
     private bool isTrackingPlayer = false;
+    private bool hasSpottedPlayer = false;
 
     private float rotateTimer = 0f;
     private int rotateDirection = 1;
 
     private float playerTrackTimer = 0f;
-    private Vector3 playerStartPosition;
-    private Vector3 playerEndPosition;
 
     private float xRot, yRot, zRot;
     private bool hasReachedMin, hasReachedMax;
@@ -128,14 +127,13 @@ public class EyeEnemy : MonoBehaviour
     public void PlayerEnterVision()
     {
         isTrackingPlayer = true;
+        hasSpottedPlayer = true;
 
         SetColors(trackingColor);
         StopRotate();
 
         audioSource.volume = originalVolume;
         audioSource.Play();
-
-        playerStartPosition = playerTransform.position;
     }
 
     public void PlayerStayInVision()
@@ -145,7 +143,7 @@ public class EyeEnemy : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
             {
-                if (hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player") && !hasSpottedPlayer)
                 {
                     PlayerEnterVision();
                 }
@@ -156,6 +154,7 @@ public class EyeEnemy : MonoBehaviour
     public void PlayerExitVision()
     {
         isTrackingPlayer = false;
+        hasSpottedPlayer = false;
 
         SetColors(normalColor);
         ResetPlayerTimer();
@@ -164,11 +163,10 @@ public class EyeEnemy : MonoBehaviour
 
     public void CallDemon()
     {
-        playerEndPosition = playerTransform.position;
-        Vector3 playerDirection = DemonEnemy.CalculatePlayerDirection(playerStartPosition, playerEndPosition);
+        Vector3 playerDirection = playerTransform.forward.normalized;
 
         demon.gameObject.SetActive(true);
-        demon.GotPlayerPosition(playerEndPosition, playerDirection, true);
+        demon.GotPlayerPosition(playerTransform.position, playerDirection, true);
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;

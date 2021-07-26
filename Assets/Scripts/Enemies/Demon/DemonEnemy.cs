@@ -10,8 +10,12 @@ public class DemonEnemy : MonoBehaviour
 
     public DemonState state;
 
+    public float acceptableStoppingDistance = 1.2f;
+
     private NavMeshAgent agent;
+
     private Transform playerTransform;
+    private float playerMoveSpeed;
 
     private Vector3 lastKnownPosition;
     private Vector3 lastKnownDirection;
@@ -29,7 +33,9 @@ public class DemonEnemy : MonoBehaviour
         instance = this;
 
         agent = GetComponent<NavMeshAgent>();
+
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerMoveSpeed = FindObjectOfType<StarterAssets.FirstPersonController>().MoveSpeed;
 
         gameObject.SetActive(false);
     }
@@ -55,6 +61,11 @@ public class DemonEnemy : MonoBehaviour
         else
         {
             if (state.Equals(DemonState.Chasing)) OnLostPlayer();
+        }
+
+        if (state.Equals(DemonState.Travelling))
+        {
+            if (Vector3.SqrMagnitude(lastKnownPosition - transform.position) <= acceptableStoppingDistance && !state.Equals(DemonState.Searching)) OnReachedLastKnownPosition();
         }
     }
 
@@ -109,5 +120,17 @@ public class DemonEnemy : MonoBehaviour
         lastKnownDirection = CalculatePlayerDirection(playerFoundPosition, playerLostPosition);
 
         print("Lost");
+    }
+
+    public void OnReachedLastKnownPosition()
+    {
+        state = DemonState.Searching;
+        StopTimer();
+
+        float predictedDistance = playerMoveSpeed * timer;
+        Vector3 predictedPosition = lastKnownPosition + lastKnownDirection * predictedDistance;
+        print(predictedPosition);
+
+        print("Reached last known position");
     }
 }
