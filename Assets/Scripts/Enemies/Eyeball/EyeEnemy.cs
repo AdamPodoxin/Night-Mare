@@ -31,6 +31,8 @@ public class EyeEnemy : MonoBehaviour
     private int rotateDirection = 1;
 
     private float playerTrackTimer = 0f;
+    private Vector3 playerStartPosition;
+    private Vector3 playerEndPosition;
 
     private float xRot, yRot, zRot;
     private bool hasReachedMin, hasReachedMax;
@@ -39,6 +41,7 @@ public class EyeEnemy : MonoBehaviour
     private float originalVolume;
 
     private Transform playerTransform;
+    private DemonEnemy demon;
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public class EyeEnemy : MonoBehaviour
         originalVolume = audioSource.volume;
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        demon = DemonEnemy.instance;
     }
 
     private void Update()
@@ -130,6 +134,8 @@ public class EyeEnemy : MonoBehaviour
 
         audioSource.volume = originalVolume;
         audioSource.Play();
+
+        playerStartPosition = playerTransform.position;
     }
 
     public void PlayerStayInVision()
@@ -158,8 +164,11 @@ public class EyeEnemy : MonoBehaviour
 
     public void CallDemon()
     {
-        //TEMP
-        print("Called demon");
+        playerEndPosition = playerTransform.position;
+        Vector3 playerDirection = (playerEndPosition - playerStartPosition).normalized;
+
+        demon.gameObject.SetActive(true);
+        demon.SpottedPlayer(playerEndPosition, playerDirection, true);
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;
