@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 958508659}
   - component: {fileID: 958508663}
   - component: {fileID: 958508662}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

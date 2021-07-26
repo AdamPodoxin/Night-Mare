@@ -165,10 +165,10 @@ public class EyeEnemy : MonoBehaviour
     public void CallDemon()
     {
         playerEndPosition = playerTransform.position;
-        Vector3 playerDirection = (playerEndPosition - playerStartPosition).normalized;
+        Vector3 playerDirection = DemonEnemy.CalculatePlayerDirection(playerStartPosition, playerEndPosition);
 
         demon.gameObject.SetActive(true);
-        demon.SpottedPlayer(playerEndPosition, playerDirection, true);
+        demon.GotPlayerPosition(playerEndPosition, playerDirection, true);
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;
