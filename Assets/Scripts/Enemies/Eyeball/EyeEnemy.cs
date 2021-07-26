@@ -126,14 +126,21 @@ public class EyeEnemy : MonoBehaviour
 
     public void PlayerEnterVision()
     {
-        isTrackingPlayer = true;
-        hasSpottedPlayer = true;
+        if (demon.gameObject.activeInHierarchy)
+        {
+            CallDemon();
+        }
+        else
+        {
+            isTrackingPlayer = true;
+            hasSpottedPlayer = true;
 
-        SetColors(trackingColor);
-        StopRotate();
+            SetColors(trackingColor);
+            StopRotate();
 
-        audioSource.volume = originalVolume;
-        audioSource.Play();
+            audioSource.volume = originalVolume;
+            audioSource.Play();
+        }
     }
 
     public void PlayerStayInVision()

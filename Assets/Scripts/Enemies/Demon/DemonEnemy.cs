@@ -27,6 +27,8 @@ public class DemonEnemy : MonoBehaviour
     private bool isTiming = true;
 
     private RaycastHit _hit;
+    [SerializeField] private bool _isChasingPlayer;
+    private Vector3 _navTargetPosition;
 
     private void Awake()
     {
@@ -65,7 +67,17 @@ public class DemonEnemy : MonoBehaviour
 
         if (state.Equals(DemonState.Travelling))
         {
-            if (Vector3.SqrMagnitude(lastKnownPosition - transform.position) <= acceptableStoppingDistance && !state.Equals(DemonState.Searching)) OnReachedLastKnownPosition();
+            if (Vector3.SqrMagnitude(_navTargetPosition - transform.position) <= acceptableStoppingDistance && !state.Equals(DemonState.Searching))
+            {
+                if (_isChasingPlayer)
+                {
+                    OnReachedLastKnownPosition();
+                }
+                else
+                {
+                    OnReachedWaypoint();
+                }
+            }
         }
     }
 
@@ -80,49 +92,34 @@ public class DemonEnemy : MonoBehaviour
         isTiming = false;
     }
 
-    public static Vector3 CalculatePlayerDirection(Vector3 position1, Vector3 position2)
+    private Vector3 CalculatePlayerDirection(Vector3 position1, Vector3 position2)
     {
         return new Vector3(position2.x - position1.x, 0f, position2.z - position1.z).normalized;
     }
 
-    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useJumpscare)
-    {
-        lastKnownPosition = position;
-        lastKnownDirection = direction;
-
-        agent.SetDestination(lastKnownPosition);
-        state = DemonState.Travelling;
-
-        StartTimer();
-
-        if (useJumpscare)
-        {
-            //Jumpscare
-        }
-    }
-
-    public void OnFoundPlayer()
+    private void OnFoundPlayer()
     {
         state = DemonState.Chasing;
         StopTimer();
 
         playerFoundPosition = playerTransform.position;
 
+        _isChasingPlayer = true;
         print("Found");
     }
 
-    public void OnLostPlayer()
+    private void OnLostPlayer()
     {
         state = DemonState.Travelling;
         StartTimer();
 
-        playerLostPosition = playerTransform.position;
+        playerLostPosition = _navTargetPosition = playerTransform.position;
         lastKnownDirection = CalculatePlayerDirection(playerFoundPosition, playerLostPosition);
 
         print("Lost");
     }
 
-    public void OnReachedLastKnownPosition()
+    private void OnReachedLastKnownPosition()
     {
         state = DemonState.Searching;
         StopTimer();
@@ -132,5 +129,27 @@ public class DemonEnemy : MonoBehaviour
         print(predictedPosition);
 
         print("Reached last known position");
+    }
+
+    private void OnReachedWaypoint()
+    {
+        print("Reached waypoint");
+    }
+
+    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useJumpscare)
+    {
+        lastKnownPosition = _navTargetPosition = position;
+        lastKnownDirection = direction;
+
+        agent.SetDestination(lastKnownPosition);
+        state = DemonState.Travelling;
+        _isChasingPlayer = true;
+
+        StartTimer();
+
+        if (useJumpscare)
+        {
+            //Jumpscare
+        }
     }
 }
