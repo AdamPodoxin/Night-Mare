@@ -154,7 +154,7 @@ public class DemonEnemy : MonoBehaviour
 
         if (useJumpscare)
         {
-            //Jumpscare
+            JumpscareEnemy.instance.ActivateJumpscare();
         }
     }
 
