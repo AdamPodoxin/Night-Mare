@@ -27,8 +27,11 @@ public class DemonEnemy : MonoBehaviour
     private bool isTiming = true;
 
     private RaycastHit _hit;
-    [SerializeField] private bool _isChasingPlayer;
+    private bool _isChasingPlayer;
     private Vector3 _navTargetPosition;
+
+    //TEMP
+    Vector3 PREDICTED;
 
     private void Awake()
     {
@@ -124,11 +127,15 @@ public class DemonEnemy : MonoBehaviour
         state = DemonState.Searching;
         StopTimer();
 
-        float predictedDistance = playerMoveSpeed * timer;
-        Vector3 predictedPosition = lastKnownPosition + lastKnownDirection * predictedDistance;
-        print(predictedPosition);
+        Vector3 predictedPosition = PREDICTED = PredictPosition();
 
         print("Reached last known position");
+    }
+
+    private Vector3 PredictPosition()
+    {
+        float predictedDistance = playerMoveSpeed * Mathf.Log(timer, 2);
+        return lastKnownPosition + lastKnownDirection * predictedDistance; ;
     }
 
     private void OnReachedWaypoint()
@@ -151,5 +158,12 @@ public class DemonEnemy : MonoBehaviour
         {
             //Jumpscare
         }
+    }
+
+    //TEMP
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(PREDICTED, Vector3.one * 0.5f);
     }
 }
