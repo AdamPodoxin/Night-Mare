@@ -49,6 +49,7 @@ public class EyeEnemy : MonoBehaviour
         ResetPlayerTimer();
 
         SetColors(normalColor);
+        eyeLight.spotAngle = maxAngle + 3f;
 
         xRot = transform.eulerAngles.x;
         zRot = transform.eulerAngles.z;
@@ -68,7 +69,7 @@ public class EyeEnemy : MonoBehaviour
 
         if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out RaycastHit hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
         {
-            if (hit.collider.CompareTag("Player") && Vector3.Angle(transform.forward, playerTransform.position - transform.position) <= maxAngle)
+            if (hit.collider.CompareTag("Player") && Vector3.Angle(transform.forward, (playerTransform.position - transform.position).normalized) <= maxAngle / 2f)
             {
                 if (!hasSpottedPlayer)
                 {
@@ -129,7 +130,7 @@ public class EyeEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         float rayRange = 10.0f;
-        float halfFOV = maxAngle / 2.0f;
+        float halfFOV = maxAngle / 2f;
 
         Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
         Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
