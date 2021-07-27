@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EyeEnemy : MonoBehaviour
 {
+    public float maxAngle = 50f;
     public float minRotation = -90f;
     public float maxRotation = 90f;
 
@@ -65,6 +66,25 @@ public class EyeEnemy : MonoBehaviour
         hasReachedMin = yRot <= minRotation;
         hasReachedMax = yRot >= maxRotation;
 
+        if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out RaycastHit hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
+        {
+            if (hit.collider.CompareTag("Player") && Vector3.Angle(transform.forward, playerTransform.position - transform.position) <= maxAngle)
+            {
+                if (!hasSpottedPlayer)
+                {
+                    PlayerEnterVision();
+                }
+            }
+            else if (hasSpottedPlayer)
+            {
+                PlayerExitVision();
+            }
+        }
+        else if (hasSpottedPlayer)
+        {
+            PlayerExitVision();
+        }
+
         if (isRotating)
         {
             transform.eulerAngles += Vector3.up * rotateDirection * rotateSpeed * Time.deltaTime;
@@ -106,6 +126,28 @@ public class EyeEnemy : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        float rayRange = 10.0f;
+        float halfFOV = maxAngle / 2.0f;
+
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+        Quaternion upRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.right);
+        Quaternion downRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.right);
+
+        Vector3 leftRayDirection = leftRayRotation * transform.forward;
+        Vector3 rightRayDirection = rightRayRotation * transform.forward;
+        Vector3 upRayDirection = upRayRotation * transform.forward;
+        Vector3 downRayDirection = downRayRotation * transform.forward;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, leftRayDirection * rayRange);
+        Gizmos.DrawRay(transform.position, rightRayDirection * rayRange);
+        Gizmos.DrawRay(transform.position, upRayDirection * rayRange);
+        Gizmos.DrawRay(transform.position, downRayDirection * rayRange);
+    }
+
     private void ResetRotateTimer() { rotateTimer = rotateWaitTime; }
     private void ResetPlayerTimer() { playerTrackTimer = playerTrackWaitTime; }
 
@@ -126,36 +168,24 @@ public class EyeEnemy : MonoBehaviour
 
     public void PlayerEnterVision()
     {
-        if (demon.gameObject.activeInHierarchy)
-        {
-            CallDemon();
-            SetColors(trackingColor);
-            hasSpottedPlayer = true;
-        }
-        else
-        {
-            isTrackingPlayer = true;
-            hasSpottedPlayer = true;
-
-            SetColors(trackingColor);
-            StopRotate();
-
-            audioSource.volume = originalVolume;
-            audioSource.Play();
-        }
-    }
-
-    public void PlayerStayInVision()
-    {
         if (!isTrackingPlayer)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
+            if (demon.gameObject.activeInHierarchy)
             {
-                if (hit.collider.CompareTag("Player") && !hasSpottedPlayer)
-                {
-                    PlayerEnterVision();
-                }
+                CallDemon();
+                SetColors(trackingColor);
+                hasSpottedPlayer = true;
+            }
+            else
+            {
+                isTrackingPlayer = true;
+                hasSpottedPlayer = true;
+
+                SetColors(trackingColor);
+                StopRotate();
+
+                audioSource.volume = originalVolume;
+                audioSource.Play();
             }
         }
     }
