@@ -129,6 +129,8 @@ public class EyeEnemy : MonoBehaviour
         if (demon.gameObject.activeInHierarchy)
         {
             CallDemon();
+            SetColors(trackingColor);
+            hasSpottedPlayer = true;
         }
         else
         {
