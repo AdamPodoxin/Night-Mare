@@ -166,7 +166,6 @@ public class DemonEnemy : MonoBehaviour
     private void OnReachedWaypoint()
     {
         state = DemonState.Searching;
-        //Voice line and animation
 
         OnComeplete onComplete = () =>
         {

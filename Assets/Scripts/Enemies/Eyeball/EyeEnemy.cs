@@ -39,6 +39,8 @@ public class EyeEnemy : MonoBehaviour
     private AudioSource audioSource;
     private float originalVolume;
 
+    private Animator anim;
+
     private Transform playerTransform;
     private DemonEnemy demon;
 
@@ -55,6 +57,8 @@ public class EyeEnemy : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         originalVolume = audioSource.volume;
+
+        anim = GetComponent<Animator>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         demon = DemonEnemy.instance;
@@ -180,6 +184,8 @@ public class EyeEnemy : MonoBehaviour
                 SetColors(trackingColor);
                 StopRotate();
 
+                anim.speed = 0f;
+
                 audioSource.volume = originalVolume;
                 audioSource.Play();
             }
@@ -194,6 +200,8 @@ public class EyeEnemy : MonoBehaviour
         SetColors(normalColor);
         ResetPlayerTimer();
         StartRotate();
+
+        anim.speed = 1f;
     }
 
     public void CallDemon()
