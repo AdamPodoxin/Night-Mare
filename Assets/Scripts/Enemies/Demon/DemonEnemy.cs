@@ -10,9 +10,14 @@ public class DemonEnemy : MonoBehaviour
 
     public DemonState state;
 
+    [Space]
+
     public float acceptableStoppingDistance = 1.2f;
 
+    [Space]
+
     public float searchTime = 3f;
+    public float waypointRadius = 10f;
 
     private NavMeshAgent agent;
 
@@ -24,13 +29,17 @@ public class DemonEnemy : MonoBehaviour
 
     private Vector3 playerFoundPosition;
     private Vector3 playerLostPosition;
+    private Vector3 waypointPosAfterPlayer;
 
     private float timer = 0f;
     private bool isTiming = true;
 
+    private Transform[] nearbyWaypoints;
+    private int waypointIndex = 0;
+
     private RaycastHit _hit;
     private bool _isChasingPlayer;
-    [SerializeField] private Vector3 _navTargetPosition;
+    private Vector3 _navTargetPosition;
     private Vector3 _predictedPosition;
 
     private delegate void OnComeplete();
@@ -139,13 +148,16 @@ public class DemonEnemy : MonoBehaviour
         StopTimer();
 
         _predictedPosition = PredictPosition();
-        Vector3 nearestWaypointPosition = NightmareManager.instance.FindNearestWaypoint(_predictedPosition).position;
+        waypointPosAfterPlayer = NightmareManager.instance.FindNearestWaypoint(_predictedPosition).position;
 
         OnComeplete onComplete = () =>
         {
             state = DemonState.Travelling;
-            _navTargetPosition = nearestWaypointPosition;
+            _navTargetPosition = waypointPosAfterPlayer;
             agent.SetDestination(_navTargetPosition);
+
+            nearbyWaypoints = NightmareManager.instance.FindWaypointsInRadius(_navTargetPosition, waypointRadius);
+            waypointIndex = 0;
         };
 
         StartCoroutine(SearchCoroutine(onComplete));
@@ -153,14 +165,60 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnReachedWaypoint()
     {
-        print("Reached waypoint");
+        state = DemonState.Searching;
+        //Voice line and animation
+
+        OnComeplete onComplete = () =>
+        {
+            if (waypointIndex < nearbyWaypoints.Length)
+            {
+                Vector3 waypointPos = nearbyWaypoints[waypointIndex].position;
+
+                if (waypointPos == waypointPosAfterPlayer)
+                {
+                    try
+                    {
+                        waypointIndex++;
+                        waypointPos = nearbyWaypoints[waypointIndex].position;
+                    }
+                    catch
+                    {
+                        Despawn();
+                    }
+                }
+
+                state = DemonState.Travelling;
+                _navTargetPosition = waypointPos;
+                agent.SetDestination(_navTargetPosition);
+
+                waypointIndex++;
+            }
+            else
+            {
+                Despawn();
+            }
+        };
+
+        StartCoroutine(SearchCoroutine(onComplete));
+    }
+
+    private void Despawn()
+    {
+        StartCoroutine(DespawnCoroutine());
     }
 
     private IEnumerator SearchCoroutine(OnComeplete onComeplete)
     {
-        //Play animation and voice line
+        print("Search animation & voice line");
         yield return new WaitForSeconds(searchTime);
-        onComeplete.Invoke();
+        if (!_isChasingPlayer) onComeplete.Invoke();
+    }
+
+    private IEnumerator DespawnCoroutine()
+    {
+        print("Despawn animation & voice line");
+        yield return new WaitForSeconds(searchTime);
+        if (!_isChasingPlayer) gameObject.SetActive(false);
     }
 
     private Vector3 PredictPosition()

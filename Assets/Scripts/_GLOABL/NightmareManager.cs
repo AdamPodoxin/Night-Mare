@@ -32,4 +32,19 @@ public class NightmareManager : MonoBehaviour
 
         return nearest;
     }
+
+    public Transform[] FindWaypointsInRadius(Vector3 position, float radius)
+    {
+        List<Transform> waypointsInRadius = new List<Transform>();
+
+        foreach (GameObject waypoint in waypoints)
+        {
+            if (Vector3.Distance(waypoint.transform.position, position) <= radius)
+            {
+                waypointsInRadius.Add(waypoint.transform);
+            }
+        }
+
+        return waypointsInRadius.ToArray();
+    }
 }
