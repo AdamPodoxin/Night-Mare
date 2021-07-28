@@ -126,8 +126,11 @@ public class DemonEnemy : MonoBehaviour
         StopTimer();
 
         _predictedPosition = PredictPosition();
+        Vector3 nearestWaypointPosition = NightmareManager.instance.FindNearestWaypoint(_predictedPosition).position;
 
-        print("Reached last known position");
+        state = DemonState.Travelling;
+        _navTargetPosition = nearestWaypointPosition;
+        agent.SetDestination(_navTargetPosition);
     }
 
     private Vector3 PredictPosition()

@@ -22,7 +22,6 @@ public class EyeEnemy : MonoBehaviour
     public Color normalColor = Color.white;
     public Color trackingColor = Color.red;
 
-    public Material lightConeMat;
     public Light eyeLight;
 
     private bool isRotating = false;
@@ -160,10 +159,6 @@ public class EyeEnemy : MonoBehaviour
 
     public void SetColors(Color color)
     {
-        Color matColor = color;
-        matColor.a = lightConeMat.color.a;
-
-        lightConeMat.color = matColor;
         eyeLight.color = color;
     }
 
