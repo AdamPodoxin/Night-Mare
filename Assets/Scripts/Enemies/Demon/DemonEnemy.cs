@@ -12,6 +12,8 @@ public class DemonEnemy : MonoBehaviour
 
     public float acceptableStoppingDistance = 1.2f;
 
+    public float searchTime = 3f;
+
     private NavMeshAgent agent;
 
     private Transform playerTransform;
@@ -28,8 +30,10 @@ public class DemonEnemy : MonoBehaviour
 
     private RaycastHit _hit;
     private bool _isChasingPlayer;
-    private Vector3 _navTargetPosition;
+    [SerializeField] private Vector3 _navTargetPosition;
     private Vector3 _predictedPosition;
+
+    private delegate void OnComeplete();
 
     private void Awake()
     {
@@ -68,7 +72,7 @@ public class DemonEnemy : MonoBehaviour
 
         if (state.Equals(DemonState.Travelling))
         {
-            if (Vector3.SqrMagnitude(_navTargetPosition - transform.position) <= acceptableStoppingDistance && !state.Equals(DemonState.Searching))
+            if (DistanceCheck() && !state.Equals(DemonState.Searching))
             {
                 if (_isChasingPlayer)
                 {
@@ -80,6 +84,14 @@ public class DemonEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool DistanceCheck()
+    {
+        Vector2 posV2 = new Vector2(transform.position.x, transform.position.z);
+        Vector2 navV2 = new Vector2(_navTargetPosition.x, _navTargetPosition.z);
+
+        return Vector2.SqrMagnitude(navV2 - posV2) <= acceptableStoppingDistance;
     }
 
     private void StartTimer()
@@ -123,25 +135,38 @@ public class DemonEnemy : MonoBehaviour
     private void OnReachedLastKnownPosition()
     {
         state = DemonState.Searching;
+        _isChasingPlayer = false;
         StopTimer();
 
         _predictedPosition = PredictPosition();
         Vector3 nearestWaypointPosition = NightmareManager.instance.FindNearestWaypoint(_predictedPosition).position;
 
-        state = DemonState.Travelling;
-        _navTargetPosition = nearestWaypointPosition;
-        agent.SetDestination(_navTargetPosition);
+        OnComeplete onComplete = () =>
+        {
+            state = DemonState.Travelling;
+            _navTargetPosition = nearestWaypointPosition;
+            agent.SetDestination(_navTargetPosition);
+        };
+
+        StartCoroutine(SearchCoroutine(onComplete));
+    }
+
+    private void OnReachedWaypoint()
+    {
+        print("Reached waypoint");
+    }
+
+    private IEnumerator SearchCoroutine(OnComeplete onComeplete)
+    {
+        //Play animation and voice line
+        yield return new WaitForSeconds(searchTime);
+        onComeplete.Invoke();
     }
 
     private Vector3 PredictPosition()
     {
         float predictedDistance = playerMoveSpeed * Mathf.Log(timer, 2);
         return lastKnownPosition + lastKnownDirection * predictedDistance; ;
-    }
-
-    private void OnReachedWaypoint()
-    {
-        print("Reached waypoint");
     }
 
     public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useJumpscare)
