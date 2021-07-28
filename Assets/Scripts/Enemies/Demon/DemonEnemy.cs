@@ -157,7 +157,7 @@ public class DemonEnemy : MonoBehaviour
             agent.SetDestination(_navTargetPosition);
 
             nearbyWaypoints = NightmareManager.instance.FindWaypointsInRadius(_navTargetPosition, waypointRadius);
-            waypointIndex = 0;
+            waypointIndex = 1;
         };
 
         StartCoroutine(SearchCoroutine(onComplete));

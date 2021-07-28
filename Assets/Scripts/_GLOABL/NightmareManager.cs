@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NightmareManager : MonoBehaviour
@@ -45,6 +46,8 @@ public class NightmareManager : MonoBehaviour
             }
         }
 
+        //Sorts by ascending order based on distance from position
+        waypointsInRadius = waypointsInRadius.OrderBy(w => Vector3.SqrMagnitude(w.position - position)).ToList();
         return waypointsInRadius.ToArray();
     }
 }
