@@ -1,0 +1,14 @@
+Found:
+1. There you are
+2. Found you
+3. You better run
+
+Search:
+1. You cannot hide from me
+2. I know you're in here
+3. I'm coming for you
+
+Despawn:
+1. You cannot run forever
+2. I'll find you next time
+3. You don't have much longer

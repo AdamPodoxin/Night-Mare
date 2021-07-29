@@ -115,7 +115,7 @@ public class EyeEnemy : MonoBehaviour
             if (isTrackingPlayer)
             {
                 playerTrackTimer -= Time.deltaTime;
-                if (playerTrackTimer <= 0f) CallDemon();
+                if (playerTrackTimer <= 0f) CallDemon(true);
             }
             else
             {
@@ -178,7 +178,7 @@ public class EyeEnemy : MonoBehaviour
         {
             if (demon.gameObject.activeInHierarchy)
             {
-                CallDemon();
+                CallDemon(false);
                 SetColors(trackingColor);
                 hasSpottedPlayer = true;
 
@@ -216,13 +216,13 @@ public class EyeEnemy : MonoBehaviour
         playerCamera.IsInEyeball = false;
     }
 
-    public void CallDemon()
+    public void CallDemon(bool useVoiceline)
     {
         Vector3 playerDirection = playerTransform.forward.normalized;
 
         if (!demon.gameObject.activeInHierarchy) demon.transform.position = spawnDemonWaypoint.position;
         demon.gameObject.SetActive(true);
-        demon.GotPlayerPosition(playerTransform.position, playerDirection, true);
+        demon.GotPlayerPosition(playerTransform.position, playerDirection, useVoiceline);
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;

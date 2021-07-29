@@ -19,7 +19,14 @@ public class DemonEnemy : MonoBehaviour
     public float searchTime = 3f;
     public float waypointRadius = 10f;
 
+    [Space]
+
+    public AudioClip[] foundVoiceLines;
+    public AudioClip[] searchVoiceLines;
+    public AudioClip[] despawnVoiceLines;
+
     private NavMeshAgent agent;
+    private AudioSource audioSource;
 
     private Transform playerTransform;
     private float playerMoveSpeed;
@@ -49,6 +56,7 @@ public class DemonEnemy : MonoBehaviour
         instance = this;
 
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerMoveSpeed = FindObjectOfType<StarterAssets.FirstPersonController>().MoveSpeed;
@@ -126,8 +134,13 @@ public class DemonEnemy : MonoBehaviour
 
         playerFoundPosition = playerTransform.position;
 
+        if (!audioSource.isPlaying && !_isChasingPlayer)
+        {
+            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
+            audioSource.PlayOneShot(foundClip);
+        }
+
         _isChasingPlayer = true;
-        print("Found");
     }
 
     private void OnLostPlayer()
@@ -208,6 +221,12 @@ public class DemonEnemy : MonoBehaviour
 
     private IEnumerator SearchCoroutine(OnComeplete onComeplete)
     {
+        if (!audioSource.isPlaying)
+        {
+            AudioClip searchClip = searchVoiceLines[Random.Range(0, searchVoiceLines.Length)];
+            audioSource.PlayOneShot(searchClip);
+        }
+
         print("Search animation & voice line");
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) onComeplete.Invoke();
@@ -215,6 +234,12 @@ public class DemonEnemy : MonoBehaviour
 
     private IEnumerator DespawnCoroutine()
     {
+        if (!audioSource.isPlaying)
+        {
+            AudioClip despawnClip = despawnVoiceLines[Random.Range(0, despawnVoiceLines.Length)];
+            audioSource.PlayOneShot(despawnClip);
+        }
+
         print("Despawn animation & voice line");
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) gameObject.SetActive(false);
@@ -226,7 +251,7 @@ public class DemonEnemy : MonoBehaviour
         return lastKnownPosition + lastKnownDirection * predictedDistance; ;
     }
 
-    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useJumpscare)
+    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useVoiceline)
     {
         lastKnownPosition = _navTargetPosition = position;
         lastKnownDirection = direction;
@@ -237,16 +262,12 @@ public class DemonEnemy : MonoBehaviour
 
         StartTimer();
 
-        if (useJumpscare)
-        {
-            JumpscareEnemy.instance.ActivateJumpscare();
-        }
-    }
+        JumpscareEnemy.instance.ActivateJumpscare();
 
-    //TEMP
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(_predictedPosition, Vector3.one * 0.5f);
+        if (useVoiceline)
+        {
+            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
+            audioSource.PlayOneShot(foundClip);
+        }
     }
 }
