@@ -24,6 +24,10 @@ public class EyeEnemy : MonoBehaviour
 
     public Light eyeLight;
 
+    [Space]
+
+    public Transform spawnDemonWaypoint;
+
     private bool isRotating = false;
     private bool isTrackingPlayer = false;
     private bool hasSpottedPlayer = false;
@@ -208,6 +212,7 @@ public class EyeEnemy : MonoBehaviour
     {
         Vector3 playerDirection = playerTransform.forward.normalized;
 
+        if (!demon.gameObject.activeInHierarchy) demon.transform.position = spawnDemonWaypoint.position;
         demon.gameObject.SetActive(true);
         demon.GotPlayerPosition(playerTransform.position, playerDirection, true);
 

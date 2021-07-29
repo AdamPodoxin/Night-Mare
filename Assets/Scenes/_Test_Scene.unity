@@ -1368,6 +1368,10 @@ PrefabInstance:
       propertyPath: minRotation
       value: 140
       objectReference: {fileID: 0}
+    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
+      propertyPath: spawnDemonWaypoint
+      value: 
+      objectReference: {fileID: 1622184185}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14754177e08f2c741964435556b41861, type: 3}
 --- !u!4 &1150880799 stripped
@@ -2598,6 +2602,10 @@ PrefabInstance:
       propertyPath: minRotation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
+      propertyPath: spawnDemonWaypoint
+      value: 
+      objectReference: {fileID: 424370846}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14754177e08f2c741964435556b41861, type: 3}
 --- !u!4 &2071960828 stripped
@@ -2756,6 +2764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eyeball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
+      propertyPath: spawnDemonWaypoint
+      value: 
+      objectReference: {fileID: 1622184185}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14754177e08f2c741964435556b41861, type: 3}
 --- !u!1001 &1600700959725194419
