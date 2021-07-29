@@ -47,6 +47,7 @@ public class EyeEnemy : MonoBehaviour
 
     private Transform playerTransform;
     private DemonEnemy demon;
+    private PlayerCamera playerCamera;
 
     private void Start()
     {
@@ -66,6 +67,7 @@ public class EyeEnemy : MonoBehaviour
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         demon = DemonEnemy.instance;
+        playerCamera = FindObjectOfType<PlayerCamera>();
     }
 
     private void Update()
@@ -179,6 +181,8 @@ public class EyeEnemy : MonoBehaviour
                 CallDemon();
                 SetColors(trackingColor);
                 hasSpottedPlayer = true;
+
+                playerCamera.FullDistort();
             }
             else
             {
@@ -192,6 +196,8 @@ public class EyeEnemy : MonoBehaviour
 
                 audioSource.volume = originalVolume;
                 audioSource.Play();
+
+                playerCamera.IsInEyeball = true;
             }
         }
     }
@@ -206,6 +212,8 @@ public class EyeEnemy : MonoBehaviour
         StartRotate();
 
         anim.speed = 1f;
+
+        playerCamera.IsInEyeball = false;
     }
 
     public void CallDemon()
