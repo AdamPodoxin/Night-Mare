@@ -11,6 +11,8 @@ public class JumpscareEnemy : MonoBehaviour
     private Animator anim;
     private AudioSource source;
 
+    private int _prevIndex = -1;
+
     private void Awake()
     {
         instance = this;
@@ -25,6 +27,11 @@ public class JumpscareEnemy : MonoBehaviour
     public void ActivateJumpscare()
     {
         anim.Play("Activate");
-        source.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
+
+        int index = Random.Range(0, sounds.Length);
+        while (index == _prevIndex) { index = Random.Range(0, sounds.Length); }
+        _prevIndex = index;
+
+        source.PlayOneShot(sounds[index]);
     }
 }
