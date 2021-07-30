@@ -16,7 +16,7 @@ public class PlayerFootsteps : MonoBehaviour
     private CharacterController characterController;
     private Rigidbody rb;
 
-    [SerializeField] private bool isWalking = false;
+    private bool isWalking = false;
     private float footstepTimer = 0f;
 
     private AudioClip[] currentGroundSounds;
