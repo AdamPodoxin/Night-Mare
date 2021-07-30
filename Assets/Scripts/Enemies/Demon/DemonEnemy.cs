@@ -49,6 +49,10 @@ public class DemonEnemy : MonoBehaviour
     private Vector3 _navTargetPosition;
     private Vector3 _predictedPosition;
 
+    private int _prevFoundIndex = -1;
+    private int _prevSearchIndex = -1;
+    private int _prevDespawnIndex = -1;
+
     private delegate void OnComeplete();
 
     private void Awake()
@@ -136,7 +140,11 @@ public class DemonEnemy : MonoBehaviour
 
         if (!audioSource.isPlaying && !_isChasingPlayer)
         {
-            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
+            int foundIndex = Random.Range(0, foundVoiceLines.Length);
+            while (foundIndex == _prevFoundIndex) { foundIndex = Random.Range(0, foundVoiceLines.Length); }
+            _prevFoundIndex = foundIndex;
+
+            AudioClip foundClip = foundVoiceLines[foundIndex];
             audioSource.PlayOneShot(foundClip);
         }
 
@@ -221,7 +229,11 @@ public class DemonEnemy : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            AudioClip searchClip = searchVoiceLines[Random.Range(0, searchVoiceLines.Length)];
+            int searchIndex = Random.Range(0, searchVoiceLines.Length);
+            while (searchIndex == _prevSearchIndex) { searchIndex = Random.Range(0, searchVoiceLines.Length); }
+            _prevSearchIndex = searchIndex;
+
+            AudioClip searchClip = searchVoiceLines[searchIndex];
             audioSource.PlayOneShot(searchClip);
         }
 
@@ -234,7 +246,11 @@ public class DemonEnemy : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            AudioClip despawnClip = despawnVoiceLines[Random.Range(0, despawnVoiceLines.Length)];
+            int despawnIndex = Random.Range(0, despawnVoiceLines.Length);
+            while (despawnIndex == _prevDespawnIndex) { despawnIndex = Random.Range(0, despawnVoiceLines.Length); }
+            _prevDespawnIndex = despawnIndex;
+
+            AudioClip despawnClip = despawnVoiceLines[despawnIndex];
             audioSource.PlayOneShot(despawnClip);
         }
 
