@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Waypoint
+  - Ground
   layers:
   - Default
   - TransparentFX

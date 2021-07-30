@@ -150,8 +150,6 @@ public class DemonEnemy : MonoBehaviour
 
         playerLostPosition = _navTargetPosition = playerTransform.position;
         lastKnownDirection = CalculatePlayerDirection(playerFoundPosition, playerLostPosition);
-
-        print("Lost");
     }
 
     private void OnReachedLastKnownPosition()
@@ -227,7 +225,7 @@ public class DemonEnemy : MonoBehaviour
             audioSource.PlayOneShot(searchClip);
         }
 
-        print("Search animation & voice line");
+        print("Search animation");
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) onComeplete.Invoke();
     }
@@ -240,7 +238,7 @@ public class DemonEnemy : MonoBehaviour
             audioSource.PlayOneShot(despawnClip);
         }
 
-        print("Despawn animation & voice line");
+        print("Despawn animation");
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) gameObject.SetActive(false);
     }

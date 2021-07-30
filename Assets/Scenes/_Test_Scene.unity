@@ -2625,9 +2625,10 @@ GameObject:
   - component: {fileID: 2122185435}
   - component: {fileID: 2122185434}
   - component: {fileID: 2122185433}
+  - component: {fileID: 2122185437}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -2709,6 +2710,19 @@ Transform:
   m_Father: {fileID: 1561245673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2122185437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122185432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50386fffe0df8364fbb386ee692b3d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: 0
 --- !u!1001 &1344817321858730284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2981,6 +2995,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0f5cecbc8c60e64dbb62cea8017eaa6, type: 3}
+--- !u!1 &2800461362284674358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5857391897785049233, guid: f0f5cecbc8c60e64dbb62cea8017eaa6, type: 3}
+  m_PrefabInstance: {fileID: 2800461362284674357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2800461362284674359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800461362284674358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0302b06a05306014995631e9484405dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSounds: []
+  currentGround: 0
+  footstepCountdown: 0.5
+  isWalking: 0
 --- !u!1001 &8139945775740445126
 PrefabInstance:
   m_ObjectHideFlags: 0

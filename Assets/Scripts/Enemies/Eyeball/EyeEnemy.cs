@@ -136,28 +136,6 @@ public class EyeEnemy : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        float rayRange = 10.0f;
-        float halfFOV = maxAngle / 2f;
-
-        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
-        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
-        Quaternion upRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.right);
-        Quaternion downRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.right);
-
-        Vector3 leftRayDirection = leftRayRotation * transform.forward;
-        Vector3 rightRayDirection = rightRayRotation * transform.forward;
-        Vector3 upRayDirection = upRayRotation * transform.forward;
-        Vector3 downRayDirection = downRayRotation * transform.forward;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, leftRayDirection * rayRange);
-        Gizmos.DrawRay(transform.position, rightRayDirection * rayRange);
-        Gizmos.DrawRay(transform.position, upRayDirection * rayRange);
-        Gizmos.DrawRay(transform.position, downRayDirection * rayRange);
-    }
-
     private void ResetRotateTimer() { rotateTimer = rotateWaitTime; }
     private void ResetPlayerTimer() { playerTrackTimer = playerTrackWaitTime; }
 
