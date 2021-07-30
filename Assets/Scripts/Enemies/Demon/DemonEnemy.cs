@@ -27,6 +27,7 @@ public class DemonEnemy : MonoBehaviour
 
     private NavMeshAgent agent;
     private AudioSource audioSource;
+    private Rigidbody rb;
 
     private Transform playerTransform;
     private float playerMoveSpeed;
@@ -61,6 +62,7 @@ public class DemonEnemy : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerMoveSpeed = FindObjectOfType<StarterAssets.FirstPersonController>().MoveSpeed;
@@ -105,6 +107,32 @@ public class DemonEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Door door = collision.gameObject.GetComponent<Door>();
+        if (door != null)
+        {
+            if (!door.isOpen)
+            {
+                StartCoroutine(DoorCollisionCoroutine(door));
+            }
+        }
+    }
+
+    private IEnumerator DoorCollisionCoroutine(Door door)
+    {
+        agent.isStopped = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.AddForce(transform.forward * -130f);
+
+        door.Open();
+
+        yield return new WaitForSeconds(0.75f);
+
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        agent.isStopped = false;
     }
 
     private bool DistanceCheck()
