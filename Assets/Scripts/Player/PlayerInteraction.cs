@@ -12,10 +12,12 @@ public class PlayerInteraction : MonoBehaviour
     public Text interactText;
 
     private Transform playerCamera;
-
     private PlayerInputActions playerInputActions;
 
     private Interactable focus;
+
+    private RaycastHit _hit;
+    private Interactable _hitInteractable;
 
     private void Awake()
     {
@@ -40,12 +42,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance))
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out _hit, maxDistance, ~LayerMask.GetMask("Player")))
         {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            _hitInteractable = _hit.collider.GetComponent<Interactable>();
 
-            if (interactable != null) SetFocus(interactable);
+            if (_hitInteractable != null) SetFocus(_hitInteractable);
             else ResetFocus();
         }
         else ResetFocus();
