@@ -17,6 +17,7 @@ Jumpscare Horror Sound Effects - Horrorin (https://www.youtube.com/watch?v=akPH8
 Footsteps on Wood - GamingSoundEffects (https://www.youtube.com/watch?v=hLsTDUAAV5I)
 Quiet Footsteps on Carpet - SoundEffectsFactory (https://www.youtube.com/watch?v=zG51UDzWMDM)
 Door Open and Close - GamingSoundEffects (https://www.youtube.com/watch?v=Nfg1LS5b5x8)
+entity.enderman.stare - Minecraft (https://minecraft.fandom.com/wiki/Enderman)
 
 Music:
 Tormented - Horror Music World (https://youtu.be/i5jLt1rTL5k)
