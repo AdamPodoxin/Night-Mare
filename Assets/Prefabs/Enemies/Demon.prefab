@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   acceptableStoppingDistance: 1.2
-  searchTime: 3
+  searchTime: 4.5
   waypointRadius: 10
   foundVoiceLines:
   - {fileID: 8300000, guid: 4e0afec2d4a2a724aa3096cf91d04d4d, type: 3}
