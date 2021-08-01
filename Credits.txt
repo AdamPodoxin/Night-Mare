@@ -4,6 +4,9 @@ Inspired by u/WwolfDub on r/gameideas (https://www.reddit.com/r/gameideas/commen
 Blue Eyeball - Tom Hodes (https://skfb.ly/6qIYQ)
 Flashlight - RRFreelance / PiXelBurner (https://assetstore.unity.com/packages/3d/props/electronics/flashlight-18972)
 
+Animations:
+Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
+
 Graphics:
 Raleway Font (https://fonts.google.com/specimen/Raleway)
 
