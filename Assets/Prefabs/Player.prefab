@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ppVolume: {fileID: 2800461362284674360}
   distortAmount: -70
-  distortSpeed: 25
+  distortSpeed: 40
 --- !u!114 &390308467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ MonoBehaviour:
   maxRotation: 270
   rotateSpeed: 30
   rotateWaitTime: 3
-  playerTrackWaitTime: 3
+  playerTrackWaitTime: 2
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   trackingColor: {r: 1, g: 0, b: 0, a: 1}
   eyeLight: {fileID: 1344817322952298664}
