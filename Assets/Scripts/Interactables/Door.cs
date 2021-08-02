@@ -14,6 +14,8 @@ public class Door : Interactable
     private Animator anim;
     private AudioSource source;
 
+    private bool isInAnimation = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -23,6 +25,8 @@ public class Door : Interactable
     public override void Interact()
     {
         base.Interact();
+
+        if (isInAnimation) return;
 
         if (isOpen) Close();
         else Open();
@@ -45,4 +49,7 @@ public class Door : Interactable
         anim.Play("Close");
         source.PlayOneShot(closeClip);
     }
+
+    public void AnimatingTrue() { isInAnimation = true; }
+    public void AnimatingFalse() { isInAnimation = false; }
 }
