@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory instance;
 
     public Transform hand;
+
+    [Space]
+
+    public Text dropText;
 
     private Item currentItem = null;
     private GameObject currentItemObject = null;
@@ -63,12 +68,15 @@ public class PlayerInventory : MonoBehaviour
             currentItemObject = Instantiate(currentItem.prefab, hand.position, Quaternion.identity);
             currentItemObject.transform.SetParent(hand);
 
-            itemsPickedUp.Add(item.name, currentItemObject);
+            itemsPickedUp.Add(currentItem.name, currentItemObject);
         }
         else
         {
             currentItemObject.SetActive(true);
         }
+
+        dropText.gameObject.SetActive(true);
+        dropText.text = "Drop " + currentItem.name;
     }
 
     public void DropCurrentItem()
@@ -79,6 +87,8 @@ public class PlayerInventory : MonoBehaviour
         currentItemObject = null;
 
         currentItem = null;
+
+        dropText.gameObject.SetActive(false);
     }
 
     public void RemoveCurrentItem()
@@ -89,5 +99,7 @@ public class PlayerInventory : MonoBehaviour
         currentItemObject = null;
 
         currentItem = null;
+
+        dropText.gameObject.SetActive(false);
     }
 }
