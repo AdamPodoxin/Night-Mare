@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1899717873975141083}
   - component: {fileID: 754956520}
   - component: {fileID: -6860690591872844127}
+  - component: {fileID: 1537408094}
   - component: {fileID: 1899717873975141082}
   m_Layer: 3
   m_Name: Demon
@@ -281,6 +282,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1537408094
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899717873975141085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 323005a5a315a1f40a9a619c5f0d4e14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1899717873975141082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.095
+      value: -0.565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -379,7 +399,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemonModel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8417361359673230750, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 64d7c262eddd4754f90c21367290dd28, type: 2}
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ad5aaea68899b6d4e8fbe7ced0c9182e, type: 3}
 --- !u!4 &2950146050701390567 stripped
 Transform:
