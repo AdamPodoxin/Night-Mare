@@ -346,6 +346,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   acceptableStoppingDistance: 1.2
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 264
   searchTime: 4.5
   waypointRadius: 10
   foundVoiceLines:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8273790039359384845}
   - component: {fileID: 8273790039359384844}
   - component: {fileID: 8273790039359384843}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CubeItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -32,6 +32,8 @@ public class EyeEnemy : MonoBehaviour
     private bool isTrackingPlayer = false;
     private bool hasSpottedPlayer = false;
 
+    private LayerMask ignoreLayers;
+
     private float rotateTimer = 0f;
     private int rotateDirection = 1;
 
@@ -68,6 +70,8 @@ public class EyeEnemy : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         demon = DemonEnemy.instance;
         playerCamera = FindObjectOfType<PlayerCamera>();
+
+        ignoreLayers = demon.ignoreLayers;
     }
 
     private void Update()
@@ -76,7 +80,7 @@ public class EyeEnemy : MonoBehaviour
         hasReachedMin = yRot <= minRotation;
         hasReachedMax = yRot >= maxRotation;
 
-        if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out RaycastHit hit, Mathf.Infinity, ~LayerMask.GetMask("Enemy")))
+        if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out RaycastHit hit, Mathf.Infinity, ~ignoreLayers))
         {
             if (hit.collider.CompareTag("Player") && Vector3.Angle(transform.forward, (playerTransform.position - transform.position).normalized) <= maxAngle / 2f)
             {
