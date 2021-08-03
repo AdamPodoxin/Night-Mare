@@ -29,6 +29,7 @@ public class DemonEnemy : MonoBehaviour
     private NavMeshAgent agent;
     private AudioSource audioSource;
     private Rigidbody rb;
+    private Animator anim;
 
     private Transform playerTransform;
     private float playerMoveSpeed;
@@ -64,6 +65,7 @@ public class DemonEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerMoveSpeed = FindObjectOfType<StarterAssets.FirstPersonController>().MoveSpeed;
@@ -178,6 +180,7 @@ public class DemonEnemy : MonoBehaviour
         }
 
         _isChasingPlayer = true;
+        anim.SetBool("isMoving", true);
     }
 
     private void OnLostPlayer()
@@ -266,7 +269,7 @@ public class DemonEnemy : MonoBehaviour
             audioSource.PlayOneShot(searchClip);
         }
 
-        print("Search animation");
+        anim.SetBool("isMoving", false);
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) onComeplete.Invoke();
     }
@@ -283,7 +286,6 @@ public class DemonEnemy : MonoBehaviour
             audioSource.PlayOneShot(despawnClip);
         }
 
-        print("Despawn animation");
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) gameObject.SetActive(false);
     }
@@ -302,6 +304,7 @@ public class DemonEnemy : MonoBehaviour
         agent.SetDestination(lastKnownPosition);
         state = DemonState.Travelling;
         _isChasingPlayer = true;
+        anim.SetBool("isMoving", true);
 
         StartTimer();
 
