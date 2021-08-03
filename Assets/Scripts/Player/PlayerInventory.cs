@@ -37,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void DoDropItem(InputAction.CallbackContext obj)
     {
-        DropItem();
+        DropCurrentItem();
     }
 
     public GameObject FindItemInHand(Item item)
@@ -53,7 +53,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void PickupItem(Item item)
     {
-        if (currentItem != null) DropItem();
+        if (currentItem != null) DropCurrentItem();
         currentItem = item;
 
         itemsPickedUp.TryGetValue(item.name, out currentItemObject);
@@ -71,11 +71,21 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void DropItem()
+    public void DropCurrentItem()
     {
         Instantiate(currentItem.pickup, hand.position, Quaternion.identity);
 
         currentItemObject.SetActive(false);
+        currentItemObject = null;
+
+        currentItem = null;
+    }
+
+    public void RemoveCurrentItem()
+    {
+        itemsPickedUp.Remove(currentItem.name);
+
+        Destroy(currentItemObject);
         currentItemObject = null;
 
         currentItem = null;
