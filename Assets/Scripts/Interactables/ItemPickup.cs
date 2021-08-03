@@ -16,8 +16,7 @@ public class ItemPickup : Interactable
     {
         base.Interact();
 
-        print(interactText);
-
+        PlayerInventory.instance.PickupItem(item);
         Destroy(gameObject);
     }
 }

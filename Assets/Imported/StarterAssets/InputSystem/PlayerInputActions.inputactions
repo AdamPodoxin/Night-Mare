@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
@@ -25,6 +25,14 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "cbe82dd1-54f8-4efa-8901-ac0912b17538",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "c04b89f1-4858-46e8-bc6d-e12671ecdcba",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -182,6 +190,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d85769dd-5314-416f-a068-db8840984fad",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1649914-e4e6-4570-a02a-dbe6888bb1c8",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
