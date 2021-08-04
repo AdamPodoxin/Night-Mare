@@ -8,7 +8,16 @@ public class DemonEnemy : MonoBehaviour
 {
     public static DemonEnemy instance;
 
-    public DemonState state;
+    private DemonState state;
+    public DemonState State
+    {
+        get { return state; }
+        set
+        {
+            state = value;
+            _isSearching = value.Equals(DemonState.Searching);
+        }
+    }
 
     [Space]
 
@@ -22,12 +31,15 @@ public class DemonEnemy : MonoBehaviour
 
     [Space]
 
+    public AudioSource voiceSource;
+    public AudioSource droneSource;
+    public AudioSource sfxSource;
+
     public AudioClip[] foundVoiceLines;
     public AudioClip[] searchVoiceLines;
     public AudioClip[] despawnVoiceLines;
 
     private NavMeshAgent agent;
-    private AudioSource audioSource;
     private Rigidbody rb;
     private Animator anim;
 
@@ -56,6 +68,8 @@ public class DemonEnemy : MonoBehaviour
     private int _prevSearchIndex = -1;
     private int _prevDespawnIndex = -1;
 
+    private bool _isSearching = false;
+
     private delegate void OnComeplete();
 
     private void Awake()
@@ -63,7 +77,6 @@ public class DemonEnemy : MonoBehaviour
         instance = this;
 
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
@@ -81,24 +94,24 @@ public class DemonEnemy : MonoBehaviour
         {
             if (_hit.collider.CompareTag("Player"))
             {
-                if (!state.Equals(DemonState.Chasing)) OnFoundPlayer();
+                if (!State.Equals(DemonState.Chasing)) OnFoundPlayer();
 
                 lastKnownPosition = playerTransform.position;
                 agent.SetDestination(lastKnownPosition);
             }
             else
             {
-                if (state.Equals(DemonState.Chasing)) OnLostPlayer();
+                if (State.Equals(DemonState.Chasing)) OnLostPlayer();
             }
         }
         else
         {
-            if (state.Equals(DemonState.Chasing)) OnLostPlayer();
+            if (State.Equals(DemonState.Chasing)) OnLostPlayer();
         }
 
-        if (state.Equals(DemonState.Travelling))
+        if (State.Equals(DemonState.Travelling))
         {
-            if (DistanceCheck() && !state.Equals(DemonState.Searching))
+            if (DistanceCheck() && !State.Equals(DemonState.Searching))
             {
                 if (_isChasingPlayer)
                 {
@@ -110,6 +123,8 @@ public class DemonEnemy : MonoBehaviour
                 }
             }
         }
+
+        droneSource.volume += Time.deltaTime * (_isSearching ? 1f : -1f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -164,19 +179,19 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnFoundPlayer()
     {
-        state = DemonState.Chasing;
+        State = DemonState.Chasing;
         StopTimer();
 
         playerFoundPosition = playerTransform.position;
 
-        if (!audioSource.isPlaying && !_isChasingPlayer)
+        if (!voiceSource.isPlaying && !_isChasingPlayer)
         {
             int foundIndex = Random.Range(0, foundVoiceLines.Length);
             while (foundIndex == _prevFoundIndex) { foundIndex = Random.Range(0, foundVoiceLines.Length); }
             _prevFoundIndex = foundIndex;
 
             AudioClip foundClip = foundVoiceLines[foundIndex];
-            audioSource.PlayOneShot(foundClip);
+            voiceSource.PlayOneShot(foundClip);
         }
 
         _isChasingPlayer = true;
@@ -185,7 +200,7 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnLostPlayer()
     {
-        state = DemonState.Travelling;
+        State = DemonState.Travelling;
         StartTimer();
 
         playerLostPosition = _navTargetPosition = playerTransform.position;
@@ -194,7 +209,7 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnReachedLastKnownPosition()
     {
-        state = DemonState.Searching;
+        State = DemonState.Searching;
         _isChasingPlayer = false;
         StopTimer();
 
@@ -203,7 +218,7 @@ public class DemonEnemy : MonoBehaviour
 
         OnComeplete onComplete = () =>
         {
-            state = DemonState.Travelling;
+            State = DemonState.Travelling;
             _navTargetPosition = waypointPosAfterPlayer;
             agent.SetDestination(_navTargetPosition);
 
@@ -216,7 +231,7 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnReachedWaypoint()
     {
-        state = DemonState.Searching;
+        State = DemonState.Searching;
 
         OnComeplete onComplete = () =>
         {
@@ -237,7 +252,7 @@ public class DemonEnemy : MonoBehaviour
                     }
                 }
 
-                state = DemonState.Travelling;
+                State = DemonState.Travelling;
                 _navTargetPosition = waypointPos;
                 agent.SetDestination(_navTargetPosition);
 
@@ -259,14 +274,14 @@ public class DemonEnemy : MonoBehaviour
 
     private IEnumerator SearchCoroutine(OnComeplete onComeplete)
     {
-        if (!audioSource.isPlaying)
+        if (!voiceSource.isPlaying)
         {
             int searchIndex = Random.Range(0, searchVoiceLines.Length);
             while (searchIndex == _prevSearchIndex) { searchIndex = Random.Range(0, searchVoiceLines.Length); }
             _prevSearchIndex = searchIndex;
 
             AudioClip searchClip = searchVoiceLines[searchIndex];
-            audioSource.PlayOneShot(searchClip);
+            voiceSource.PlayOneShot(searchClip);
         }
 
         anim.SetBool("isMoving", false);
@@ -276,14 +291,16 @@ public class DemonEnemy : MonoBehaviour
 
     private IEnumerator DespawnCoroutine()
     {
-        if (!audioSource.isPlaying)
+        State = DemonState.Despawning;
+
+        if (!voiceSource.isPlaying)
         {
             int despawnIndex = Random.Range(0, despawnVoiceLines.Length);
             while (despawnIndex == _prevDespawnIndex) { despawnIndex = Random.Range(0, despawnVoiceLines.Length); }
             _prevDespawnIndex = despawnIndex;
 
             AudioClip despawnClip = despawnVoiceLines[despawnIndex];
-            audioSource.PlayOneShot(despawnClip);
+            voiceSource.PlayOneShot(despawnClip);
         }
 
         yield return new WaitForSeconds(searchTime);
@@ -302,7 +319,7 @@ public class DemonEnemy : MonoBehaviour
         lastKnownDirection = direction;
 
         agent.SetDestination(lastKnownPosition);
-        state = DemonState.Travelling;
+        State = DemonState.Travelling;
         _isChasingPlayer = true;
         anim.SetBool("isMoving", true);
 
@@ -313,7 +330,7 @@ public class DemonEnemy : MonoBehaviour
         if (useVoiceline)
         {
             AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
-            audioSource.PlayOneShot(foundClip);
+            voiceSource.PlayOneShot(foundClip);
         }
     }
 }
