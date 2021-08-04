@@ -7,6 +7,7 @@ Classic Interior Door Pack 1 - Jan Fidler (https://assetstore.unity.com/packages
 
 Textures:
 SCP pack V1.1 1.10.X - MadSteevy (https://www.planetminecraft.com/texture-pack/scp-pack/)
+The Demon - T. Mack (https://sistergeeks.net/2017/10/13/the-demon/)
 
 Animations:
 Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
