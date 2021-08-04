@@ -6,8 +6,7 @@ Flashlight - RRFreelance / PiXelBurner (https://assetstore.unity.com/packages/3d
 Classic Interior Door Pack 1 - Jan Fidler (https://assetstore.unity.com/packages/3d/props/interior/classic-interior-door-pack-1-118744)
 
 Textures:
-Flesh Floor 02 - Hoover1979 (https://www.deviantart.com/hoover1979/art/Flesh-Floor-02-622720944)
-The Demon - T. Mack (https://sistergeeks.net/2017/10/13/the-demon/)
+SCP pack V1.1 1.10.X - MadSteevy (https://www.planetminecraft.com/texture-pack/scp-pack/)
 
 Animations:
 Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
