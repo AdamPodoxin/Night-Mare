@@ -81,6 +81,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void DropCurrentItem()
     {
+        if (currentItem == null) return;
+
         Instantiate(currentItem.pickup, hand.position, Quaternion.identity);
 
         currentItemObject.SetActive(false);
