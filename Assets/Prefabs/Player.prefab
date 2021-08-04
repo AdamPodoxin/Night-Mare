@@ -1214,6 +1214,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4173837796319299767, guid: 85165f2a59a0c7540b8141d7eb6f3a4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.135
+      objectReference: {fileID: 0}
     - target: {fileID: 4173837796517181399, guid: 85165f2a59a0c7540b8141d7eb6f3a4b, type: 3}
       propertyPath: m_Name
       value: Flashlight
