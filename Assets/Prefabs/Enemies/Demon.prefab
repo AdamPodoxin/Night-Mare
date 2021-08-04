@@ -214,7 +214,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.7
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -397,6 +397,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79db63d371ee1234ba7076a2916de707, type: 3}
   - {fileID: 8300000, guid: cd91d82cc97c2bb478030012afc3c985, type: 3}
   - {fileID: 8300000, guid: 4644950a86b90b44c9f77a917180d016, type: 3}
+  footsteps:
+  - {fileID: 8300000, guid: 72175023522658844867219bbb760db7, type: 3}
+  - {fileID: 8300000, guid: 6474bd75154f21d47aa376706f2ffc1a, type: 3}
+  - {fileID: 8300000, guid: 2e2963865baf1be4fb93106ad612f70e, type: 3}
+  - {fileID: 8300000, guid: 936e7399771be9048814a2241a77ebc9, type: 3}
 --- !u!1 &4901038627457574840
 GameObject:
   m_ObjectHideFlags: 0

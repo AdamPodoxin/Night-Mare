@@ -39,6 +39,8 @@ public class DemonEnemy : MonoBehaviour
     public AudioClip[] searchVoiceLines;
     public AudioClip[] despawnVoiceLines;
 
+    public AudioClip[] footsteps;
+
     private NavMeshAgent agent;
     private Rigidbody rb;
     private Animator anim;
@@ -332,5 +334,11 @@ public class DemonEnemy : MonoBehaviour
             AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
             voiceSource.PlayOneShot(foundClip);
         }
+    }
+
+    public void PlayFootstep()
+    {
+        AudioClip footstep = footsteps[Random.Range(0, footsteps.Length)];
+        sfxSource.PlayOneShot(footstep);
     }
 }
