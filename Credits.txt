@@ -5,6 +5,10 @@ Blue Eyeball - Tom Hodes (https://skfb.ly/6qIYQ)
 Flashlight - RRFreelance / PiXelBurner (https://assetstore.unity.com/packages/3d/props/electronics/flashlight-18972)
 Classic Interior Door Pack 1 - Jan Fidler (https://assetstore.unity.com/packages/3d/props/interior/classic-interior-door-pack-1-118744)
 
+Textures:
+Flesh Floor 02 - Hoover1979 (https://www.deviantart.com/hoover1979/art/Flesh-Floor-02-622720944)
+The Demon - T. Mack (https://sistergeeks.net/2017/10/13/the-demon/)
+
 Animations:
 Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
 Warrior Pack Bundle 1 - Explosive (https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-1-free-36405)
