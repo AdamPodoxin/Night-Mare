@@ -4,12 +4,14 @@ Inspired by u/WwolfDub on r/gameideas (https://www.reddit.com/r/gameideas/commen
 Blue Eyeball - Tom Hodes (https://skfb.ly/6qIYQ)
 Flashlight - RRFreelance / PiXelBurner (https://assetstore.unity.com/packages/3d/props/electronics/flashlight-18972)
 Classic Interior Door Pack 1 - Jan Fidler (https://assetstore.unity.com/packages/3d/props/interior/classic-interior-door-pack-1-118744)
+Traditional Shutter - sweethome3d (https://www.cgtrader.com/free-3d-models/architectural/door/traditional-shutter)
 
 Textures:
 SCP pack V1.1 1.10.X - MadSteevy (https://www.planetminecraft.com/texture-pack/scp-pack/)
 The Demon - T. Mack (https://sistergeeks.net/2017/10/13/the-demon/)
 Laminated Floor Texture - Daphne Jeffrey (https://www.pinterest.ca/pin/332984966204095083/)
 Seamless White Wall - Seme Design Lab (http://www.texturise.club/2016/12/seamless-white-wall-paint-stucco.html)
+White stucco up-close - Giles Hodges (https://seamless-pixels.blogspot.com/2012/09/free-seamless-stucco-wall-plaster.html)
 
 Animations:
 Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
