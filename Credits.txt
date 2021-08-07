@@ -5,6 +5,7 @@ Blue Eyeball - Tom Hodes (https://skfb.ly/6qIYQ)
 Flashlight - RRFreelance / PiXelBurner (https://assetstore.unity.com/packages/3d/props/electronics/flashlight-18972)
 Classic Interior Door Pack 1 - Jan Fidler (https://assetstore.unity.com/packages/3d/props/interior/classic-interior-door-pack-1-118744)
 Traditional Shutter - sweethome3d (https://www.cgtrader.com/free-3d-models/architectural/door/traditional-shutter)
+Bed & Bath Furniture Pack - Pepperjack (https://assetstore.unity.com/packages/3d/props/furniture/bed-bath-furniture-pack-134117)
 
 Textures:
 SCP pack V1.1 1.10.X - MadSteevy (https://www.planetminecraft.com/texture-pack/scp-pack/)
