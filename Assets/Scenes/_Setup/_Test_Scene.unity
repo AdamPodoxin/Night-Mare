@@ -2716,7 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50386fffe0df8364fbb386ee692b3d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundType: 1
+  groundType: 2
 --- !u!1 &2013485550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,7 +3016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50386fffe0df8364fbb386ee692b3d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundType: 0
+  groundType: 1
 --- !u!4 &4754075489207677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3712198288050932, guid: bceaa52dd44dd104fb1de8bf9d9a1f43, type: 3}

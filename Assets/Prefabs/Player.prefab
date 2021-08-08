@@ -1134,21 +1134,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundSounds:
-  - groundType: 0
+  - groundType: 1
     sounds:
     - {fileID: 8300000, guid: e04bb4e9c59df8144a0ad82363124806, type: 3}
     - {fileID: 8300000, guid: 5eade385521fb3241b93a041ecc88d36, type: 3}
     - {fileID: 8300000, guid: 3aaabb4b7a474f147b92a5c53ea0d009, type: 3}
     - {fileID: 8300000, guid: c2c468609ca6b164a81d2aa1d8c77de9, type: 3}
     - {fileID: 8300000, guid: ab1e7971fbcee984b8bdbb4e68264ed2, type: 3}
-  - groundType: 1
+  - groundType: 2
     sounds:
     - {fileID: 8300000, guid: 86e9dc9761708004a9157597efe369e3, type: 3}
     - {fileID: 8300000, guid: c9826e2a3240d394a95baf451b87d3db, type: 3}
     - {fileID: 8300000, guid: 77cf44e31b420e04f856f26ec678679b, type: 3}
     - {fileID: 8300000, guid: 27016c1d794242643a693d863adb101b, type: 3}
     - {fileID: 8300000, guid: 9cdd230cb1198c34f8a8c8b6b5bdb0f2, type: 3}
-  - groundType: 2
+  - groundType: 3
     sounds:
     - {fileID: 8300000, guid: 3501a9ef276bf09499a9ff09e7440bdb, type: 3}
     - {fileID: 8300000, guid: 277088d6cf9e48847bfc53d21147292f, type: 3}
