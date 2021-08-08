@@ -8,6 +8,9 @@ Traditional Shutter - sweethome3d (https://www.cgtrader.com/free-3d-models/archi
 Bed & Bath Furniture Pack - Pepperjack (https://assetstore.unity.com/packages/3d/props/furniture/bed-bath-furniture-pack-134117)
 Bathroom Props - Kobra Game Studios (https://assetstore.unity.com/packages/3d/props/furniture/bathroom-props-25255)
 Low Poly Bathroom Pack - Tons Of Hun Studios (https://assetstore.unity.com/packages/3d/props/interior/low-poly-bathroom-pack-88291)
+Toon Furniture - Elcanetay (https://assetstore.unity.com/packages/3d/props/furniture/toon-furniture-88740)
+Voxel Functional Furniture - Kelhem Store (https://assetstore.unity.com/packages/3d/props/furniture/voxel-functional-furniture-free-134903)
+Super Furniture Pack - Meshtint (https://assetstore.unity.com/packages/3d/environments/urban/meshtint-free-super-furniture-pack-155700)
 
 Textures:
 SCP pack V1.1 1.10.X - MadSteevy (https://www.planetminecraft.com/texture-pack/scp-pack/)
