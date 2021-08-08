@@ -6,7 +6,7 @@ using static GlobalEnums;
 public class PlayerFootsteps : MonoBehaviour
 {
     public GroundSound[] groundSounds;
-    public GroundType currentGround;
+    public GroundType currentGround = GroundType.Null;
 
     [Space]
 
@@ -14,10 +14,12 @@ public class PlayerFootsteps : MonoBehaviour
 
     private AudioSource source;
     private CharacterController characterController;
-    private Rigidbody rb;
 
     private bool isWalking = false;
     private float footstepTimer = 0f;
+
+    private RaycastHit _hit;
+    private string _raycastTag;
 
     private AudioClip[] currentGroundSounds;
 
@@ -25,7 +27,6 @@ public class PlayerFootsteps : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         characterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
 
         footstepTimer = footstepCountdown;
 
@@ -36,18 +37,20 @@ public class PlayerFootsteps : MonoBehaviour
     {
         isWalking = characterController.velocity != Vector3.zero;
 
+        if (Physics.Raycast(transform.localPosition, Vector3.down, out _hit, 100f))
+        {
+            _raycastTag = _hit.collider.tag;
+
+            if (_raycastTag.Equals("Ground"))
+            {
+                OnChangeGround(_hit.collider.GetComponent<Ground>().groundType);
+            }
+        }
+
         if (isWalking)
         {
             footstepTimer -= Time.deltaTime;
             if (footstepTimer <= 0f) PlaySound();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            OnChangeGround(collision.gameObject.GetComponent<Ground>().groundType);
         }
     }
 
@@ -71,6 +74,8 @@ public class PlayerFootsteps : MonoBehaviour
 
     private void OnChangeGround(GroundType ground)
     {
+        if (ground.Equals(currentGround)) return;
+
         currentGround = ground;
         currentGroundSounds = FindGroundSounds(ground);
     }
