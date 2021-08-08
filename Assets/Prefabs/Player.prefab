@@ -1148,6 +1148,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 77cf44e31b420e04f856f26ec678679b, type: 3}
     - {fileID: 8300000, guid: 27016c1d794242643a693d863adb101b, type: 3}
     - {fileID: 8300000, guid: 9cdd230cb1198c34f8a8c8b6b5bdb0f2, type: 3}
+  - groundType: 2
+    sounds:
+    - {fileID: 8300000, guid: 3501a9ef276bf09499a9ff09e7440bdb, type: 3}
+    - {fileID: 8300000, guid: 277088d6cf9e48847bfc53d21147292f, type: 3}
+    - {fileID: 8300000, guid: 7ef2adbe6e753c34bbdae51db893e270, type: 3}
+    - {fileID: 8300000, guid: 4bdafdc30e2b9fd4d83259ce967bde91, type: 3}
+    - {fileID: 8300000, guid: 140aa76a67f5a724490a4c4e18c18623, type: 3}
   currentGround: 0
   footstepCountdown: 0.5
 --- !u!114 &1262534069
