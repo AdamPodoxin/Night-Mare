@@ -43,7 +43,9 @@ public class PlayerFootsteps : MonoBehaviour
 
             if (_raycastTag.Equals("Ground"))
             {
-                OnChangeGround(_hit.collider.GetComponent<Ground>().groundType);
+                GroundType groundType = _hit.collider.GetComponent<Ground>().groundType;
+
+                if (groundType != currentGround) OnChangeGround(groundType);
             }
         }
 
@@ -74,8 +76,6 @@ public class PlayerFootsteps : MonoBehaviour
 
     private void OnChangeGround(GroundType ground)
     {
-        if (ground.Equals(currentGround)) return;
-
         currentGround = ground;
         currentGroundSounds = FindGroundSounds(ground);
     }
