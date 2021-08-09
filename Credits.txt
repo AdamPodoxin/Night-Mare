@@ -12,6 +12,7 @@ Toon Furniture - Elcanetay (https://assetstore.unity.com/packages/3d/props/furni
 Voxel Functional Furniture - Kelhem Store (https://assetstore.unity.com/packages/3d/props/furniture/voxel-functional-furniture-free-134903)
 Super Furniture Pack - Meshtint (https://assetstore.unity.com/packages/3d/environments/urban/meshtint-free-super-furniture-pack-155700)
 Plastic Clothes Hanger - cbspicer (https://www.cgtrader.com/free-3d-models/interior/bedroom/plastic-clothes-hanger)
+Kitchen Center Island - indepth3D (https://www.cgtrader.com/free-3d-models/architectural/fixture/kitchen-center-island)
 
 
 Textures:
@@ -23,13 +24,17 @@ White stucco up-close - Giles Hodges (https://seamless-pixels.blogspot.com/2012/
 Blown Black Wall Tile - Tileflair (https://www.tileflair.co.uk/products/400x200-themes-tfbl24n-blown-black#sthash.0iPjNCbp.qjtu)
 Bathroom Floor Tile - Trendecors (https://trendecors.com/2020/05/04/high-resolution-bathroom-floor-tile-texture-seamless/)
 Wood Texture Set - Graphic Design Junction (https://graphicdesignjunction.com/2013/03/seamless-high-qualtity-wood-textures/)
+Seamless marble texture - hhh316 (https://www.deviantart.com/hhh316/art/Seamless-marble-texture-163763954)
+
 
 Animations:
 Basic Motions FREE - Kevin Iglesias (https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271)
 Warrior Pack Bundle 1 - Explosive (https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-1-free-36405)
 
+
 Graphics:
 Raleway Font (https://fonts.google.com/specimen/Raleway)
+
 
 Sound Effects:
 Tornado Siren Sound Effect - Sound Arena (https://www.youtube.com/watch?v=oDBS5ve8KR8)
@@ -39,6 +44,7 @@ Quiet Footsteps on Carpet - SoundEffectsFactory (https://www.youtube.com/watch?v
 Door Open and Close - GamingSoundEffects (https://www.youtube.com/watch?v=Nfg1LS5b5x8)
 entity.enderman.stare - Minecraft (https://minecraft.fandom.com/wiki/Enderman)
 Walking on metal - Sound EffectsTras (https://www.youtube.com/watch?v=DJcc4F65RBo)
+
 
 Music:
 Tormented - Horror Music World (https://youtu.be/i5jLt1rTL5k)
