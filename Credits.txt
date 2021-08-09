@@ -13,6 +13,9 @@ Voxel Functional Furniture - Kelhem Store (https://assetstore.unity.com/packages
 Super Furniture Pack - Meshtint (https://assetstore.unity.com/packages/3d/environments/urban/meshtint-free-super-furniture-pack-155700)
 Plastic Clothes Hanger - cbspicer (https://www.cgtrader.com/free-3d-models/interior/bedroom/plastic-clothes-hanger)
 Kitchen Center Island - indepth3D (https://www.cgtrader.com/free-3d-models/architectural/fixture/kitchen-center-island)
+Washing Machine A01 - South Studios (https://assetstore.unity.com/packages/3d/props/furniture/washing-machine-a01-70644)
+Ironing table - group3d (https://www.turbosquid.com/3d-models/ironing-table-obj-free/571484)
+Clothes Iron - baggymeets (https://www.turbosquid.com/3d-models/clothes-iron-3d-model-1630132)
 
 
 Textures:
