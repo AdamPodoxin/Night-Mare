@@ -26,6 +26,7 @@ Toothbrush - IkonosMedia (https://www.turbosquid.com/3d-models/toothbrush-tooth-
 Toothbrush - Denis Gomez (https://www.turbosquid.com/3d-models/3d-model-toothbrush-tooth-1632642)
 Toothpaste - sixbraker (https://www.cgtrader.com/free-3d-models/household/other/toothpaste-789653c4-3f02-4d24-86b6-39e847c7a53c)
 Conte AP1 Lamp - RDIZ (https://www.turbosquid.com/3d-models/conte-ap1-3d-model-1758639)
+PBR Game-Ready Desks Pack - Drunken Lizard Games (https://assetstore.unity.com/packages/3d/props/furniture/pbr-game-ready-desks-pack-116137)
 
 
 Textures:
