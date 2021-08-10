@@ -8,13 +8,12 @@ public class PlayerFootsteps : MonoBehaviour
     public GroundSound[] groundSounds;
     public GroundType currentGround = GroundType.Null;
 
-    [Space]
-
     public float footstepCountdown = 0.5f;
+    public LayerMask ignoreLayers;
 
     [Space]
 
-    public LayerMask ignoreLayers;
+    public float pushBallStrength = 375f;
 
     private AudioSource source;
     private CharacterController characterController;
@@ -48,7 +47,6 @@ public class PlayerFootsteps : MonoBehaviour
             if (_raycastTag.Equals("Ground"))
             {
                 GroundType groundType = _hit.collider.GetComponent<Ground>().groundType;
-
                 if (groundType != currentGround) OnChangeGround(groundType);
             }
         }
@@ -57,6 +55,14 @@ public class PlayerFootsteps : MonoBehaviour
         {
             footstepTimer -= Time.deltaTime;
             if (footstepTimer <= 0f) PlaySound();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushBallStrength);
         }
     }
 
