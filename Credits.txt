@@ -22,6 +22,8 @@ ToolBox - gruppyJB (https://www.turbosquid.com/3d-models/toolbox-tool-box-3d-160
 Tricycle - Hlushka Vitaliy (https://www.turbosquid.com/3d-models/3d-trike-tricycle-bike-model-1557620)
 bicycle-author - petoboso (https://www.turbosquid.com/3d-models/bicycle-author-max-free/503602)
 Low Poly Destructible 2 Cars no. 8 - 1Poly (https://assetstore.unity.com/packages/3d/vehicles/land/low-poly-destructible-2-cars-no-8-45368)
+Toothbrush - IkonosMedia (https://www.turbosquid.com/3d-models/toothbrush-tooth-3d-model-1549233)
+Toothbrush - Denis Gomez (https://www.turbosquid.com/3d-models/3d-model-toothbrush-tooth-1632642)
 
 
 Textures:
