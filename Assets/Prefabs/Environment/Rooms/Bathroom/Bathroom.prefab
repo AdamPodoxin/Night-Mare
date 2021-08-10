@@ -300,6 +300,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3065048503867970295, guid: 6fb978f6a02dc4a41933b13aaee0477b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065048503867970295, guid: 6fb978f6a02dc4a41933b13aaee0477b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -605,6 +609,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mirror
       objectReference: {fileID: 0}
+    - target: {fileID: 1582669674379926, guid: 57b8a7a9938aadb44a4cf6c18c1e8b1d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671754297704680, guid: 57b8a7a9938aadb44a4cf6c18c1e8b1d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680491459314076, guid: 57b8a7a9938aadb44a4cf6c18c1e8b1d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4420742115604590, guid: 57b8a7a9938aadb44a4cf6c18c1e8b1d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -678,6 +694,14 @@ PrefabInstance:
     - target: {fileID: 1204058697698714, guid: 7357d201e158ab442a0fc9e2928744d7, type: 3}
       propertyPath: m_Name
       value: Toilet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204058697698714, guid: 7357d201e158ab442a0fc9e2928744d7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557219016750244, guid: 7357d201e158ab442a0fc9e2928744d7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4721292177732666, guid: 7357d201e158ab442a0fc9e2928744d7, type: 3}
       propertyPath: m_RootOrder
@@ -937,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: soap1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5d47abc7ae683454a802d20784ddac87, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5d47abc7ae683454a802d20784ddac87, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1007,9 +1035,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8830750051171009150}
     m_Modifications:
+    - target: {fileID: 1948995271918650, guid: 421e2963afeae684eb74478967e7dee2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961822344506038, guid: 421e2963afeae684eb74478967e7dee2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1974989009228112, guid: 421e2963afeae684eb74478967e7dee2, type: 3}
       propertyPath: m_Name
       value: Soap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974989009228112, guid: 421e2963afeae684eb74478967e7dee2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4917063288977738, guid: 421e2963afeae684eb74478967e7dee2, type: 3}
       propertyPath: m_RootOrder
@@ -1084,6 +1124,18 @@ PrefabInstance:
     - target: {fileID: 1129760287473496, guid: b43257630abae854ca0c1214918e7343, type: 3}
       propertyPath: m_Name
       value: Plunger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129760287473496, guid: b43257630abae854ca0c1214918e7343, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190018279192188, guid: b43257630abae854ca0c1214918e7343, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240138216265950, guid: b43257630abae854ca0c1214918e7343, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4076643822354392, guid: b43257630abae854ca0c1214918e7343, type: 3}
       propertyPath: m_RootOrder
@@ -1345,6 +1397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: toilet_paper_roll
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c764d1d0273921641a0ed3c8bb41e77c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c764d1d0273921641a0ed3c8bb41e77c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1478,9 +1534,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8830750051171009150}
     m_Modifications:
+    - target: {fileID: 1502808500381494, guid: 710c9dc96bcdf824f93b46bc0370b9db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1710724259450472, guid: 710c9dc96bcdf824f93b46bc0370b9db, type: 3}
       propertyPath: m_Name
       value: Towel_Rack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710724259450472, guid: 710c9dc96bcdf824f93b46bc0370b9db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809422046627908, guid: 710c9dc96bcdf824f93b46bc0370b9db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4262220701122286, guid: 710c9dc96bcdf824f93b46bc0370b9db, type: 3}
       propertyPath: m_RootOrder
@@ -1668,6 +1736,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sink
       objectReference: {fileID: 0}
+    - target: {fileID: 1502820370350592, guid: b509eecd84d89c147b7e47cd8596a9db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971730175136612, guid: b509eecd84d89c147b7e47cd8596a9db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4653577650571972, guid: b509eecd84d89c147b7e47cd8596a9db, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1736,9 +1812,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8830750051171009150}
     m_Modifications:
+    - target: {fileID: 1400699210119528, guid: 9ee11b1c7baaa3f4fb2c9bef9052713d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1495899901225358, guid: 9ee11b1c7baaa3f4fb2c9bef9052713d, type: 3}
       propertyPath: m_Name
       value: Shower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495899901225358, guid: 9ee11b1c7baaa3f4fb2c9bef9052713d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725889915621004, guid: 9ee11b1c7baaa3f4fb2c9bef9052713d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4211904913754490, guid: 9ee11b1c7baaa3f4fb2c9bef9052713d, type: 3}
       propertyPath: m_RootOrder

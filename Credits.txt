@@ -16,6 +16,12 @@ Kitchen Center Island - indepth3D (https://www.cgtrader.com/free-3d-models/archi
 Washing Machine A01 - South Studios (https://assetstore.unity.com/packages/3d/props/furniture/washing-machine-a01-70644)
 Ironing table - group3d (https://www.turbosquid.com/3d-models/ironing-table-obj-free/571484)
 Clothes Iron - baggymeets (https://www.turbosquid.com/3d-models/clothes-iron-3d-model-1630132)
+3D Radar R13 Shelving System - Designconnected (https://www.turbosquid.com/3d-models/3d-radar-r13-shelving-1308440)
+Garage Door - stelios-123455 (https://www.cgtrader.com/free-3d-models/exterior/house/garage-door-ec2fc5ee-6f3f-4f6f-a62e-b39008100241)
+ToolBox - gruppyJB (https://www.turbosquid.com/3d-models/toolbox-tool-box-3d-1607766)
+Tricycle - Hlushka Vitaliy (https://www.turbosquid.com/3d-models/3d-trike-tricycle-bike-model-1557620)
+bicycle-author - petoboso (https://www.turbosquid.com/3d-models/bicycle-author-max-free/503602)
+Low Poly Destructible 2 Cars no. 8 - 1Poly (https://assetstore.unity.com/packages/3d/vehicles/land/low-poly-destructible-2-cars-no-8-45368)
 
 
 Textures:
@@ -28,6 +34,7 @@ Blown Black Wall Tile - Tileflair (https://www.tileflair.co.uk/products/400x200-
 Bathroom Floor Tile - Trendecors (https://trendecors.com/2020/05/04/high-resolution-bathroom-floor-tile-texture-seamless/)
 Wood Texture Set - Graphic Design Junction (https://graphicdesignjunction.com/2013/03/seamless-high-qualtity-wood-textures/)
 Seamless marble texture - hhh316 (https://www.deviantart.com/hhh316/art/Seamless-marble-texture-163763954)
+Dark concrete - AVR.Design (https://www.pinterest.ca/pin/775956210777912951/)
 
 
 Animations:
@@ -47,6 +54,7 @@ Quiet Footsteps on Carpet - SoundEffectsFactory (https://www.youtube.com/watch?v
 Door Open and Close - GamingSoundEffects (https://www.youtube.com/watch?v=Nfg1LS5b5x8)
 entity.enderman.stare - Minecraft (https://minecraft.fandom.com/wiki/Enderman)
 Walking on metal - Sound EffectsTras (https://www.youtube.com/watch?v=DJcc4F65RBo)
+Footsteps on Concrete - Motion Array (https://www.youtube.com/watch?v=XbH5USEzqY8)
 
 
 Music:

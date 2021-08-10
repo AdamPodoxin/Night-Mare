@@ -1199,8 +1199,18 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7ef2adbe6e753c34bbdae51db893e270, type: 3}
     - {fileID: 8300000, guid: 4bdafdc30e2b9fd4d83259ce967bde91, type: 3}
     - {fileID: 8300000, guid: 140aa76a67f5a724490a4c4e18c18623, type: 3}
+  - groundType: 4
+    sounds:
+    - {fileID: 8300000, guid: 5a05dab73f629cc47bce91247d54eb04, type: 3}
+    - {fileID: 8300000, guid: 36acea0cd0922284b92294fdabae9d6e, type: 3}
+    - {fileID: 8300000, guid: 492c55dc8dc1c124da00befbf5c43a2e, type: 3}
+    - {fileID: 8300000, guid: b1393c95a110a3d4d92174e08634e340, type: 3}
+    - {fileID: 8300000, guid: e38284f74fe22a543ac8050df1154486, type: 3}
   currentGround: 0
   footstepCountdown: 0.5
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &1262534069
 MonoBehaviour:
   m_ObjectHideFlags: 0

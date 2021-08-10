@@ -12,6 +12,10 @@ public class PlayerFootsteps : MonoBehaviour
 
     public float footstepCountdown = 0.5f;
 
+    [Space]
+
+    public LayerMask ignoreLayers;
+
     private AudioSource source;
     private CharacterController characterController;
 
@@ -37,7 +41,7 @@ public class PlayerFootsteps : MonoBehaviour
     {
         isWalking = characterController.velocity != Vector3.zero;
 
-        if (Physics.Raycast(transform.localPosition, Vector3.down, out _hit, 100f))
+        if (Physics.Raycast(transform.localPosition, Vector3.down, out _hit, 100f, ~ignoreLayers))
         {
             _raycastTag = _hit.collider.tag;
 
