@@ -27,6 +27,7 @@ Toothbrush - Denis Gomez (https://www.turbosquid.com/3d-models/3d-model-toothbru
 Toothpaste - sixbraker (https://www.cgtrader.com/free-3d-models/household/other/toothpaste-789653c4-3f02-4d24-86b6-39e847c7a53c)
 Conte AP1 Lamp - RDIZ (https://www.turbosquid.com/3d-models/conte-ap1-3d-model-1758639)
 PBR Game-Ready Desks Pack - Drunken Lizard Games (https://assetstore.unity.com/packages/3d/props/furniture/pbr-game-ready-desks-pack-116137)
+Colorable Office Chair - Azusa (https://assetstore.unity.com/packages/3d/props/furniture/colorable-office-chair-104874)
 
 
 Textures:
