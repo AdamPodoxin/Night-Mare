@@ -15,6 +15,10 @@ public class PlayerInventory : MonoBehaviour
 
     public Text dropText;
 
+    [Space]
+
+    public float droppingForce = 150f;
+
     private Item currentItem = null;
     private GameObject currentItemObject = null;
 
@@ -83,7 +87,8 @@ public class PlayerInventory : MonoBehaviour
     {
         if (currentItem == null) return;
 
-        Instantiate(currentItem.pickup, hand.position, Quaternion.identity);
+        Rigidbody itemRB = Instantiate(currentItem.pickup, hand.position, Quaternion.identity).GetComponent<Rigidbody>();
+        if (itemRB != null) itemRB.AddForce(transform.forward * droppingForce);
 
         currentItemObject.SetActive(false);
         currentItemObject = null;
