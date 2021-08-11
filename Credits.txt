@@ -28,6 +28,7 @@ Toothpaste - sixbraker (https://www.cgtrader.com/free-3d-models/household/other/
 Conte AP1 Lamp - RDIZ (https://www.turbosquid.com/3d-models/conte-ap1-3d-model-1758639)
 PBR Game-Ready Desks Pack - Drunken Lizard Games (https://assetstore.unity.com/packages/3d/props/furniture/pbr-game-ready-desks-pack-116137)
 Colorable Office Chair - Azusa (https://assetstore.unity.com/packages/3d/props/furniture/colorable-office-chair-104874)
+Picture frames with photos - 3Dfrk (https://assetstore.unity.com/packages/3d/props/interior/picture-frames-with-photos-106907)
 
 
 Textures:
