@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: Interact
-  isOn: 0
+  isOn: 1
   lights: []
   lightSwitch: {fileID: 4292669681261741580}
   onAngle: 296

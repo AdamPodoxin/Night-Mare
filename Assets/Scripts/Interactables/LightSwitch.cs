@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class LightSwitch : Interactable
 {
     public bool isOn = false;
@@ -17,10 +18,13 @@ public class LightSwitch : Interactable
 
     private AudioSource source;
 
+    private Vector3 _initialEulerAngles;
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
 
+        if (lightSwitch != null) _initialEulerAngles = lightSwitch.eulerAngles;
         DoChecks();
     }
 
@@ -34,7 +38,7 @@ public class LightSwitch : Interactable
 
     private void SetAngle()
     {
-        if (lightSwitch != null) lightSwitch.eulerAngles = Vector3.right * (isOn ? onAngle : offAngle);
+        if (lightSwitch != null) lightSwitch.eulerAngles = new Vector3((isOn ? onAngle : offAngle), _initialEulerAngles.y, _initialEulerAngles.z)/*Vector3.right * (isOn ? onAngle : offAngle)*/;
     }
 
     private void SetText()

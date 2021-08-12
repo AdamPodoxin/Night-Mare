@@ -36,6 +36,7 @@ Lego Minifigures - FaceTheEdge (https://www.turbosquid.com/3d-models/lego-toys-m
 3D Bouncy Bumble Ball Spikeball - ATrimpe (https://www.turbosquid.com/3d-models/3d-toy-ball-spikes-1293824)
 Bibo and Bibel - Magomed Mirzaev (https://www.turbosquid.com/3d-models/3d-model-interactive-toys-fisher-price-bibo-1574582)
 Free Homewares Asset Pack - Ferocious Industries (https://assetstore.unity.com/packages/3d/props/free-homewares-asset-pack-142878)
+21392x Zolla Lightstar - Skover (https://www.turbosquid.com/3d-models/3d-model-ceiling-lamp-21392x-zolla-1288957)
 
 
 Textures:
@@ -70,6 +71,7 @@ Door Open and Close - GamingSoundEffects (https://www.youtube.com/watch?v=Nfg1LS
 entity.enderman.stare - Minecraft (https://minecraft.fandom.com/wiki/Enderman)
 Walking on metal - Sound EffectsTras (https://www.youtube.com/watch?v=DJcc4F65RBo)
 Footsteps on Concrete - Motion Array (https://www.youtube.com/watch?v=XbH5USEzqY8)
+Light switch - Coke Moke's Sounds (https://www.youtube.com/watch?v=gZghmBMdAzY)
 
 
 Music:
