@@ -34,6 +34,7 @@ Clock - VIS Games (https://assetstore.unity.com/packages/3d/props/interior/clock
 3D model Toy Plane - Amad3D (https://www.turbosquid.com/3d-models/3d-model-toy-plane-1707059)
 Lego Minifigures - FaceTheEdge (https://www.turbosquid.com/3d-models/lego-toys-model-1549138)
 3D Bouncy Bumble Ball Spikeball - ATrimpe (https://www.turbosquid.com/3d-models/3d-toy-ball-spikes-1293824)
+Bibo and Bibel - Magomed Mirzaev (https://www.turbosquid.com/3d-models/3d-model-interactive-toys-fisher-price-bibo-1574582)
 
 
 Textures:
