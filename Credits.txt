@@ -29,6 +29,11 @@ Conte AP1 Lamp - RDIZ (https://www.turbosquid.com/3d-models/conte-ap1-3d-model-1
 PBR Game-Ready Desks Pack - Drunken Lizard Games (https://assetstore.unity.com/packages/3d/props/furniture/pbr-game-ready-desks-pack-116137)
 Colorable Office Chair - Azusa (https://assetstore.unity.com/packages/3d/props/furniture/colorable-office-chair-104874)
 Picture frames with photos - 3Dfrk (https://assetstore.unity.com/packages/3d/props/interior/picture-frames-with-photos-106907)
+Clock - VIS Games (https://assetstore.unity.com/packages/3d/props/interior/clock-4250)
+3D Rubik's Cube - Geeky Pixel (https://www.turbosquid.com/3d-models/3d-rubik-s-cube-1634612)
+3D model Toy Plane - Amad3D (https://www.turbosquid.com/3d-models/3d-model-toy-plane-1707059)
+Lego Minifigures - FaceTheEdge (https://www.turbosquid.com/3d-models/lego-toys-model-1549138)
+3D Bouncy Bumble Ball Spikeball - ATrimpe (https://www.turbosquid.com/3d-models/3d-toy-ball-spikes-1293824)
 
 
 Textures:
