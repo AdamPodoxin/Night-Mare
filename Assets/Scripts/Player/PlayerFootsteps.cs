@@ -66,6 +66,14 @@ public class PlayerFootsteps : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ball"))
+        {
+            other.GetComponent<Rigidbody>().AddForce(transform.forward * pushBallStrength / 2f);
+        }
+    }
+
     private AudioClip[] FindGroundSounds(GroundType groundType)
     {
         foreach (GroundSound g in groundSounds)
