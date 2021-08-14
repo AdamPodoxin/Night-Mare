@@ -25199,6 +25199,7 @@ GameObject:
   - component: {fileID: 1392196946}
   - component: {fileID: 1392196945}
   - component: {fileID: 1392196944}
+  - component: {fileID: 1392196950}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -25415,6 +25416,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392196942}
   m_Mesh: {fileID: 4300000, guid: f0d4298dcac2ffd499747abaa06977ee, type: 3}
+--- !u!41 &1392196950
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392196942}
+  m_Open: 1
+  m_Center: {x: -0.46, y: 1.03, z: -0.06}
+  m_Size: {x: 1.1, y: 2.08, z: 0.15}
 --- !u!1001 &1393724831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38809,7 +38820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147402897}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -9.5}
+  m_LocalPosition: {x: -5.5, y: 5, z: -9.5}
   m_LocalScale: {x: 45, y: 0.01, z: 65}
   m_Children: []
   m_Father: {fileID: 194656560}
@@ -38880,6 +38891,7 @@ GameObject:
   - component: {fileID: 1270023824190179}
   - component: {fileID: 1270023824190178}
   - component: {fileID: 1270023824190177}
+  - component: {fileID: 1270023824190180}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -39031,6 +39043,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!41 &1270023824190180
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270023824190175}
+  m_Open: 1
+  m_Center: {x: -0.46, y: 1.03, z: -0.06}
+  m_Size: {x: 1.1, y: 2.08, z: 0.15}
 --- !u!1 &1290666838063115
 GameObject:
   m_ObjectHideFlags: 0
@@ -39892,6 +39914,7 @@ GameObject:
   - component: {fileID: 56430173417578376}
   - component: {fileID: 56430173417578377}
   - component: {fileID: 56430173417578378}
+  - component: {fileID: 56430173417578382}
   m_Layer: 0
   m_Name: Closet_Door
   m_TagString: Untagged
@@ -39899,6 +39922,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &56430173417578382
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56430173417578381}
+  m_Open: 0
+  m_Center: {x: 0.8, y: 0.275, z: 0}
+  m_Size: {x: 1.6, y: 3.95, z: 0.1}
 --- !u!4 &56430174024811719
 Transform:
   m_ObjectHideFlags: 0
@@ -47894,6 +47927,7 @@ GameObject:
   - component: {fileID: 3608343376179040476}
   - component: {fileID: 3608343376179040450}
   - component: {fileID: 3608343376179040451}
+  - component: {fileID: 3608343376179040478}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -47901,6 +47935,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &3608343376179040478
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608343376179040477}
+  m_Open: 1
+  m_Center: {x: -0.46, y: 1.03, z: -0.06}
+  m_Size: {x: 1.1, y: 2.08, z: 0.15}
 --- !u!65 &3608849387400369086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56113,6 +56157,7 @@ GameObject:
   - component: {fileID: 6762280674512980113}
   - component: {fileID: 6762280674512980114}
   - component: {fileID: 6762280674512980115}
+  - component: {fileID: 6762280674512980144}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -56120,6 +56165,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!41 &6762280674512980144
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762280674512980143}
+  m_Open: 1
+  m_Center: {x: -0.46, y: 1.03, z: -0.06}
+  m_Size: {x: 1.1, y: 2.08, z: 0.15}
 --- !u!1 &6762611088071067975
 GameObject:
   m_ObjectHideFlags: 0

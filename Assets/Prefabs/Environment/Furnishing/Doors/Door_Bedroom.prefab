@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3608343376702838487}
   - component: {fileID: 3608343376702838473}
   - component: {fileID: 3608343376702838472}
+  - component: {fileID: 451024737135828119}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -314,6 +315,16 @@ MonoBehaviour:
   isOpen: 0
   openClip: {fileID: 8300000, guid: 95117e6f86e3f824f9e3969a0693ad98, type: 3}
   closeClip: {fileID: 8300000, guid: 8b0486a34c9e07f44b5e985567dea35b, type: 3}
+--- !u!41 &451024737135828119
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608343376702838486}
+  m_Open: 1
+  m_Center: {x: -0.46, y: 1.03, z: -0.06}
+  m_Size: {x: 1.1, y: 2.08, z: 0.15}
 --- !u!1 &3609247405691379458
 GameObject:
   m_ObjectHideFlags: 0
