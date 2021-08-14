@@ -9835,6 +9835,7 @@ Transform:
   - {fileID: 884811039308963655}
   - {fileID: 1829597609}
   - {fileID: 1691563389}
+  - {fileID: 1673559108}
   m_Father: {fileID: 985669475}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31104,6 +31105,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667094604}
   m_Mesh: {fileID: -2075833574162848725, guid: 084a5054219d6c045891616411bdbcca, type: 3}
+--- !u!1 &1673559107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673559108}
+  - component: {fileID: 1673559109}
+  m_Layer: 0
+  m_Name: Cardboard_Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1673559108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673559107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.75, y: 1.23, z: -1.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 616987142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1673559109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673559107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 2.4, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1674909121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31665,7 +31710,6 @@ GameObject:
   - component: {fileID: 1691563389}
   - component: {fileID: 1691563392}
   - component: {fileID: 1691563391}
-  - component: {fileID: 1691563390}
   m_Layer: 0
   m_Name: Cardboard_Box (3)
   m_TagString: Untagged
@@ -31687,19 +31731,6 @@ Transform:
   m_Father: {fileID: 616987142}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!65 &1691563390
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691563388}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1691563391
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35149,7 +35180,6 @@ GameObject:
   - component: {fileID: 1829597609}
   - component: {fileID: 1829597612}
   - component: {fileID: 1829597611}
-  - component: {fileID: 1829597610}
   m_Layer: 0
   m_Name: Cardboard_Box (2)
   m_TagString: Untagged
@@ -35171,19 +35201,6 @@ Transform:
   m_Father: {fileID: 616987142}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!65 &1829597610
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829597608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1829597611
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49179,7 +49196,6 @@ GameObject:
   - component: {fileID: 884811039308963655}
   - component: {fileID: 8483140554421938649}
   - component: {fileID: 52959663416407302}
-  - component: {fileID: 3760512907613868462}
   m_Layer: 0
   m_Name: Cardboard_Box (1)
   m_TagString: Untagged
@@ -49187,19 +49203,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!65 &3760512907613868462
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3760512907613868461}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &3764876522479373271
 MeshFilter:
   m_ObjectHideFlags: 0
