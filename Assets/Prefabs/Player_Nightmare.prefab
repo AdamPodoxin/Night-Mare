@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 2800461362284674361}
   - component: {fileID: 6266399533427184286}
   - component: {fileID: 390308467}
+  - component: {fileID: 9108705837241926807}
   m_Layer: 6
   m_Name: Camera
   m_TagString: MainCamera
@@ -775,6 +776,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 3
   interactText: {fileID: 2800461362421871063}
+--- !u!114 &9108705837241926807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800461364209783829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa36da03dad5ac4dbf7d4afb9f9dbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 1974111541}
+  dropText: {fileID: 2061164146}
+  droppingForce: 180
 --- !u!1 &5857391897785049233
 GameObject:
   m_ObjectHideFlags: 0
