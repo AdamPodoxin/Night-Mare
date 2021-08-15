@@ -13,6 +13,8 @@ public class InfoBox : Interactable
     public Transform infoBoxObject;
     public Text infoBoxText;
 
+    public Transform infoBoxI;
+
     private bool isReading = false;
 
     private Transform camTransform;
@@ -38,6 +40,14 @@ public class InfoBox : Interactable
             _rotation = Quaternion.LookRotation(_lookPos).eulerAngles;
             infoBoxObject.eulerAngles = _rotation + Vector3.up * 180f;
         }
+        else if (infoBoxI.gameObject.activeInHierarchy)
+        {
+            _lookPos = camTransform.position - infoBoxI.position;
+            _lookPos.y = 0;
+
+            _rotation = Quaternion.LookRotation(_lookPos).eulerAngles;
+            infoBoxI.eulerAngles = _rotation + Vector3.up * 180f;
+        }
     }
 
     private void UpdateBox()
@@ -48,6 +58,8 @@ public class InfoBox : Interactable
 
     public override void Interact()
     {
+        infoBoxI.gameObject.SetActive(false);
+
         isReading = !isReading;
         UpdateBox();
     }
