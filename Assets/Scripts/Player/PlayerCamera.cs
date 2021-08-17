@@ -7,13 +7,23 @@ public class PlayerCamera : MonoBehaviour
 {
     public PostProcessVolume ppVolume;
 
-    private LensDistortion distort;
+    public GameObject redOverlay;
 
     public float distortAmount = -69f;
     public float distortSpeed = 23f;
 
+    private LensDistortion distort;
+
     private bool isInEyeball = false;
-    public bool IsInEyeball { get { return isInEyeball; } set { isInEyeball = value; } }
+    public bool IsInEyeball
+    {
+        get { return isInEyeball; }
+        set
+        {
+            isInEyeball = value;
+            redOverlay.SetActive(value);
+        }
+    }
 
     private void Start()
     {
