@@ -158,6 +158,8 @@ public class EyeEnemy : MonoBehaviour
     {
         if (!isTrackingPlayer)
         {
+            playerCamera.IsInEyeball = true;
+
             if (demon.gameObject.activeInHierarchy)
             {
                 CallDemon(false);
@@ -179,7 +181,6 @@ public class EyeEnemy : MonoBehaviour
                 audioSource.volume = originalVolume;
                 audioSource.Play();
 
-                playerCamera.IsInEyeball = true;
             }
         }
     }
