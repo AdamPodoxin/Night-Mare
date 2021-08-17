@@ -28,6 +28,7 @@ public class DemonEnemy : MonoBehaviour
 
     public float searchTime = 3f;
     public float waypointRadius = 10f;
+    public float doorOpenTime = 0.75f;
 
     [Space]
 
@@ -42,7 +43,6 @@ public class DemonEnemy : MonoBehaviour
     public AudioClip[] footsteps;
 
     private NavMeshAgent agent;
-    private Rigidbody rb;
     private Animator anim;
 
     private Transform playerTransform;
@@ -79,7 +79,6 @@ public class DemonEnemy : MonoBehaviour
         instance = this;
 
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -134,8 +133,24 @@ public class DemonEnemy : MonoBehaviour
         Door door = collision.gameObject.GetComponent<Door>();
         if (door != null)
         {
-            if (!door.isOpen) door.Open();
+            if (!door.isOpen)
+            {
+                StartCoroutine(DoorCollisionCoroutine(door));
+            }
         }
+    }
+
+    private IEnumerator DoorCollisionCoroutine(Door door)
+    {
+        agent.isStopped = true;
+        anim.SetBool("isMoving", false);
+
+        door.Open();
+
+        yield return new WaitForSeconds(doorOpenTime);
+
+        agent.isStopped = false;
+        anim.SetBool("isMoving", true);
     }
 
     private bool DistanceCheck()
