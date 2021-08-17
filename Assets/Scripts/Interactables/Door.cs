@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(OcclusionPortal))]
 public class Door : Interactable
 {
     public bool isOpen = false;
@@ -39,7 +38,8 @@ public class Door : Interactable
     {
         interactText = "Close";
         isOpen = true;
-        occlusionPortal.open = true;
+
+        if (occlusionPortal != null) occlusionPortal.open = true;
 
         anim.Play("Open");
         source.PlayOneShot(openClip);
@@ -59,6 +59,7 @@ public class Door : Interactable
     public void AnimatingFalse()
     {
         isInAnimation = false;
-        occlusionPortal.open = isOpen;
+
+        if (occlusionPortal != null) occlusionPortal.open = isOpen;
     }
 }
