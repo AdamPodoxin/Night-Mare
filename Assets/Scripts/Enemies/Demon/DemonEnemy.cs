@@ -134,25 +134,8 @@ public class DemonEnemy : MonoBehaviour
         Door door = collision.gameObject.GetComponent<Door>();
         if (door != null)
         {
-            if (!door.isOpen)
-            {
-                StartCoroutine(DoorCollisionCoroutine(door));
-            }
+            if (!door.isOpen) door.Open();
         }
-    }
-
-    private IEnumerator DoorCollisionCoroutine(Door door)
-    {
-        agent.isStopped = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.AddForce(transform.forward * -130f);
-
-        door.Open();
-
-        yield return new WaitForSeconds(0.75f);
-
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        agent.isStopped = false;
     }
 
     private bool DistanceCheck()

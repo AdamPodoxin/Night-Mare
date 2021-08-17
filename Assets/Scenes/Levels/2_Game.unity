@@ -427,6 +427,10 @@ PrefabInstance:
       value: Eyeball (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
+      propertyPath: maxAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 179
       objectReference: {fileID: 0}
