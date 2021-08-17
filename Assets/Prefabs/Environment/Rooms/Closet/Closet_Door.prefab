@@ -1931,7 +1931,6 @@ GameObject:
   - component: {fileID: 8262134914549682924}
   - component: {fileID: 8262134914549682925}
   - component: {fileID: 8262134914549682926}
-  - component: {fileID: 6964716275154932256}
   m_Layer: 0
   m_Name: Closet_Door
   m_TagString: Untagged
@@ -2098,13 +2097,3 @@ MonoBehaviour:
   isOpen: 0
   openClip: {fileID: 8300000, guid: 95117e6f86e3f824f9e3969a0693ad98, type: 3}
   closeClip: {fileID: 8300000, guid: 8b0486a34c9e07f44b5e985567dea35b, type: 3}
---- !u!41 &6964716275154932256
-OcclusionPortal:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8262134914549682921}
-  m_Open: 0
-  m_Center: {x: 0.8, y: 0.275, z: 0}
-  m_Size: {x: 1.6, y: 3.95, z: 0.1}
