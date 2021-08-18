@@ -922,7 +922,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.5
-  m_Radius: 0.4
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   TopClamp: 90
   BottomClamp: -90
   normalHeight: 2.5
-  crouchHeight: 0.8
+  crouchHeight: 0.6
   crouchMoveSpeedMultiplier: 0.5
 --- !u!114 &4443308719983381089
 MonoBehaviour:

@@ -24,6 +24,8 @@ public class DemonEnemy : MonoBehaviour
     public float acceptableStoppingDistance = 1.2f;
     public LayerMask ignoreLayers;
 
+    public Transform eyeHeightTransform;
+
     [Space]
 
     public float searchTime = 3f;
@@ -91,7 +93,7 @@ public class DemonEnemy : MonoBehaviour
     {
         if (isTiming) timer += Time.deltaTime;
 
-        if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
+        if (Physics.Raycast(eyeHeightTransform.position, playerTransform.position - eyeHeightTransform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
         {
             if (_hit.collider.CompareTag("Player"))
             {
