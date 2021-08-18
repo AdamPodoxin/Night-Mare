@@ -8,8 +8,12 @@ public class PlayerFootsteps : MonoBehaviour
     public GroundSound[] groundSounds;
     public GroundType currentGround = GroundType.Null;
 
-    public float footstepCountdown = 0.5f;
     public LayerMask ignoreLayers;
+
+    [Space]
+
+    public float moveSpeed = 5f;
+    public float timerMultiplier = 2.5f;
 
     [Space]
 
@@ -31,8 +35,7 @@ public class PlayerFootsteps : MonoBehaviour
         source = GetComponent<AudioSource>();
         characterController = GetComponent<CharacterController>();
 
-        footstepTimer = footstepCountdown;
-
+        ResetTimer();
         OnChangeGround(GroundType.Wood);
     }
 
@@ -84,12 +87,17 @@ public class PlayerFootsteps : MonoBehaviour
         return null;
     }
 
+    private void ResetTimer()
+    {
+        footstepTimer = timerMultiplier / moveSpeed;
+    }
+
     private void PlaySound()
     {
         AudioClip currentSound = currentGroundSounds[Random.Range(0, currentGroundSounds.Length)];
         source.PlayOneShot(currentSound);
 
-        footstepTimer = footstepCountdown;
+        ResetTimer();
     }
 
     private void OnChangeGround(GroundType ground)
