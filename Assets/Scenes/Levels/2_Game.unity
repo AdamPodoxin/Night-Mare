@@ -832,10 +832,6 @@ PrefabInstance:
       value: Eyeball (8)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 240
       objectReference: {fileID: 0}
@@ -2456,10 +2452,6 @@ PrefabInstance:
       value: Eyeball (10)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 180
       objectReference: {fileID: 0}
@@ -2560,10 +2552,6 @@ PrefabInstance:
     - target: {fileID: 1344817321544661095, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: m_Name
       value: Eyeball (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
@@ -4000,10 +3988,6 @@ PrefabInstance:
       value: Eyeball (5)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 179
       objectReference: {fileID: 0}
@@ -4622,10 +4606,6 @@ PrefabInstance:
     - target: {fileID: 1344817321544661095, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: m_Name
       value: Eyeball (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
@@ -5782,10 +5762,6 @@ PrefabInstance:
     - target: {fileID: 1344817321544661095, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: m_Name
       value: Eyeball (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
@@ -7575,10 +7551,6 @@ PrefabInstance:
       value: Eyeball (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 359
       objectReference: {fileID: 0}
@@ -8012,10 +7984,6 @@ PrefabInstance:
     - target: {fileID: 1344817321544661095, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: m_Name
       value: Eyeball (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
@@ -11735,10 +11703,6 @@ PrefabInstance:
       value: Eyeball (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation
       value: 120
       objectReference: {fileID: 0}
@@ -12636,10 +12600,6 @@ PrefabInstance:
     - target: {fileID: 1344817321544661095, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: m_Name
       value: Eyeball (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
-      propertyPath: maxAngle
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: maxRotation

@@ -57,7 +57,7 @@ public class EyeEnemy : MonoBehaviour
         ResetPlayerTimer();
 
         SetColors(normalColor);
-        eyeLight.spotAngle = maxAngle + 3f;
+        eyeLight.spotAngle = maxAngle;
 
         xRot = transform.eulerAngles.x;
         zRot = transform.eulerAngles.z;
