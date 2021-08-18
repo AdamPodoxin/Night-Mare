@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 7919577511563656429}
   - component: {fileID: 5857391897785049245}
   - component: {fileID: 2800461362284674359}
+  - component: {fileID: 1861186100}
   m_Layer: 7
   m_Name: Player_Nightmare
   m_TagString: Player
@@ -1269,6 +1270,24 @@ MonoBehaviour:
   moveSpeed: 5
   timerMultiplier: 2.5
   pushBallStrength: 375
+--- !u!114 &1861186100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857391897785049233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c8a72590648814b850e80775afc5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 3
+  fps: {fileID: 5857391897785049238}
+  footsteps: {fileID: 2800461362284674359}
+  interaction: {fileID: 390308467}
+  inventory: {fileID: 9108705837241926807}
+  playerCamera: {fileID: 6266399533427184286}
 --- !u!1 &7783821300111389831
 GameObject:
   m_ObjectHideFlags: 0

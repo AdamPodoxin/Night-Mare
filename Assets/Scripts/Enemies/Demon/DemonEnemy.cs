@@ -150,6 +150,17 @@ public class DemonEnemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            agent.isStopped = true;
+            anim.Play("Killing");
+
+            PlayerBrain.instance.Die();
+        }
+    }
+
     private IEnumerator DoorCollisionCoroutine(Door door)
     {
         agent.isStopped = true;
