@@ -84,7 +84,7 @@ namespace StarterAssets
         private float _fallTimeoutDelta;
 
         private CharacterController _controller;
-        private CapsuleCollider capsuleCollider;
+        private CapsuleCollider _capsuleCollider;
         private GameObject _mainCamera;
 
         private PlayerInput _input;
@@ -120,8 +120,10 @@ namespace StarterAssets
         private void Start()
         {
             _controller = GetComponent<CharacterController>();
-            capsuleCollider = GetComponent<CapsuleCollider>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
             _input = GetComponent<PlayerInput>();
+
+            _capsuleCollider.radius = _controller.radius;
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
@@ -219,7 +221,7 @@ namespace StarterAssets
             transform.position = new Vector3(transform.position.x, newYPos, transform.position.z);
 
             _controller.height = crouchHeight;
-            capsuleCollider.height = crouchHeight;
+            _capsuleCollider.height = crouchHeight;
 
             MoveSpeed = crouchMoveSpeed;
         }
@@ -230,7 +232,7 @@ namespace StarterAssets
             transform.position = new Vector3(transform.position.x, newYPos, transform.position.z);
 
             _controller.height = normalHeight;
-            capsuleCollider.height = normalHeight;
+            _capsuleCollider.height = normalHeight;
 
             MoveSpeed = normalMoveSpeed;
         }
