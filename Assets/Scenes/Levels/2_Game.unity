@@ -6142,11 +6142,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999751739}
   m_Mesh: {fileID: 1371955815070301943, guid: 19a588f775384664f93a6dd298a20c69, type: 3}
---- !u!4 &1005381681 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1672795754647328642, guid: 856193ad472046d44aec352e9f39ff21, type: 3}
-  m_PrefabInstance: {fileID: 2000254584}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1015495253
 GameObject:
   m_ObjectHideFlags: 0
@@ -8033,7 +8028,7 @@ PrefabInstance:
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: spawnDemonWaypoint
       value: 
-      objectReference: {fileID: 1005381681}
+      objectReference: {fileID: 1732511693}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14754177e08f2c741964435556b41861, type: 3}
 --- !u!4 &1243473984 stripped
@@ -10864,6 +10859,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730908069}
   m_Mesh: {fileID: -2395361482208534067, guid: 19a588f775384664f93a6dd298a20c69, type: 3}
+--- !u!4 &1732511693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8897297286585926921, guid: 856193ad472046d44aec352e9f39ff21, type: 3}
+  m_PrefabInstance: {fileID: 2000254584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1749179600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1672795755102905196, guid: 856193ad472046d44aec352e9f39ff21, type: 3}
@@ -11749,7 +11749,7 @@ PrefabInstance:
     - target: {fileID: 2191188046021116272, guid: 14754177e08f2c741964435556b41861, type: 3}
       propertyPath: spawnDemonWaypoint
       value: 
-      objectReference: {fileID: 1859746190}
+      objectReference: {fileID: 1085790626}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14754177e08f2c741964435556b41861, type: 3}
 --- !u!4 &1935052989 stripped

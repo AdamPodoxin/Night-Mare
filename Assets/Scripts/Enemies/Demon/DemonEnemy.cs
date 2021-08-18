@@ -27,7 +27,7 @@ public class DemonEnemy : MonoBehaviour
     [Space]
 
     public float searchTime = 3f;
-    public float waypointRadius = 10f;
+    public float waypointSearchRadius = 10f;
     public float doorOpenTime = 0.75f;
 
     [Space]
@@ -222,7 +222,7 @@ public class DemonEnemy : MonoBehaviour
             _navTargetPosition = waypointPosAfterPlayer;
             agent.SetDestination(_navTargetPosition);
 
-            nearbyWaypoints = NightmareManager.instance.FindWaypointsInRadius(_navTargetPosition, waypointRadius);
+            nearbyWaypoints = NightmareManager.instance.FindWaypointsInRadius(_navTargetPosition, waypointSearchRadius);
             waypointIndex = 1;
         };
 

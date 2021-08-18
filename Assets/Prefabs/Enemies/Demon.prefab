@@ -381,7 +381,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 264
   searchTime: 4.5
-  waypointRadius: 10
+  waypointSearchRadius: 7
+  doorOpenTime: 0.75
   voiceSource: {fileID: 2815445176691256432}
   droneSource: {fileID: 8479119420787832154}
   sfxSource: {fileID: 1969038283077995768}
