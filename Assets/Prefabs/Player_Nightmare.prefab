@@ -922,7 +922,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.5
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  moveSpeed: 4
   RotationSpeed: 0.35
   SpeedChangeRate: 10
   Gravity: -9.81
@@ -1081,6 +1081,9 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 2287751440385399242}
   TopClamp: 90
   BottomClamp: -90
+  normalHeight: 2.5
+  crouchHeight: 0.8
+  crouchMoveSpeedMultiplier: 0.5
 --- !u!114 &4443308719983381089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,10 +1258,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: b1393c95a110a3d4d92174e08634e340, type: 3}
     - {fileID: 8300000, guid: e38284f74fe22a543ac8050df1154486, type: 3}
   currentGround: 0
-  footstepCountdown: 0.5
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 508
+  moveSpeed: 5
+  timerMultiplier: 2.5
   pushBallStrength: 375
 --- !u!1 &7783821300111389831
 GameObject:

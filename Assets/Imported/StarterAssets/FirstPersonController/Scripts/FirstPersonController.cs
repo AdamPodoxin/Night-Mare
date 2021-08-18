@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
-#endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -16,7 +15,17 @@ namespace StarterAssets
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
-        public float MoveSpeed = 4.0f;
+        [SerializeField] private float moveSpeed = 4.0f;
+        public float MoveSpeed
+        {
+            get { return moveSpeed; }
+            set
+            {
+                moveSpeed = value;
+                FindObjectOfType<PlayerFootsteps>().moveSpeed = value;
+            }
+        }
+
         [Tooltip("Rotation speed of the character")]
         public float RotationSpeed = 1.0f;
         [Tooltip("Acceleration and deceleration")]
@@ -50,6 +59,14 @@ namespace StarterAssets
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -90.0f;
 
+        [Space]
+
+        [Header("Crouch")]
+        public float normalHeight = 2.5f;
+        public float crouchHeight = 1f;
+
+        public float crouchMoveSpeedMultiplier = 0.5f;
+
         // cinemachine
         private float _cinemachineTargetPitch;
 
@@ -64,8 +81,11 @@ namespace StarterAssets
         private float _fallTimeoutDelta;
 
         private CharacterController _controller;
-        private PlayerInput _input;
+        private CapsuleCollider capsuleCollider;
         private GameObject _mainCamera;
+
+        private PlayerInput _input;
+        private PlayerInputActions playerInputActions;
 
         private const float _threshold = 0.01f;
 
@@ -76,11 +96,26 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+
+            playerInputActions = new PlayerInputActions();
+        }
+
+        private void OnEnable()
+        {
+            playerInputActions.Player.Crouch.performed += DoCrouch;
+            playerInputActions.Player.Crouch.canceled += StopCrouch;
+            playerInputActions.Player.Crouch.Enable();
+        }
+
+        private void OnDisable()
+        {
+            playerInputActions.Player.Crouch.Disable();
         }
 
         private void Start()
         {
             _controller = GetComponent<CharacterController>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
             _input = GetComponent<PlayerInput>();
 
             // reset our timeouts on start
@@ -171,6 +206,28 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        }
+
+        private void DoCrouch(InputAction.CallbackContext obj)
+        {
+            float newYPos = crouchHeight / 2f + _controller.skinWidth;
+            transform.position = new Vector3(transform.position.x, newYPos, transform.position.z);
+
+            _controller.height = crouchHeight;
+            capsuleCollider.height = crouchHeight;
+
+            MoveSpeed *= crouchMoveSpeedMultiplier;
+        }
+
+        private void StopCrouch(InputAction.CallbackContext obj)
+        {
+            float newYPos = normalHeight / 2f + _controller.skinWidth;
+            transform.position = new Vector3(transform.position.x, newYPos, transform.position.z);
+
+            _controller.height = normalHeight;
+            capsuleCollider.height = normalHeight;
+
+            MoveSpeed /= crouchMoveSpeedMultiplier;
         }
 
         private void JumpAndGravity()
