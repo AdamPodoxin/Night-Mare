@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 4.5
   RotationSpeed: 0.35
   SpeedChangeRate: 10
   Gravity: -9.81
@@ -1083,7 +1083,9 @@ MonoBehaviour:
   BottomClamp: -90
   normalHeight: 2.5
   crouchHeight: 0.6
-  crouchMoveSpeedMultiplier: 0.5
+  normalMoveSpeed: 4.5
+  crouchMoveSpeed: 2
+  chaseMoveSpeed: 5.5
 --- !u!114 &4443308719983381089
 MonoBehaviour:
   m_ObjectHideFlags: 0

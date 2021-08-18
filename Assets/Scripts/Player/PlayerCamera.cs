@@ -12,7 +12,17 @@ public class PlayerCamera : MonoBehaviour
     public float distortAmount = -69f;
     public float distortSpeed = 23f;
 
+    [Space]
+
+    public float chaseDistortAmount = -30f;
+
+    public float normalAberrationIntensity = 0.3f;
+    public float chaseAberrationIntensity = 1f;
+
+    private bool isChasing = false;
+
     private LensDistortion distort;
+    private ChromaticAberration aberration;
 
     private bool isInEyeball = false;
     public bool IsInEyeball
@@ -28,6 +38,7 @@ public class PlayerCamera : MonoBehaviour
     private void Start()
     {
         ppVolume.profile.TryGetSettings(out distort);
+        ppVolume.profile.TryGetSettings(out aberration);
     }
 
     private void Update()
@@ -41,7 +52,7 @@ public class PlayerCamera : MonoBehaviour
         }
         else
         {
-            if (distort.intensity.value < 0f)
+            if (distort.intensity.value < (isChasing ? chaseDistortAmount : 0f))
             {
                 distort.intensity.value += distortSpeed * Time.deltaTime;
             }
@@ -49,4 +60,10 @@ public class PlayerCamera : MonoBehaviour
     }
 
     public void FullDistort() { distort.intensity.value = distortAmount; }
+
+    public void ToggleChase(bool isChasing)
+    {
+        this.isChasing = isChasing;
+        aberration.intensity.value = isChasing ? chaseAberrationIntensity : normalAberrationIntensity;
+    }
 }

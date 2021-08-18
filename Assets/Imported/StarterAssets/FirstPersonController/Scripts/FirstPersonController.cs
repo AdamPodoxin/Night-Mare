@@ -65,7 +65,10 @@ namespace StarterAssets
         public float normalHeight = 2.5f;
         public float crouchHeight = 1f;
 
-        public float crouchMoveSpeedMultiplier = 0.5f;
+        [SerializeField]
+        private float normalMoveSpeed = 5f,
+            crouchMoveSpeed = 2f,
+            chaseMoveSpeed = 5.5f;
 
         // cinemachine
         private float _cinemachineTargetPitch;
@@ -98,6 +101,8 @@ namespace StarterAssets
             }
 
             playerInputActions = new PlayerInputActions();
+
+            MoveSpeed = normalMoveSpeed;
         }
 
         private void OnEnable()
@@ -216,7 +221,7 @@ namespace StarterAssets
             _controller.height = crouchHeight;
             capsuleCollider.height = crouchHeight;
 
-            MoveSpeed *= crouchMoveSpeedMultiplier;
+            MoveSpeed = crouchMoveSpeed;
         }
 
         private void StopCrouch(InputAction.CallbackContext obj)
@@ -227,7 +232,12 @@ namespace StarterAssets
             _controller.height = normalHeight;
             capsuleCollider.height = normalHeight;
 
-            MoveSpeed /= crouchMoveSpeedMultiplier;
+            MoveSpeed = normalMoveSpeed;
+        }
+
+        public void ToggleChase(bool isChasing)
+        {
+            MoveSpeed = isChasing ? chaseMoveSpeed : normalMoveSpeed;
         }
 
         private void JumpAndGravity()

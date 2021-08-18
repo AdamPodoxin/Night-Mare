@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using StarterAssets;
 using static GlobalEnums;
 
 public class DemonEnemy : MonoBehaviour
@@ -63,6 +64,9 @@ public class DemonEnemy : MonoBehaviour
     private Transform[] nearbyWaypoints;
     private int waypointIndex = 0;
 
+    private FirstPersonController fps;
+    private PlayerCamera playerCamera;
+
     private RaycastHit _hit;
     private bool _isChasingPlayer;
     private Vector3 _navTargetPosition;
@@ -84,7 +88,11 @@ public class DemonEnemy : MonoBehaviour
         anim = GetComponent<Animator>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        playerMoveSpeed = FindObjectOfType<StarterAssets.FirstPersonController>().MoveSpeed;
+
+        fps = FindObjectOfType<FirstPersonController>();
+        playerCamera = FindObjectOfType<PlayerCamera>();
+
+        playerMoveSpeed = fps.MoveSpeed;
 
         gameObject.SetActive(false);
     }
@@ -306,7 +314,14 @@ public class DemonEnemy : MonoBehaviour
         }
 
         yield return new WaitForSeconds(searchTime);
-        if (!_isChasingPlayer) gameObject.SetActive(false);
+
+        if (!_isChasingPlayer)
+        {
+            fps.ToggleChase(false);
+            playerCamera.ToggleChase(false);
+
+            gameObject.SetActive(false);
+        }
     }
 
     private Vector3 PredictPosition()
@@ -328,6 +343,9 @@ public class DemonEnemy : MonoBehaviour
         StartTimer();
 
         JumpscareEnemy.instance.ActivateJumpscare();
+
+        fps.ToggleChase(true);
+        playerCamera.ToggleChase(true);
 
         if (useVoiceline)
         {
