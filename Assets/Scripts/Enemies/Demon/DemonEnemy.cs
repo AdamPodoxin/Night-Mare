@@ -140,7 +140,7 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Door door = other.GetComponent<Door>();
+        Door door = collision.gameObject.GetComponent<Door>();
         if (door != null)
         {
             if (!door.isOpen)
