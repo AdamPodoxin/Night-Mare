@@ -19,10 +19,19 @@ public class PlayerCamera : MonoBehaviour
     public float normalAberrationIntensity = 0.3f;
     public float chaseAberrationIntensity = 1f;
 
+    [Space]
+
+    public bool isDying = false;
+
+    public float _animateGrainIntensity;
+    public float _animateSaturationValue;
+
     private bool isChasing = false;
 
     private LensDistortion distort;
     private ChromaticAberration aberration;
+    private Grain grain;
+    private ColorGrading colorGrading;
 
     private bool isInEyeball = false;
     public bool IsInEyeball
@@ -39,6 +48,8 @@ public class PlayerCamera : MonoBehaviour
     {
         ppVolume.profile.TryGetSettings(out distort);
         ppVolume.profile.TryGetSettings(out aberration);
+        ppVolume.profile.TryGetSettings(out grain);
+        ppVolume.profile.TryGetSettings(out colorGrading);
     }
 
     private void Update()
@@ -56,6 +67,12 @@ public class PlayerCamera : MonoBehaviour
             {
                 distort.intensity.value += distortSpeed * Time.deltaTime;
             }
+        }
+
+        if (isDying)
+        {
+            grain.intensity.value = _animateGrainIntensity;
+            colorGrading.saturation.value = _animateSaturationValue;
         }
     }
 

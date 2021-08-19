@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 6266399533427184286}
   - component: {fileID: 390308467}
   - component: {fileID: 9108705837241926807}
+  - component: {fileID: 5418347224370357508}
   m_Layer: 6
   m_Name: Camera
   m_TagString: MainCamera
@@ -842,6 +843,9 @@ MonoBehaviour:
   chaseDistortAmount: -30
   normalAberrationIntensity: 0.3
   chaseAberrationIntensity: 1
+  isDying: 0
+  _animateGrainIntensity: 0
+  _animateSaturationValue: 0
 --- !u!114 &390308467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,6 +875,25 @@ MonoBehaviour:
   hand: {fileID: 1974111541}
   dropText: {fileID: 2061164146}
   droppingForce: 180
+--- !u!95 &5418347224370357508
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800461364209783829}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f42e7c9cbd4d4b94abe8ef6e155ce342, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5857391897785049233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1311,7 @@ MonoBehaviour:
   interaction: {fileID: 390308467}
   inventory: {fileID: 9108705837241926807}
   playerCamera: {fileID: 6266399533427184286}
+  camAnim: {fileID: 5418347224370357508}
 --- !u!1 &7783821300111389831
 GameObject:
   m_ObjectHideFlags: 0

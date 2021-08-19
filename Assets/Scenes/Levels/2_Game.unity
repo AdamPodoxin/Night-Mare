@@ -3031,6 +3031,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515711499}
     m_Modifications:
+    - target: {fileID: 1537408094, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1899717873975141085, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
       propertyPath: m_Name
       value: Demon
@@ -3079,10 +3083,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1986958779251904603, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01454756
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986958779251904603, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03177985
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986958779251904603, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00026725637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950146050701390567, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.487
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071366186996081273, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.30622432
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777215127142914852, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369273205337948437, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0007958988
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369273205337948437, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.021126434
+      objectReference: {fileID: 0}
     - target: {fileID: 8479119420787832154, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0150144ed27e32248a84a81e1c375d85, type: 3}
+    - target: {fileID: 8713589102455495092, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713589102455495092, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.003776076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713589102455495092, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
 --- !u!4 &509921198 stripped

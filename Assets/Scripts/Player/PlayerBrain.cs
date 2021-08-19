@@ -18,6 +18,10 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private PlayerCamera playerCamera;
 
+    [Space]
+
+    [SerializeField] private Animator camAnim;
+
     private void Awake()
     {
         instance = this;
@@ -32,7 +36,7 @@ public class PlayerBrain : MonoBehaviour
         inventory.DropCurrentItem();
         inventory.enabled = false;
 
-        playerCamera.enabled = false;
+        camAnim.Play("Dying");
 
         yield return new WaitForSeconds(deathTimer);
 
