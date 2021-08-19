@@ -24,7 +24,9 @@ public class PlayerCamera : MonoBehaviour
     public float _animateSaturationValue;
 
     private bool isChasing = false;
+
     private bool isDying = false;
+    private bool isAnimatingPosition = false;
 
     private Transform demonHandTransform;
     private Transform demonEyeTransform;
@@ -75,10 +77,11 @@ public class PlayerCamera : MonoBehaviour
             grain.intensity.value = _animateGrainIntensity;
             colorGrading.saturation.value = _animateSaturationValue;
 
-            transform.position = Vector3.Lerp(transform.position, demonHandTransform.position, lerpSpeed * Time.deltaTime);
+            Quaternion lookAtEye = Quaternion.LookRotation(demonEyeTransform.position - transform.position - Vector3.up * 0.3f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookAtEye, lerpSpeed * Time.deltaTime / 5f);
 
-            Quaternion lookAtEye = Quaternion.LookRotation(demonEyeTransform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookAtEye, lerpSpeed * Time.deltaTime);
+            if (isAnimatingPosition)
+                transform.position = Vector3.Lerp(transform.position, demonHandTransform.position, lerpSpeed * Time.deltaTime);
         }
     }
 
@@ -96,5 +99,10 @@ public class PlayerCamera : MonoBehaviour
         demonEyeTransform = DemonEnemy.instance.eyeHeightTransform;
 
         isDying = true;
+    }
+
+    public void StartAnimatingPosition()
+    {
+        isAnimatingPosition = true;
     }
 }
