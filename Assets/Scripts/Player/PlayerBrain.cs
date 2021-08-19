@@ -16,9 +16,6 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private PlayerFootsteps footsteps;
     [SerializeField] private PlayerInteraction interaction;
     [SerializeField] private PlayerInventory inventory;
-    [SerializeField] private PlayerCamera playerCamera;
-
-    [Space]
 
     [SerializeField] private Animator camAnim;
 

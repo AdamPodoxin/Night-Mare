@@ -26,6 +26,7 @@ public class DemonEnemy : MonoBehaviour
     public LayerMask ignoreLayers;
 
     public Transform eyeHeightTransform;
+    public Transform handTransform;
 
     [Space]
 

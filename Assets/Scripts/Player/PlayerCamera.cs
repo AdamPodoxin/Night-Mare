@@ -14,19 +14,20 @@ public class PlayerCamera : MonoBehaviour
 
     [Space]
 
+    public float lerpSpeed = 10f;
     public float chaseDistortAmount = -30f;
 
     public float normalAberrationIntensity = 0.3f;
     public float chaseAberrationIntensity = 1f;
 
-    [Space]
-
-    public bool isDying = false;
-
     public float _animateGrainIntensity;
     public float _animateSaturationValue;
 
     private bool isChasing = false;
+    private bool isDying = false;
+
+    private Transform demonHandTransform;
+    private Transform demonEyeTransform;
 
     private LensDistortion distort;
     private ChromaticAberration aberration;
@@ -73,6 +74,11 @@ public class PlayerCamera : MonoBehaviour
         {
             grain.intensity.value = _animateGrainIntensity;
             colorGrading.saturation.value = _animateSaturationValue;
+
+            transform.position = Vector3.Lerp(transform.position, demonHandTransform.position, lerpSpeed * Time.deltaTime);
+
+            Quaternion lookAtEye = Quaternion.LookRotation(demonEyeTransform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookAtEye, lerpSpeed * Time.deltaTime);
         }
     }
 
@@ -82,5 +88,13 @@ public class PlayerCamera : MonoBehaviour
     {
         this.isChasing = isChasing;
         aberration.intensity.value = isChasing ? chaseAberrationIntensity : normalAberrationIntensity;
+    }
+
+    public void StartDeath()
+    {
+        demonHandTransform = DemonEnemy.instance.handTransform;
+        demonEyeTransform = DemonEnemy.instance.eyeHeightTransform;
+
+        isDying = true;
     }
 }
