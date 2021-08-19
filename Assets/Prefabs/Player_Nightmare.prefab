@@ -732,7 +732,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -840,10 +840,10 @@ MonoBehaviour:
   redOverlay: {fileID: 1108833105}
   distortAmount: -70
   distortSpeed: 40
+  lerpSpeed: 10
   chaseDistortAmount: -30
   normalAberrationIntensity: 0.3
   chaseAberrationIntensity: 1
-  isDying: 0
   _animateGrainIntensity: 0
   _animateSaturationValue: 0
 --- !u!114 &390308467
@@ -1310,7 +1310,6 @@ MonoBehaviour:
   footsteps: {fileID: 2800461362284674359}
   interaction: {fileID: 390308467}
   inventory: {fileID: 9108705837241926807}
-  playerCamera: {fileID: 6266399533427184286}
   camAnim: {fileID: 5418347224370357508}
 --- !u!1 &7783821300111389831
 GameObject:
