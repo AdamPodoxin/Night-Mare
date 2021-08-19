@@ -3031,6 +3031,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515711499}
     m_Modifications:
+    - target: {fileID: 1899717873975141082, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
+      propertyPath: killClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b271c30e79284547b9b1560c47d9021, type: 3}
     - target: {fileID: 1899717873975141085, guid: 067e1b0f05e634c44b94054f9d13bb70, type: 3}
       propertyPath: m_Name
       value: Demon

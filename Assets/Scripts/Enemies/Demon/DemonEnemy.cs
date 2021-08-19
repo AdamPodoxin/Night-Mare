@@ -46,6 +46,8 @@ public class DemonEnemy : MonoBehaviour
 
     public AudioClip[] footsteps;
 
+    public AudioClip killClip;
+
     private NavMeshAgent agent;
     private Animator anim;
 
@@ -78,6 +80,7 @@ public class DemonEnemy : MonoBehaviour
     private int _prevDespawnIndex = -1;
 
     private bool _isSearching = false;
+    private bool _isKilling = false;
 
     private delegate void OnComeplete();
 
@@ -155,10 +158,18 @@ public class DemonEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            agent.isStopped = true;
-            anim.Play("Killing");
+            if (!_isKilling)
+            {
+                _isKilling = true;
+                agent.isStopped = true;
 
-            PlayerBrain.instance.Die();
+                anim.Play("Killing");
+
+                voiceSource.Stop();
+                sfxSource.PlayOneShot(killClip);
+
+                PlayerBrain.instance.Die();
+            }
         }
     }
 

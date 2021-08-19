@@ -74,6 +74,7 @@ entity.enderman.stare - Minecraft (https://minecraft.fandom.com/wiki/Enderman)
 Walking on metal - Sound EffectsTras (https://www.youtube.com/watch?v=DJcc4F65RBo)
 Footsteps on Concrete - Motion Array (https://www.youtube.com/watch?v=XbH5USEzqY8)
 Light switch - Coke Moke's Sounds (https://www.youtube.com/watch?v=gZghmBMdAzY)
+Demon Sound Effects - All Sounds (https://www.youtube.com/watch?v=7HCyp_sq8Dk)
 
 
 Music:
