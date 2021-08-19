@@ -1,113 +1,287 @@
 fileFormatVersion: 2
 guid: 000e268602069ee41b503cc210240ef7
-timeCreated: 1441571250
-licenseType: Store
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Classic_16_Body
-    100004: Classic_16_Dashboard
-    100006: Classic_16_Door_L
-    100008: Classic_16_Door_R
-    100010: Classic_16_Hood
-    100012: Classic_16_LightGlass_L
-    100014: Classic_16_LightGlass_R
-    100016: Classic_16_Roof
-    100018: Classic_16_Taillights
-    100020: Classic_16_Trunk
-    100022: Classic_16_Window_B
-    100024: Classic_16_Window_F
-    100026: Classic_16_Window_LB
-    100028: Classic_16_Window_LF
-    100030: Classic_16_Window_RB
-    100032: Classic_16_Window_RF
-    400000: //RootNode
-    400002: Classic_16_Body
-    400004: Classic_16_Dashboard
-    400006: Classic_16_Door_L
-    400008: Classic_16_Door_R
-    400010: Classic_16_Hood
-    400012: Classic_16_LightGlass_L
-    400014: Classic_16_LightGlass_R
-    400016: Classic_16_Roof
-    400018: Classic_16_Taillights
-    400020: Classic_16_Trunk
-    400022: Classic_16_Window_B
-    400024: Classic_16_Window_F
-    400026: Classic_16_Window_LB
-    400028: Classic_16_Window_LF
-    400030: Classic_16_Window_RB
-    400032: Classic_16_Window_RF
-    2300000: Classic_16_Body
-    2300002: Classic_16_Dashboard
-    2300004: Classic_16_Door_L
-    2300006: Classic_16_Door_R
-    2300008: Classic_16_Hood
-    2300010: Classic_16_LightGlass_L
-    2300012: Classic_16_LightGlass_R
-    2300014: Classic_16_Roof
-    2300016: Classic_16_Taillights
-    2300018: Classic_16_Trunk
-    2300020: Classic_16_Window_B
-    2300022: Classic_16_Window_F
-    2300024: Classic_16_Window_LB
-    2300026: Classic_16_Window_LF
-    2300028: Classic_16_Window_RB
-    2300030: Classic_16_Window_RF
-    3300000: Classic_16_Body
-    3300002: Classic_16_Dashboard
-    3300004: Classic_16_Door_L
-    3300006: Classic_16_Door_R
-    3300008: Classic_16_Hood
-    3300010: Classic_16_LightGlass_L
-    3300012: Classic_16_LightGlass_R
-    3300014: Classic_16_Roof
-    3300016: Classic_16_Taillights
-    3300018: Classic_16_Trunk
-    3300020: Classic_16_Window_B
-    3300022: Classic_16_Window_F
-    3300024: Classic_16_Window_LB
-    3300026: Classic_16_Window_LF
-    3300028: Classic_16_Window_RB
-    3300030: Classic_16_Window_RF
-    4300000: Classic_16_Body
-    4300002: Classic_16_Taillights
-    4300004: Classic_16_Dashboard
-    4300006: Classic_16_Door_R
-    4300008: Classic_16_Door_L
-    4300010: Classic_16_Hood
-    4300012: Classic_16_Trunk
-    4300014: Classic_16_Roof
-    4300016: Classic_16_Window_F
-    4300018: Classic_16_Window_RF
-    4300020: Classic_16_Window_RB
-    4300022: Classic_16_Window_B
-    4300024: Classic_16_Window_LB
-    4300026: Classic_16_Window_LF
-    4300028: Classic_16_LightGlass_R
-    4300030: Classic_16_LightGlass_L
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 21100
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Classic_16_Body
+  - first:
+      1: 100004
+    second: Classic_16_Dashboard
+  - first:
+      1: 100006
+    second: Classic_16_Door_L
+  - first:
+      1: 100008
+    second: Classic_16_Door_R
+  - first:
+      1: 100010
+    second: Classic_16_Hood
+  - first:
+      1: 100012
+    second: Classic_16_LightGlass_L
+  - first:
+      1: 100014
+    second: Classic_16_LightGlass_R
+  - first:
+      1: 100016
+    second: Classic_16_Roof
+  - first:
+      1: 100018
+    second: Classic_16_Taillights
+  - first:
+      1: 100020
+    second: Classic_16_Trunk
+  - first:
+      1: 100022
+    second: Classic_16_Window_B
+  - first:
+      1: 100024
+    second: Classic_16_Window_F
+  - first:
+      1: 100026
+    second: Classic_16_Window_LB
+  - first:
+      1: 100028
+    second: Classic_16_Window_LF
+  - first:
+      1: 100030
+    second: Classic_16_Window_RB
+  - first:
+      1: 100032
+    second: Classic_16_Window_RF
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Classic_16_Body
+  - first:
+      4: 400004
+    second: Classic_16_Dashboard
+  - first:
+      4: 400006
+    second: Classic_16_Door_L
+  - first:
+      4: 400008
+    second: Classic_16_Door_R
+  - first:
+      4: 400010
+    second: Classic_16_Hood
+  - first:
+      4: 400012
+    second: Classic_16_LightGlass_L
+  - first:
+      4: 400014
+    second: Classic_16_LightGlass_R
+  - first:
+      4: 400016
+    second: Classic_16_Roof
+  - first:
+      4: 400018
+    second: Classic_16_Taillights
+  - first:
+      4: 400020
+    second: Classic_16_Trunk
+  - first:
+      4: 400022
+    second: Classic_16_Window_B
+  - first:
+      4: 400024
+    second: Classic_16_Window_F
+  - first:
+      4: 400026
+    second: Classic_16_Window_LB
+  - first:
+      4: 400028
+    second: Classic_16_Window_LF
+  - first:
+      4: 400030
+    second: Classic_16_Window_RB
+  - first:
+      4: 400032
+    second: Classic_16_Window_RF
+  - first:
+      23: 2300000
+    second: Classic_16_Body
+  - first:
+      23: 2300002
+    second: Classic_16_Dashboard
+  - first:
+      23: 2300004
+    second: Classic_16_Door_L
+  - first:
+      23: 2300006
+    second: Classic_16_Door_R
+  - first:
+      23: 2300008
+    second: Classic_16_Hood
+  - first:
+      23: 2300010
+    second: Classic_16_LightGlass_L
+  - first:
+      23: 2300012
+    second: Classic_16_LightGlass_R
+  - first:
+      23: 2300014
+    second: Classic_16_Roof
+  - first:
+      23: 2300016
+    second: Classic_16_Taillights
+  - first:
+      23: 2300018
+    second: Classic_16_Trunk
+  - first:
+      23: 2300020
+    second: Classic_16_Window_B
+  - first:
+      23: 2300022
+    second: Classic_16_Window_F
+  - first:
+      23: 2300024
+    second: Classic_16_Window_LB
+  - first:
+      23: 2300026
+    second: Classic_16_Window_LF
+  - first:
+      23: 2300028
+    second: Classic_16_Window_RB
+  - first:
+      23: 2300030
+    second: Classic_16_Window_RF
+  - first:
+      33: 3300000
+    second: Classic_16_Body
+  - first:
+      33: 3300002
+    second: Classic_16_Dashboard
+  - first:
+      33: 3300004
+    second: Classic_16_Door_L
+  - first:
+      33: 3300006
+    second: Classic_16_Door_R
+  - first:
+      33: 3300008
+    second: Classic_16_Hood
+  - first:
+      33: 3300010
+    second: Classic_16_LightGlass_L
+  - first:
+      33: 3300012
+    second: Classic_16_LightGlass_R
+  - first:
+      33: 3300014
+    second: Classic_16_Roof
+  - first:
+      33: 3300016
+    second: Classic_16_Taillights
+  - first:
+      33: 3300018
+    second: Classic_16_Trunk
+  - first:
+      33: 3300020
+    second: Classic_16_Window_B
+  - first:
+      33: 3300022
+    second: Classic_16_Window_F
+  - first:
+      33: 3300024
+    second: Classic_16_Window_LB
+  - first:
+      33: 3300026
+    second: Classic_16_Window_LF
+  - first:
+      33: 3300028
+    second: Classic_16_Window_RB
+  - first:
+      33: 3300030
+    second: Classic_16_Window_RF
+  - first:
+      43: 4300000
+    second: Classic_16_Body
+  - first:
+      43: 4300002
+    second: Classic_16_Taillights
+  - first:
+      43: 4300004
+    second: Classic_16_Dashboard
+  - first:
+      43: 4300006
+    second: Classic_16_Door_R
+  - first:
+      43: 4300008
+    second: Classic_16_Door_L
+  - first:
+      43: 4300010
+    second: Classic_16_Hood
+  - first:
+      43: 4300012
+    second: Classic_16_Trunk
+  - first:
+      43: 4300014
+    second: Classic_16_Roof
+  - first:
+      43: 4300016
+    second: Classic_16_Window_F
+  - first:
+      43: 4300018
+    second: Classic_16_Window_RF
+  - first:
+      43: 4300020
+    second: Classic_16_Window_RB
+  - first:
+      43: 4300022
+    second: Classic_16_Window_B
+  - first:
+      43: 4300024
+    second: Classic_16_Window_LB
+  - first:
+      43: 4300026
+    second: Classic_16_Window_LF
+  - first:
+      43: 4300028
+    second: Classic_16_LightGlass_R
+  - first:
+      43: 4300030
+    second: Classic_16_LightGlass_L
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -115,38 +289,65 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
