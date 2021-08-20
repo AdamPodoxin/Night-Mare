@@ -21,7 +21,7 @@ public class PlayerInventory : MonoBehaviour
 
     public float droppingForce = 150f;
 
-    private Item currentItem = null;
+    public Item currentItem = null;
     private GameObject currentItemObject = null;
 
     private readonly Dictionary<string, GameObject> itemsPickedUp = new Dictionary<string, GameObject>();
@@ -112,6 +112,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveCurrentItem()
     {
+        if (currentItem == null) return;
+
         itemsPickedUp.Remove(currentItem.name);
 
         Destroy(currentItemObject);
