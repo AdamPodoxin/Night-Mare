@@ -6,8 +6,6 @@ using StarterAssets;
 
 public class PlayerBrain : MonoBehaviour
 {
-    public static PlayerBrain instance;
-
     public float deathTimer = 3f;
 
     [Space]
@@ -18,11 +16,6 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private PlayerInventory inventory;
 
     [SerializeField] private Animator camAnim;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private IEnumerator DieCoroutine()
     {

@@ -20,6 +20,10 @@ public class BedNightmare : Interactable
     public PlayerInventory normalInventory;
     public PlayerInventory nightmareInventory;
 
+    [Space]
+
+    public DemonEnemy demon;
+
     public override void Interact(PlayerInteraction playerInteraction)
     {
         StartCoroutine(InteractCoroutine());
@@ -44,5 +48,7 @@ public class BedNightmare : Interactable
             normalInventory.PickupItem(currentItem, currentItem.pickup.GetComponent<ItemPickup>());
             nightmareInventory.HideCurrentItem();
         }
+
+        demon.SwitchWorlds();
     }
 }

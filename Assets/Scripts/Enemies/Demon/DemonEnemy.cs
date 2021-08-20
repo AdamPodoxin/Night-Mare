@@ -160,6 +160,8 @@ public class DemonEnemy : MonoBehaviour
         {
             if (!_isKilling)
             {
+                State = DemonState.Killing;
+
                 _isKilling = true;
                 agent.isStopped = true;
 
@@ -168,7 +170,7 @@ public class DemonEnemy : MonoBehaviour
                 voiceSource.Stop();
                 sfxSource.PlayOneShot(killClip);
 
-                PlayerBrain.instance.Die();
+                FindObjectOfType<PlayerBrain>().Die();
             }
         }
     }
@@ -381,5 +383,15 @@ public class DemonEnemy : MonoBehaviour
     {
         AudioClip footstep = footsteps[Random.Range(0, footsteps.Length)];
         sfxSource.PlayOneShot(footstep);
+    }
+
+    public void SwitchWorlds()
+    {
+        State = DemonState.Despawning;
+
+        fps.ToggleChase(false);
+        playerCamera.ToggleChase(false);
+
+        gameObject.SetActive(false);
     }
 }
