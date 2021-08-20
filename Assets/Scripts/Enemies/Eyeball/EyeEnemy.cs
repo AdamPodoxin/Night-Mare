@@ -50,6 +50,7 @@ public class EyeEnemy : MonoBehaviour
     private Transform playerTransform;
     private DemonEnemy demon;
     private PlayerCamera playerCamera;
+    private PlayerInventory playerInventory;
 
     private void Start()
     {
@@ -70,6 +71,7 @@ public class EyeEnemy : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         demon = DemonEnemy.instance;
         playerCamera = FindObjectOfType<PlayerCamera>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
 
         ignoreLayers = demon.ignoreLayers;
     }
@@ -163,6 +165,15 @@ public class EyeEnemy : MonoBehaviour
             if (demon.gameObject.activeInHierarchy)
             {
                 CallDemon(false);
+                SetColors(trackingColor);
+                hasSpottedPlayer = true;
+
+                playerCamera.FullDistort();
+            }
+            else if (!playerInventory.currentArtifact.Equals(GlobalEnums.ArtifactType.Null))
+            {
+                //Add demon artifact voice lines later
+                CallDemon(true);
                 SetColors(trackingColor);
                 hasSpottedPlayer = true;
 

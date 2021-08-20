@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using static GlobalEnums;
 
 public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory instance;
 
     public Transform hand;
+    public ArtifactType currentArtifact;
 
     [Space]
 
@@ -60,7 +62,7 @@ public class PlayerInventory : MonoBehaviour
         return null;
     }
 
-    public void PickupItem(Item item)
+    public void PickupItem(Item item, ItemPickup itemPickup)
     {
         if (currentItem != null) DropCurrentItem();
         currentItem = item;
@@ -79,6 +81,15 @@ public class PlayerInventory : MonoBehaviour
             currentItemObject.SetActive(true);
         }
 
+        try
+        {
+            currentArtifact = itemPickup.GetComponent<ArtifactPickup>().artifactType;
+        }
+        catch
+        {
+            currentArtifact = ArtifactType.Null;
+        }
+
         dropText.gameObject.SetActive(true);
         dropText.text = "Drop " + currentItem.name;
     }
@@ -87,16 +98,14 @@ public class PlayerInventory : MonoBehaviour
     {
         if (currentItem == null) return;
 
-        Collider itemCollider = Instantiate(currentItem.pickup, transform.position + transform.forward, Quaternion.identity).GetComponent<Collider>();
-        itemCollider.isTrigger = true;
-
-        Rigidbody itemRb = itemCollider.GetComponent<Rigidbody>();
+        Rigidbody itemRb = Instantiate(currentItem.pickup, transform.position + transform.forward, Quaternion.identity).GetComponent<Rigidbody>();
         if (itemRb != null) itemRb.AddForce(transform.forward * droppingForce);
 
         currentItemObject.SetActive(false);
         currentItemObject = null;
 
         currentItem = null;
+        currentArtifact = ArtifactType.Null;
 
         dropText.gameObject.SetActive(false);
     }

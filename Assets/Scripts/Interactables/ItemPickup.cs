@@ -12,19 +12,9 @@ public class ItemPickup : Interactable
         interactText = "Pick up " + item.name;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(!other.CompareTag("Player"))
-        {
-            GetComponent<Collider>().isTrigger = false;
-        }
-    }
-
     public override void Interact()
     {
-        base.Interact();
-
-        PlayerInventory.instance.PickupItem(item);
+        PlayerInventory.instance.PickupItem(item, this);
         Destroy(gameObject);
     }
 }
