@@ -6,5 +6,5 @@ public class Interactable : MonoBehaviour
 {
     public string interactText = "Interact";
 
-    public virtual void Interact() { }
+    public virtual void Interact(PlayerInteraction playerInteraction) { }
 }

@@ -24,10 +24,8 @@ public class Door : Interactable
         occlusionPortal = GetComponent<OcclusionPortal>();
     }
 
-    public override void Interact()
+    public override void Interact(PlayerInteraction playerInteraction)
     {
-        base.Interact();
-
         if (isInAnimation) return;
 
         if (isOpen) Close();

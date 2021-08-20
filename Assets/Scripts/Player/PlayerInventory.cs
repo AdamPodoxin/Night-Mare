@@ -8,9 +8,9 @@ using static GlobalEnums;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public static PlayerInventory instance;
-
     public Transform hand;
+    public Transform currentWorld;
+
     public ArtifactType currentArtifact;
 
     [Space]
@@ -30,8 +30,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-
         playerInputActions = new PlayerInputActions();
     }
 
@@ -98,7 +96,10 @@ public class PlayerInventory : MonoBehaviour
     {
         if (currentItem == null) return;
 
-        Rigidbody itemRb = Instantiate(currentItem.pickup, transform.position + transform.forward, Quaternion.identity).GetComponent<Rigidbody>();
+        Transform spawnedItem = Instantiate(currentItem.pickup, transform.position + transform.forward, Quaternion.identity).transform;
+        spawnedItem.SetParent(currentWorld);
+
+        Rigidbody itemRb = spawnedItem.GetComponent<Rigidbody>();
         if (itemRb != null) itemRb.AddForce(transform.forward * droppingForce);
 
         currentItemObject.SetActive(false);
@@ -110,16 +111,15 @@ public class PlayerInventory : MonoBehaviour
         dropText.gameObject.SetActive(false);
     }
 
-    public void RemoveCurrentItem()
+    public void HideCurrentItem()
     {
         if (currentItem == null) return;
 
-        itemsPickedUp.Remove(currentItem.name);
-
-        Destroy(currentItemObject);
+        currentItemObject.SetActive(false);
         currentItemObject = null;
 
         currentItem = null;
+        currentArtifact = ArtifactType.Null;
 
         dropText.gameObject.SetActive(false);
     }

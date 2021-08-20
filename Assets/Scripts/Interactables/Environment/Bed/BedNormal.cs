@@ -20,7 +20,11 @@ public class BedNormal : Interactable
     public PlayerInventory normalInventory;
     public PlayerInventory nightmareInventory;
 
-    public override void Interact()
+    [Space]
+
+    public CharacterController characterController;
+
+    public override void Interact(PlayerInteraction playerInteraction)
     {
         StartCoroutine(InteractCoroutine());
     }
@@ -42,7 +46,7 @@ public class BedNormal : Interactable
         if (currentItem != null)
         {
             nightmareInventory.PickupItem(currentItem, currentItem.pickup.GetComponent<ItemPickup>());
-            normalInventory.RemoveCurrentItem();
+            normalInventory.HideCurrentItem();
         }
     }
 }

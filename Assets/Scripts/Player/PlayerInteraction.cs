@@ -56,7 +56,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (focus != null)
         {
-            focus.Interact();
+            focus.Interact(this);
             ResetFocus();
         }
     }

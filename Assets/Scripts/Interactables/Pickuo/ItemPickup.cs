@@ -12,9 +12,9 @@ public class ItemPickup : Interactable
         interactText = "Pick up " + item.name;
     }
 
-    public override void Interact()
+    public override void Interact(PlayerInteraction playerInteraction)
     {
-        PlayerInventory.instance.PickupItem(item, this);
+        playerInteraction.GetComponent<PlayerInventory>().PickupItem(item, this);
         Destroy(gameObject);
     }
 }

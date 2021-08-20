@@ -56,7 +56,7 @@ public class InfoBox : Interactable
         interactText = isReading ? "Close" : "Read";
     }
 
-    public override void Interact()
+    public override void Interact(PlayerInteraction playerInteraction)
     {
         infoBoxI.gameObject.SetActive(false);
 

@@ -6,7 +6,7 @@ public class FlashlightInteractable : Interactable
 {
     public GameObject playerFlashlight;
 
-    public override void Interact()
+    public override void Interact(PlayerInteraction playerInteraction)
     {
         playerFlashlight.SetActive(true);
         gameObject.SetActive(false);

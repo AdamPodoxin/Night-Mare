@@ -53,7 +53,7 @@ public class LightSwitch : Interactable
         SetText();
     }
 
-    public override void Interact()
+    public override void Interact(PlayerInteraction playerInteraction)
     {
         isOn = !isOn;
         DoChecks();
