@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class BedNormal : Interactable
 {
@@ -22,7 +23,12 @@ public class BedNormal : Interactable
 
     [Space]
 
-    public CharacterController characterController;
+    public FirstPersonController normalFps;
+    public FirstPersonController nightmareFps;
+
+    [Space]
+
+    public Animator blinkAnim;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -31,16 +37,24 @@ public class BedNormal : Interactable
 
     protected IEnumerator InteractCoroutine()
     {
-        //Add blink animation later
-        yield return null;
+        blinkAnim.Play("Blink_Fast");
+        normalFps.enabled = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        normalFps.enabled = true;
 
         normalWorld.SetActive(false);
         nightmareWorld.SetActive(true);
 
         nightmarePlayer.position = normalPlayer.position;
-        nightmarePlayer.eulerAngles = normalPlayer.eulerAngles;
+        nightmarePlayer.rotation = normalPlayer.rotation;
 
-        nightmareCamera.eulerAngles = normalCamera.eulerAngles;
+        nightmareCamera.rotation = normalCamera.rotation;
+        nightmareFps.cinemachineTargetPitch = normalFps.cinemachineTargetPitch;
+
+        normalFps.input.move = Vector2.zero;
+        normalFps.input.look = Vector2.zero;
 
         Item currentItem = normalInventory.currentItem;
         if (currentItem != null)

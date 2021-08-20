@@ -71,7 +71,7 @@ namespace StarterAssets
             chaseMoveSpeed = 5.5f;
 
         // cinemachine
-        private float _cinemachineTargetPitch;
+        [HideInInspector] public float cinemachineTargetPitch;
 
         // player
         private float _speed;
@@ -87,7 +87,7 @@ namespace StarterAssets
         private CapsuleCollider _capsuleCollider;
         private GameObject _mainCamera;
 
-        private PlayerInput _input;
+        [HideInInspector] public PlayerInput input;
         private PlayerInputActions playerInputActions;
 
         private const float _threshold = 0.01f;
@@ -121,7 +121,7 @@ namespace StarterAssets
         {
             _controller = GetComponent<CharacterController>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
-            _input = GetComponent<PlayerInput>();
+            input = GetComponent<PlayerInput>();
 
             _capsuleCollider.radius = _controller.radius;
 
@@ -152,16 +152,16 @@ namespace StarterAssets
         private void CameraRotation()
         {
             // if there is an input
-            if (_input.look.sqrMagnitude >= _threshold)
+            if (input.look.sqrMagnitude >= _threshold)
             {
-                _cinemachineTargetPitch += _input.look.y * RotationSpeed * Time.deltaTime;
-                _rotationVelocity = _input.look.x * RotationSpeed * Time.deltaTime;
+                cinemachineTargetPitch += input.look.y * RotationSpeed * Time.deltaTime;
+                _rotationVelocity = input.look.x * RotationSpeed * Time.deltaTime;
 
                 // clamp our pitch rotation
-                _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+                cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
                 // Update Cinemachine camera target pitch
-                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(cinemachineTargetPitch, 0.0f, 0.0f);
 
                 // rotate the player left and right
                 transform.Rotate(Vector3.up * _rotationVelocity);
@@ -177,13 +177,13 @@ namespace StarterAssets
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+            float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -201,14 +201,14 @@ namespace StarterAssets
             }
 
             // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            Vector3 inputDirection = new Vector3(input.move.x, 0.0f, input.move.y).normalized;
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (input.move != Vector2.zero)
             {
                 // move
-                inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+                inputDirection = transform.right * input.move.x + transform.forward * input.move.y;
             }
 
             // move the player
