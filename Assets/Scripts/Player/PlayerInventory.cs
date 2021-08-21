@@ -11,17 +11,18 @@ public class PlayerInventory : MonoBehaviour
     public Transform hand;
     public Transform currentWorld;
 
+    public float droppingForce = 150f;
+
+    public Item currentItem = null;
     public ArtifactType currentArtifact;
+
+    [SerializeField] private int soulsCollected = 0;
+    public int SoulsCollected { get { return SoulsCollected; } }
 
     [Space]
 
     public Text dropText;
 
-    [Space]
-
-    public float droppingForce = 150f;
-
-    public Item currentItem = null;
     private GameObject currentItemObject = null;
 
     private readonly Dictionary<string, GameObject> itemsPickedUp = new Dictionary<string, GameObject>();
@@ -122,5 +123,25 @@ public class PlayerInventory : MonoBehaviour
         currentArtifact = ArtifactType.Null;
 
         dropText.gameObject.SetActive(false);
+    }
+
+    public void RemoveCurrentItem()
+    {
+        if (currentItem == null) return;
+
+        itemsPickedUp.Remove(currentItem.name);
+        Destroy(currentItemObject);
+        currentItemObject = null;
+
+        currentItem = null;
+        currentArtifact = ArtifactType.Null;
+
+        dropText.gameObject.SetActive(false);
+    }
+
+    public void CollectSoul()
+    {
+        soulsCollected++;
+        //Effects
     }
 }
