@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using StarterAssets;
+using static GlobalEnums;
 
 public class PlayerBrain : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlayerBrain : MonoBehaviour
         footsteps.enabled = false;
         interaction.enabled = false;
 
-        inventory.DropCurrentItem();
+        if (inventory.currentArtifact.Equals(ArtifactType.Null)) inventory.DropCurrentItem();
         inventory.enabled = false;
 
         camAnim.Play("Dying");

@@ -80,6 +80,7 @@ public class PlayerInventory : MonoBehaviour
         {
             currentItemObject = Instantiate(currentItem.prefab, hand.position, Quaternion.identity);
             currentItemObject.transform.SetParent(hand);
+            currentItemObject.transform.rotation = currentItem.prefab.transform.rotation;
 
             itemsPickedUp.Add(currentItem.name, currentItemObject);
         }

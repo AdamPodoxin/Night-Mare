@@ -39,6 +39,7 @@ Free Homewares Asset Pack - Ferocious Industries (https://assetstore.unity.com/p
 21392x Zolla Lightstar - Skover (https://www.turbosquid.com/3d-models/3d-model-ceiling-lamp-21392x-zolla-1288957)
 Ventilation Grill - Panaristi (https://www.cgtrader.com/free-3d-models/industrial/part/ventilation-grill)
 Low Poly Style Cardboard Box Selection - the_tubby1 (https://www.turbosquid.com/3d-models/free-obj-mode-selection-style-cardboard-boxes/989177)
+Teddy bear - Zerg3d (https://www.turbosquid.com/3d-models/teddy-bear-3d-model-1256850)
 
 
 Textures:
@@ -77,6 +78,7 @@ Light switch - Coke Moke's Sounds (https://www.youtube.com/watch?v=gZghmBMdAzY)
 Demon Sound Effects - All Sounds (https://www.youtube.com/watch?v=7HCyp_sq8Dk)
 Outer Wilds Sound Effects - Vieira (https://www.youtube.com/watch?v=8KnZDyYqBm4)
 Crackdown Agility Orb - Alister Buss (https://www.youtube.com/watch?v=vren8HoEZdQ)
+Clean Wall Clock Ticking - SoundEffectsFactory (https://www.youtube.com/watch?v=nZFFjn9nOwU)
 
 
 Music:
