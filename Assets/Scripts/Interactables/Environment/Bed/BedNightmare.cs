@@ -34,6 +34,8 @@ public class BedNightmare : Interactable
 
     public Animator blinkAnim;
 
+    [SerializeField] private PlayerBrain playerBrain;
+
     public override void Interact(PlayerInteraction playerInteraction)
     {
         StartCoroutine(InteractCoroutine());
@@ -44,7 +46,11 @@ public class BedNightmare : Interactable
         blinkAnim.Play("Blink_Fast");
         nightmareFps.enabled = false;
 
+        playerBrain.isSwitchingWorlds = true;
+
         yield return new WaitForSeconds(0.25f);
+
+        playerBrain.isSwitchingWorlds = false;
 
         nightmareFps.enabled = true;
 

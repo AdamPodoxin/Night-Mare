@@ -8,6 +8,7 @@ using static GlobalEnums;
 public class PlayerBrain : MonoBehaviour
 {
     public float deathTimer = 3f;
+    public bool isSwitchingWorlds = false;
 
     [Space]
 
@@ -36,6 +37,8 @@ public class PlayerBrain : MonoBehaviour
 
     public void Die()
     {
+        if (isSwitchingWorlds) return;
+
         StartCoroutine(DieCoroutine());
     }
 }
