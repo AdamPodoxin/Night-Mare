@@ -35,8 +35,8 @@ public class ArtifactPortal : Interactable
                     playerInventory.RemoveCurrentItem();
                     soul.Unlock();
 
-                    //Effects
                     insertedArtifact.SetActive(true);
+                    GetComponent<AudioSource>().Play();
                 }
             }
             else

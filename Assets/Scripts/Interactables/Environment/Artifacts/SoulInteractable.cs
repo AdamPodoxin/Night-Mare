@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SoulInteractable : Interactable
 {
+    [SerializeField] private AudioClip collectClip;
+    [SerializeField] private AudioSource globalSFX;
+
     [SerializeField] private bool isUnlocked = false;
     public bool IsUnlocked { get { return isUnlocked; } }
 
-    [SerializeField] public GameObject lockObject;
+    [SerializeField] private GameObject lockObject;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -15,6 +18,8 @@ public class SoulInteractable : Interactable
         {
             playerInteraction.GetComponent<PlayerInventory>().CollectSoul();
             Destroy(gameObject);
+
+            globalSFX.PlayOneShot(collectClip);
         }
         else
         {
@@ -27,7 +32,9 @@ public class SoulInteractable : Interactable
         if (!isUnlocked)
         {
             isUnlocked = true;
+
             lockObject.SetActive(false);
+            GetComponent<AudioSource>().Play();
         }
     }
 }

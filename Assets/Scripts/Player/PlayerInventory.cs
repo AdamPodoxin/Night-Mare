@@ -142,6 +142,5 @@ public class PlayerInventory : MonoBehaviour
     public void CollectSoul()
     {
         soulsCollected++;
-        //Effects
     }
 }
