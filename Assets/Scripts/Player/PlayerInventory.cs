@@ -45,6 +45,7 @@ public class PlayerInventory : MonoBehaviour
     private void OnDisable()
     {
         playerInputActions.Player.Drop.Disable();
+        dropText.gameObject.SetActive(false);
     }
 
     private void DoDropItem(InputAction.CallbackContext obj)
@@ -80,7 +81,7 @@ public class PlayerInventory : MonoBehaviour
         {
             currentItemObject = Instantiate(currentItem.prefab, hand.position, Quaternion.identity);
             currentItemObject.transform.SetParent(hand);
-            currentItemObject.transform.rotation = currentItem.prefab.transform.rotation;
+            currentItemObject.transform.localRotation = currentItem.prefab.transform.localRotation;
 
             itemsPickedUp.Add(currentItem.name, currentItemObject);
         }
@@ -98,8 +99,11 @@ public class PlayerInventory : MonoBehaviour
             currentArtifact = ArtifactType.Null;
         }
 
-        dropText.gameObject.SetActive(true);
-        dropText.text = "Drop " + currentItem.name;
+        if (currentArtifact.Equals(ArtifactType.Null))
+        {
+            dropText.gameObject.SetActive(true);
+            dropText.text = "Drop " + currentItem.name;
+        }
 
         return true;
     }

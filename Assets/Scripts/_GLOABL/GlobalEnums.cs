@@ -4,5 +4,5 @@ public class GlobalEnums
 
     public enum GroundType { Null, Wood, Carpet, Tile, Concrete };
 
-    public enum ArtifactType { Null, Car, Bear, Flower };
+    public enum ArtifactType { Null, Car, Bear, Flowers };
 }

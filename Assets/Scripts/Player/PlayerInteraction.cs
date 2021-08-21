@@ -33,6 +33,7 @@ public class PlayerInteraction : MonoBehaviour
     private void OnDisable()
     {
         playerInputActions.Player.Interact.Disable();
+        interactText.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -72,7 +73,6 @@ public class PlayerInteraction : MonoBehaviour
     public void ResetFocus()
     {
         focus = null;
-
         interactText.gameObject.SetActive(false);
     }
 }

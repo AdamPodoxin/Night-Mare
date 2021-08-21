@@ -430,7 +430,7 @@ MonoBehaviour:
   handTransform: {fileID: 737946017058949625}
   searchTime: 4.5
   waypointSearchRadius: 7
-  doorOpenTime: 0.75
+  doorOpenTime: 0.5
   voiceSource: {fileID: 2815445176691256432}
   droneSource: {fileID: 8479119420787832154}
   sfxSource: {fileID: 1969038283077995768}
