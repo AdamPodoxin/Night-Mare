@@ -19,6 +19,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private int soulsCollected = 0;
     public int SoulsCollected { get { return SoulsCollected; } }
 
+    public Image soulsUI;
+
     [Space]
 
     public Text dropText;
@@ -156,5 +158,6 @@ public class PlayerInventory : MonoBehaviour
     public void CollectSoul()
     {
         soulsCollected++;
+        soulsUI.fillAmount = soulsCollected / 3f;
     }
 }
