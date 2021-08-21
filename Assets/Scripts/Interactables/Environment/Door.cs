@@ -15,13 +15,22 @@ public class Door : Interactable
     private AudioSource source;
     private OcclusionPortal occlusionPortal;
 
-    private bool isInAnimation = false;
+    [SerializeField] private bool isInAnimation = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
         occlusionPortal = GetComponent<OcclusionPortal>();
+    }
+
+    private void OnEnable()
+    {
+        if (isInAnimation)
+        {
+            if (isOpen) Open();
+            else Close();
+        }
     }
 
     public override void Interact(PlayerInteraction playerInteraction)
