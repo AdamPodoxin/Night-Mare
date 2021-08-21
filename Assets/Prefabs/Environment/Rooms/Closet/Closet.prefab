@@ -690,6 +690,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4522809743982851362, guid: 3d19b7450cd8bd848b44db970a6d4f39, type: 3}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522809743982851362, guid: 3d19b7450cd8bd848b44db970a6d4f39, type: 3}
+      propertyPath: m_Center.y
+      value: -3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7974993550198800502, guid: 3d19b7450cd8bd848b44db970a6d4f39, type: 3}
       propertyPath: m_Name
       value: Shelf
