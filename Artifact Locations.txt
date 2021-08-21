@@ -1,4 +1,4 @@
-Easy Locations:
+Easy Locations (7):
 -Behind flower pot in Dining Room table
 -Top shelf of left bookshelf in Living Room
 -On ironing board in Laundry Room
@@ -7,7 +7,7 @@ Easy Locations:
 -On shelf in garage
 -On TV stand
 
-Medium Locations:
+Medium Locations (8):
 -Behind curtains of bathtub in Hallway and Bedroom Hub Bathroom (2)
 -Bottom shelf of coffee table of Living Room
 -In closet of Laundry Room/Foyer (2)
@@ -15,9 +15,22 @@ Medium Locations:
 -Behind plant in Bedroom Hub
 -Behind the shelf in Garage
 
-Hard Locations:
+Hard Locations (5):
 -Behind TV (we should move the TV forward a bit so that there is room for the artifact to be hidden)
 -Behind white chair in Living Room
 -Between the laundry machines (might have to separate the machines a bit further)
 -Slightly under the front of the car in Garage
 -Behind boxes in Bedroom Hub
+
+-----------------------------------------------------------------------------------------------------------
+
+Seeds:
+E.g. "031524"
+-First two digits represent boy, second two girl, third two mom
+-First digit in pair represents difficulty
+-Second digit represents location index
+
+What should happen:
+Boy: on cardboard boxes
+Girl: between laundry machines
+Mom: behind cardboard boxes
