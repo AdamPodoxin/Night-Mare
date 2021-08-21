@@ -14,7 +14,7 @@ public class ItemPickup : Interactable
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
-        playerInteraction.GetComponent<PlayerInventory>().PickupItem(item, this);
-        Destroy(gameObject);
+        bool hasPickedUp = playerInteraction.GetComponent<PlayerInventory>().PickupItem(item, this);
+        if (hasPickedUp) Destroy(gameObject);
     }
 }

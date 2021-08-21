@@ -20,7 +20,7 @@ public class ArtifactPortal : Interactable
 
         if (isUnlocked)
         {
-            Notification.instance.DisplayNotification("Already unlocked");
+            Notification.instance.DisplayNotification("Already inserted");
             return;
         }
 

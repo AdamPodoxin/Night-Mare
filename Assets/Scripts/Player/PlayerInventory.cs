@@ -61,8 +61,14 @@ public class PlayerInventory : MonoBehaviour
         return null;
     }
 
-    public void PickupItem(Item item, ItemPickup itemPickup)
+    public bool PickupItem(Item item, ItemPickup itemPickup)
     {
+        if (!currentArtifact.Equals(ArtifactType.Null))
+        {
+            Notification.instance.DisplayNotification("Cannot drop artifacts");
+            return false;
+        }
+
         if (currentItem != null) DropCurrentItem();
         currentItem = item;
 
@@ -91,11 +97,19 @@ public class PlayerInventory : MonoBehaviour
 
         dropText.gameObject.SetActive(true);
         dropText.text = "Drop " + currentItem.name;
+
+        return true;
     }
 
     public void DropCurrentItem()
     {
         if (currentItem == null) return;
+
+        if (!currentArtifact.Equals(ArtifactType.Null))
+        {
+            Notification.instance.DisplayNotification("Cannot drop artifacts");
+            return;
+        }
 
         Transform spawnedItem = Instantiate(currentItem.pickup, transform.position + transform.forward, Quaternion.identity).transform;
         spawnedItem.SetParent(currentWorld);

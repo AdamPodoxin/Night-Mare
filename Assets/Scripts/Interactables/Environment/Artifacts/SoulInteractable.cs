@@ -12,6 +12,18 @@ public class SoulInteractable : Interactable
 
     [SerializeField] private GameObject lockObject;
 
+    private AudioSource source;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        if (isUnlocked && !source.isPlaying) source.Play();
+    }
+
     public override void Interact(PlayerInteraction playerInteraction)
     {
         if (isUnlocked)
@@ -32,9 +44,7 @@ public class SoulInteractable : Interactable
         if (!isUnlocked)
         {
             isUnlocked = true;
-
             lockObject.SetActive(false);
-            GetComponent<AudioSource>().Play();
         }
     }
 }
