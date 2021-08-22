@@ -18,9 +18,14 @@ public class ArtifactSpawner : MonoBehaviour
 
     public string mySeed = "NSEED";
 
+    [Space]
+
+    [SerializeField] private bool _createNewSeed = true;
+
     private void Start()
     {
-        mySeed = GenerateSeed();
+        if (_createNewSeed) mySeed = GenerateSeed();
+
         SpawnArtifactsFromSeed(mySeed);
     }
 

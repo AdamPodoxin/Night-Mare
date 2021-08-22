@@ -64,6 +64,7 @@ Warrior Pack Bundle 1 - Explosive (https://assetstore.unity.com/packages/3d/anim
 
 Graphics:
 Raleway Font (https://fonts.google.com/specimen/Raleway)
+Debug Font (https://www.fontspace.com/debug-font-f53756)
 
 
 Sound Effects:
