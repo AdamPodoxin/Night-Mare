@@ -203,11 +203,17 @@ public class EyeEnemy : MonoBehaviour
 
         SetColors(normalColor);
         ResetPlayerTimer();
-        StartRotate();
+        StartCoroutine(ResumRotateCoroutine());
 
         anim.speed = 1f;
 
         playerCamera.IsInEyeball = false;
+    }
+
+    private IEnumerator ResumRotateCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        StartRotate();
     }
 
     public void CallDemon(bool useVoiceline)
