@@ -38,7 +38,14 @@ public class BedNightmare : Interactable
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
-        StartCoroutine(InteractCoroutine());
+        if (demon.gameObject.activeInHierarchy)
+        {
+            Notification.instance.DisplayNotification("Cannot wake up while being hunted");
+        }
+        else
+        {
+            StartCoroutine(InteractCoroutine());
+        }
     }
 
     protected IEnumerator InteractCoroutine()
