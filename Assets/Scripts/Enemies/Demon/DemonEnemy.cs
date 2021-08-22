@@ -37,8 +37,9 @@ public class DemonEnemy : MonoBehaviour
     [Space]
 
     public AudioSource voiceSource;
-    public AudioSource droneSource;
     public AudioSource sfxSource;
+    public AudioSource droneSource;
+    public AudioSource artifactSource;
 
     public AudioClip[] foundVoiceLines;
     public AudioClip[] searchVoiceLines;
@@ -47,6 +48,7 @@ public class DemonEnemy : MonoBehaviour
     public AudioClip[] footsteps;
 
     public AudioClip killClip;
+    public AudioClip artifactClip;
 
     private NavMeshAgent agent;
     private Animator anim;
@@ -87,7 +89,6 @@ public class DemonEnemy : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
@@ -355,10 +356,22 @@ public class DemonEnemy : MonoBehaviour
         return lastKnownPosition + lastKnownDirection * predictedDistance; ;
     }
 
-    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useVoiceline)
+    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useVoiceline, bool isCarryingArtifact = false)
     {
         lastKnownPosition = _navTargetPosition = position;
         lastKnownDirection = direction;
+
+        if (isCarryingArtifact && !_isChasingPlayer)
+        {
+            artifactSource.PlayOneShot(artifactClip);
+        }
+        else if (useVoiceline)
+        {
+            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
+            voiceSource.PlayOneShot(foundClip);
+        }
+
+        JumpscareEnemy.instance.ActivateJumpscare();
 
         agent.SetDestination(lastKnownPosition);
         State = DemonState.Travelling;
@@ -367,16 +380,8 @@ public class DemonEnemy : MonoBehaviour
 
         StartTimer();
 
-        JumpscareEnemy.instance.ActivateJumpscare();
-
         fps.ToggleChase(true);
         playerCamera.ToggleChase(true);
-
-        if (useVoiceline)
-        {
-            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
-            voiceSource.PlayOneShot(foundClip);
-        }
     }
 
     public void PlayFootstep()

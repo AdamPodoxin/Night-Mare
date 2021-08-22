@@ -172,9 +172,9 @@ public class EyeEnemy : MonoBehaviour
             }
             else if (!playerInventory.currentArtifact.Equals(GlobalEnums.ArtifactType.Null))
             {
-                //Add demon artifact voice lines later
-                CallDemon(true);
+                CallDemon(false, true);
                 SetColors(trackingColor);
+
                 hasSpottedPlayer = true;
 
                 playerCamera.FullDistort();
@@ -216,13 +216,13 @@ public class EyeEnemy : MonoBehaviour
         if (!hasSpottedPlayer) StartRotate();
     }
 
-    public void CallDemon(bool useVoiceline)
+    public void CallDemon(bool useVoiceline, bool isCarryingArtifact = false)
     {
         Vector3 playerDirection = playerTransform.forward.normalized;
 
         if (!demon.gameObject.activeInHierarchy) demon.transform.position = spawnDemonWaypoint.position;
         demon.gameObject.SetActive(true);
-        demon.GotPlayerPosition(playerTransform.position, playerDirection, useVoiceline);
+        demon.GotPlayerPosition(playerTransform.position, playerDirection, useVoiceline, isCarryingArtifact);
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;
