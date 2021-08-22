@@ -160,7 +160,7 @@ public class EyeEnemy : MonoBehaviour
     {
         if (!isTrackingPlayer)
         {
-            playerCamera.IsInEyeball = true;
+            playerCamera.EnterEyeball();
 
             if (demon.gameObject.activeInHierarchy)
             {
@@ -207,13 +207,13 @@ public class EyeEnemy : MonoBehaviour
 
         anim.speed = 1f;
 
-        playerCamera.IsInEyeball = false;
+        playerCamera.ExitEyeball();
     }
 
     private IEnumerator ResumRotateCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        StartRotate();
+        if (!hasSpottedPlayer) StartRotate();
     }
 
     public void CallDemon(bool useVoiceline)

@@ -37,15 +37,8 @@ public class PlayerCamera : MonoBehaviour
     private ColorGrading colorGrading;
 
     private bool isInEyeball = false;
-    public bool IsInEyeball
-    {
-        get { return isInEyeball; }
-        set
-        {
-            isInEyeball = value;
-            redOverlay.SetActive(value);
-        }
-    }
+
+    private int _eyeballsAmount = 0;
 
     private void Start()
     {
@@ -82,6 +75,27 @@ public class PlayerCamera : MonoBehaviour
 
             if (isAnimatingPosition)
                 transform.position = Vector3.Lerp(transform.position, demonHandTransform.position, lerpSpeed * Time.deltaTime);
+        }
+    }
+
+    public void EnterEyeball()
+    {
+        _eyeballsAmount++;
+
+        isInEyeball = true;
+        redOverlay.SetActive(true);
+    }
+
+    public void ExitEyeball()
+    {
+        _eyeballsAmount--;
+
+        if (_eyeballsAmount <= 0)
+        {
+            isInEyeball = false;
+            redOverlay.SetActive(false);
+
+            _eyeballsAmount = 0;
         }
     }
 

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.078431375}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.11764706}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 2800461364209783830}
+  volumeTrigger: {fileID: 0}
   volumeLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -873,8 +873,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 1974111541}
-  dropText: {fileID: 2061164146}
+  currentWorld: {fileID: 0}
   droppingForce: 180
+  currentItem: {fileID: 0}
+  currentArtifact: 0
+  soulsCollected: 0
+  soulsUI: {fileID: 0}
+  dropText: {fileID: 2061164146}
 --- !u!95 &5418347224370357508
 Animator:
   serializedVersion: 3
@@ -1113,6 +1118,8 @@ MonoBehaviour:
   normalMoveSpeed: 4.5
   crouchMoveSpeed: 2
   chaseMoveSpeed: 5.5
+  cinemachineTargetPitch: 0
+  input: {fileID: 0}
 --- !u!114 &4443308719983381089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,6 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTimer: 3
+  isSwitchingWorlds: 0
   fps: {fileID: 5857391897785049238}
   footsteps: {fileID: 2800461362284674359}
   interaction: {fileID: 390308467}
