@@ -83,7 +83,7 @@ public class PlayerCamera : MonoBehaviour
         _eyeballsAmount++;
 
         isInEyeball = true;
-        redOverlay.SetActive(true);
+        if (!isDying) redOverlay.SetActive(true);
     }
 
     public void ExitEyeball()
@@ -111,6 +111,8 @@ public class PlayerCamera : MonoBehaviour
     {
         demonHandTransform = DemonEnemy.instance.handTransform;
         demonEyeTransform = DemonEnemy.instance.eyeHeightTransform;
+
+        redOverlay.SetActive(false);
 
         isDying = true;
     }
