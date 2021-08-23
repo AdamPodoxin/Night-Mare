@@ -18,6 +18,7 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private PlayerInventory inventory;
 
     [SerializeField] private Animator camAnim;
+    [SerializeField] private Animator blinkAnim;
 
     private IEnumerator DieCoroutine()
     {
@@ -30,7 +31,9 @@ public class PlayerBrain : MonoBehaviour
 
         camAnim.Play("Dying");
 
-        yield return new WaitForSeconds(deathTimer);
+        yield return new WaitForSeconds(deathTimer - 0.25f);
+        blinkAnim.Play("Blink_Fast_Close");
+        yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadSceneAsync("2_Game", LoadSceneMode.Single);
     }
