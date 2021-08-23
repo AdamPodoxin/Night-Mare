@@ -35,6 +35,12 @@ public class ArtifactSpawner : MonoBehaviour
         SpawnArtifactsFromSeed(mySeed);
     }
 
+    private void OnApplicationQuit()
+    {
+        //Reset the seed when game quits
+        dataManager.SetSeed("NSEED");
+    }
+
     private Transform[] GetLocationArrayFromIndex(int difficulty)
     {
         return difficulty switch
