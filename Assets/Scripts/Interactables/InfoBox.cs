@@ -15,14 +15,14 @@ public class InfoBox : Interactable
 
     public Transform infoBoxI;
 
-    private bool isReading = false;
+    protected bool isReading = false;
 
-    private Transform camTransform;
+    protected Transform camTransform;
 
-    private Vector3 _lookPos;
-    private Vector3 _rotation;
+    protected Vector3 _lookPos;
+    protected Vector3 _rotation;
 
-    private void Start()
+    protected void Start()
     {
         infoBoxText.text = infoText;
         camTransform = Camera.main.transform;
@@ -30,7 +30,7 @@ public class InfoBox : Interactable
         UpdateBox();
     }
 
-    private void Update()
+    protected void Update()
     {
         if (isReading)
         {
@@ -50,7 +50,7 @@ public class InfoBox : Interactable
         }
     }
 
-    private void UpdateBox()
+    protected void UpdateBox()
     {
         infoBoxObject.gameObject.SetActive(isReading);
         interactText = isReading ? "Close" : "Read";
