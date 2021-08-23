@@ -6,6 +6,9 @@ public class MonologueCamera : MonoBehaviour
 {
     public float sensitivity;
 
+    public GameObject monologue;
+    public GameObject preNightmare;
+
     private float rotX;
     private float rotY;
 
@@ -27,5 +30,11 @@ public class MonologueCamera : MonoBehaviour
         rotY = Mathf.Lerp(rotY, 180f, Time.deltaTime * 5f);
 
         transform.eulerAngles = new Vector3(rotX, rotY, 0f);
+    }
+
+    public void StartGame()
+    {
+        preNightmare.SetActive(true);
+        monologue.SetActive(false);
     }
 }
