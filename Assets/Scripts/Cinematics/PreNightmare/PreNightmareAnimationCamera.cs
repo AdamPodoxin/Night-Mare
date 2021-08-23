@@ -68,7 +68,7 @@ public class PreNightmareAnimationCamera : MonoBehaviour
     {
         player.SetActive(true);
 
-        bool hasReadPrompts = dataManager.GetGameProgress().hasReadPrompts;
+        bool hasReadPrompts = dataManager.GetProgress().hasReadPrompts;
         if (hasReadPrompts)
         {
             bedInteractable.SetActive(true);

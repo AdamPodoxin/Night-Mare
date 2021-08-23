@@ -6,7 +6,12 @@ public class DataManager : MonoBehaviour
 {
     private GameProgress gameProgress = null;
 
-    public GameProgress GetGameProgress()
+    private void SaveProgress()
+    {
+        SaveSystem.SaveData(SaveSystem.SaveType.Progress, gameProgress);
+    }
+
+    public GameProgress GetProgress()
     {
         gameProgress = SaveSystem.LoadData<GameProgress>(SaveSystem.SaveType.Progress);
         if (gameProgress == null) gameProgress = new GameProgress();
@@ -17,6 +22,12 @@ public class DataManager : MonoBehaviour
     public void SetHasReadPrompts(bool hasReadPrompts)
     {
         gameProgress.hasReadPrompts = hasReadPrompts;
-        SaveSystem.SaveData(SaveSystem.SaveType.Progress, gameProgress);
+        SaveProgress();
+    }
+
+    public void SetSeed(string seed)
+    {
+        gameProgress.seed = seed;
+        SaveProgress();
     }
 }

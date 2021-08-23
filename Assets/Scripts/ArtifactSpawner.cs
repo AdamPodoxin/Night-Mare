@@ -22,10 +22,16 @@ public class ArtifactSpawner : MonoBehaviour
 
     [SerializeField] private bool _createNewSeed = true;
 
+    private DataManager dataManager;
+
     private void Start()
     {
-        if (_createNewSeed) mySeed = GenerateSeed();
+        dataManager = FindObjectOfType<DataManager>();
 
+        mySeed = dataManager.GetProgress().seed;
+        _createNewSeed = mySeed.Length < 6;
+
+        if (_createNewSeed) mySeed = GenerateSeed();
         SpawnArtifactsFromSeed(mySeed);
     }
 
@@ -50,14 +56,21 @@ public class ArtifactSpawner : MonoBehaviour
 
     private void SpawnIndividualArtifact(int artifactIndex, string seed)
     {
-        GameObject artifact = artifactIndex == 0 ? boyArtifact : (artifactIndex == 1) ? girlArtifact : momArtifact;
+        try
+        {
+            GameObject artifact = artifactIndex == 0 ? boyArtifact : (artifactIndex == 1) ? girlArtifact : momArtifact;
 
-        int difficulty = int.Parse("" + seed[0 + artifactIndex * 2]);
-        int locationIndex = int.Parse("" + seed[1 + artifactIndex * 2]);
+            int difficulty = int.Parse("" + seed[0 + artifactIndex * 2]);
+            int locationIndex = int.Parse("" + seed[1 + artifactIndex * 2]);
 
-        Vector3 position = GetLocationArrayFromIndex(difficulty)[locationIndex].position;
+            Vector3 position = GetLocationArrayFromIndex(difficulty)[locationIndex].position;
 
-        Instantiate(artifact, transform).transform.position = position;
+            Instantiate(artifact, transform).transform.position = position;
+        }
+        catch
+        {
+            Debug.LogError($"{seed} is not in correct seed format");
+        }
     }
 
     public string GenerateSeed()
@@ -79,7 +92,10 @@ public class ArtifactSpawner : MonoBehaviour
         }
         string momSeed = GenerateIndividualSeed(momDifficulty);
 
-        return boySeed + girlSeed + momSeed;
+        mySeed = boySeed + girlSeed + momSeed;
+        dataManager.SetSeed(mySeed);
+
+        return mySeed;
     }
 
     public void SpawnArtifactsFromSeed(string seed)
