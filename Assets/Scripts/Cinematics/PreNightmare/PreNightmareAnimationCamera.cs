@@ -11,6 +11,7 @@ public class PreNightmareAnimationCamera : MonoBehaviour
 
     public GameObject[] infoBoxes;
     public GameObject bedInfoBox;
+    public GameObject bedInteractable;
 
     [Space]
 
@@ -28,6 +29,8 @@ public class PreNightmareAnimationCamera : MonoBehaviour
 
     public float lerpSpeed = 0.5f;
 
+    private DataManager dataManager;
+
     private Animator anim;
     private bool isLerpingToSleep = false;
 
@@ -35,6 +38,8 @@ public class PreNightmareAnimationCamera : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        dataManager = FindObjectOfType<DataManager>();
 
         anim = GetComponent<Animator>();
         anim.Play("PreNightmare_Wake");
@@ -63,9 +68,17 @@ public class PreNightmareAnimationCamera : MonoBehaviour
     {
         player.SetActive(true);
 
-        foreach (GameObject g in infoBoxes)
+        bool hasReadPrompts = dataManager.GetGameProgress().hasReadPrompts;
+        if (hasReadPrompts)
         {
-            g.SetActive(true);
+            bedInteractable.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject g in infoBoxes)
+            {
+                g.SetActive(true);
+            }
         }
 
         gameObject.SetActive(false);

@@ -9,6 +9,7 @@ public class PreNightmareManager : MonoBehaviour
     [Space]
 
     public Animator blinkAnim;
+    private DataManager dataManager;
 
     private int infoBoxesInteracted;
     public int InfoBoxesInteracted
@@ -20,6 +21,7 @@ public class PreNightmareManager : MonoBehaviour
             if (infoBoxesInteracted >= 3)
             {
                 bedInfoBox.SetActive(true);
+                dataManager.SetHasReadPrompts(true);
             }
         }
     }
@@ -27,5 +29,6 @@ public class PreNightmareManager : MonoBehaviour
     private void Start()
     {
         blinkAnim.Play("Blink_Fast_Open");
+        dataManager = FindObjectOfType<DataManager>();
     }
 }
