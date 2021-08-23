@@ -10,9 +10,7 @@ public class ArtifactSpawner : MonoBehaviour
 
     [Space]
 
-    public Transform[] easy;
-    public Transform[] medium;
-    public Transform[] hard;
+    public Zone[] zones;
 
     [Space]
 
@@ -41,23 +39,12 @@ public class ArtifactSpawner : MonoBehaviour
         dataManager.SetSeed("NSEED");
     }
 
-    private Transform[] GetLocationArrayFromIndex(int difficulty)
+    private string GenerateIndividualSeed(int zoneIndex)
     {
-        return difficulty switch
-        {
-            0 => easy,
-            1 => medium,
-            2 => hard,
-            _ => null
-        };
-    }
-
-    private string GenerateIndividualSeed(int difficulty)
-    {
-        Transform[] locations = GetLocationArrayFromIndex(difficulty);
+        Transform[] locations = zones[zoneIndex].locations;
         int locationIndex = Random.Range(0, locations.Length);
 
-        return difficulty + "" + locationIndex;
+        return zoneIndex + "" + locationIndex;
     }
 
     private void SpawnIndividualArtifact(int artifactIndex, string seed)
@@ -66,37 +53,42 @@ public class ArtifactSpawner : MonoBehaviour
         {
             GameObject artifact = artifactIndex == 0 ? boyArtifact : (artifactIndex == 1) ? girlArtifact : momArtifact;
 
-            int difficulty = int.Parse("" + seed[0 + artifactIndex * 2]);
+            int zoneIndex = int.Parse("" + seed[0 + artifactIndex * 2]);
             int locationIndex = int.Parse("" + seed[1 + artifactIndex * 2]);
 
-            Vector3 position = GetLocationArrayFromIndex(difficulty)[locationIndex].position;
+            Vector3 position = zones[zoneIndex].locations[locationIndex].position;
 
             Instantiate(artifact, transform).transform.position = position;
         }
         catch
         {
-            Debug.LogError($"{seed} is not in correct seed format");
+            Debug.LogError($"{seed} is an invalid seed");
         }
+    }
+
+    private int GetRandomZoneIndex()
+    {
+        return Random.Range(0, zones.Length);
     }
 
     public string GenerateSeed()
     {
-        int boyDifficulty = Random.Range(0, 3);
-        string boySeed = GenerateIndividualSeed(boyDifficulty);
+        int boyZone = GetRandomZoneIndex();
+        string boySeed = GenerateIndividualSeed(boyZone);
 
-        int girlDifficulty = Random.Range(0, 3);
-        while (girlDifficulty == boyDifficulty)
+        int girlZone = GetRandomZoneIndex();
+        while (girlZone == boyZone)
         {
-            girlDifficulty = Random.Range(0, 3);
+            girlZone = GetRandomZoneIndex();
         }
-        string girlSeed = GenerateIndividualSeed(girlDifficulty);
+        string girlSeed = GenerateIndividualSeed(girlZone);
 
-        int momDifficulty = Random.Range(0, 3);
-        while (momDifficulty == boyDifficulty || momDifficulty == girlDifficulty)
+        int momZone = GetRandomZoneIndex();
+        while (momZone == boyZone || momZone == girlZone)
         {
-            momDifficulty = Random.Range(0, 3);
+            momZone = GetRandomZoneIndex();
         }
-        string momSeed = GenerateIndividualSeed(momDifficulty);
+        string momSeed = GenerateIndividualSeed(momZone);
 
         mySeed = boySeed + girlSeed + momSeed;
         dataManager.SetSeed(mySeed);
@@ -110,4 +102,10 @@ public class ArtifactSpawner : MonoBehaviour
         SpawnIndividualArtifact(1, seed);
         SpawnIndividualArtifact(2, seed);
     }
+}
+
+[System.Serializable]
+public class Zone
+{
+    public Transform[] locations;
 }
