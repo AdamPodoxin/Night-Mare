@@ -7,7 +7,7 @@ public class CameraScreenshot : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Print))
         {
             TakeScreenshot();
         }
@@ -19,6 +19,5 @@ public class CameraScreenshot : MonoBehaviour
         print(path);
 
         ScreenCapture.CaptureScreenshot(path);
-        UnityEditor.AssetDatabase.Refresh();
     }
 }
