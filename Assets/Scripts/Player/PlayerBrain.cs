@@ -22,6 +22,8 @@ public class PlayerBrain : MonoBehaviour
 
     private IEnumerator DieCoroutine()
     {
+        float blinkTimer = 1f;
+
         fps.enabled = false;
         footsteps.enabled = false;
         interaction.enabled = false;
@@ -31,9 +33,9 @@ public class PlayerBrain : MonoBehaviour
 
         camAnim.Play("Dying");
 
-        yield return new WaitForSeconds(deathTimer - 0.25f);
-        blinkAnim.Play("Blink_Fast_Close");
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(deathTimer - blinkTimer);
+        blinkAnim.Play("Blink_Slow_Close");
+        yield return new WaitForSeconds(blinkTimer);
 
         SceneManager.LoadSceneAsync("2_Game", LoadSceneMode.Single);
     }

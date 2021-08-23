@@ -7,6 +7,8 @@ public class NightmareManager : MonoBehaviour
 {
     public static NightmareManager instance;
 
+    public Animator blinkAnim;
+
     private GameObject[] waypoints;
 
     private void Awake()
@@ -17,6 +19,8 @@ public class NightmareManager : MonoBehaviour
     private void Start()
     {
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+
+        blinkAnim.Play("Blink_Slow_Open");
     }
 
     public Transform FindNearestWaypoint(Vector3 position)
