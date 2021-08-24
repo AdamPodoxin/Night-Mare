@@ -27,10 +27,21 @@ public class ArtifactSpawner : MonoBehaviour
         dataManager = FindObjectOfType<DataManager>();
 
         mySeed = dataManager.GetProgress().seed;
-        _createNewSeed = mySeed.Length < 6;
+        _createNewSeed = mySeed.Length != 6;
 
         if (_createNewSeed) mySeed = GenerateSeed();
-        SpawnArtifactsFromSeed(mySeed);
+
+        try
+        {
+            SpawnArtifactsFromSeed(mySeed);
+        }
+        catch
+        {
+            Debug.LogWarning("Invalid seed, generating new seed");
+
+            mySeed = GenerateSeed();
+            SpawnArtifactsFromSeed(mySeed);
+        }
     }
 
     private void OnApplicationQuit()
@@ -63,6 +74,7 @@ public class ArtifactSpawner : MonoBehaviour
         catch
         {
             Debug.LogError($"{seed} is an invalid seed");
+            throw;
         }
     }
 
