@@ -9,7 +9,7 @@ public class DemonEnemy : MonoBehaviour
 {
     public static DemonEnemy instance;
 
-    private DemonState state;
+    [SerializeField] private DemonState state;
     public DemonState State
     {
         get { return state; }
@@ -17,14 +17,18 @@ public class DemonEnemy : MonoBehaviour
         {
             state = value;
             _isSearching = value.Equals(DemonState.Searching);
+
+            IsMovingCheck();
         }
     }
 
     [Space]
 
-    public bool isSummoning = false;
+    [HideInInspector] public bool isSummoning = false;
     public float acceptableStoppingDistance = 1.2f;
     public LayerMask ignoreLayers;
+
+    [Space]
 
     public Transform eyeHeightTransform;
     public Transform handTransform;
@@ -85,10 +89,6 @@ public class DemonEnemy : MonoBehaviour
     private bool _isSearching = false;
     private bool _isKilling = false;
 
-    //TEMP
-
-    [SerializeField] private GameObject _raycastHit;
-
     private delegate void OnComeplete();
 
     private void Awake()
@@ -115,7 +115,6 @@ public class DemonEnemy : MonoBehaviour
 
         if (Physics.Raycast(eyeHeightTransform.position, playerCamera.transform.position - eyeHeightTransform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
         {
-            _raycastHit = _hit.collider.gameObject;
             if (_hit.collider.CompareTag("Player"))
             {
                 if (!State.Equals(DemonState.Chasing)) OnFoundPlayer();
@@ -184,6 +183,11 @@ public class DemonEnemy : MonoBehaviour
         }
     }
 
+    private void IsMovingCheck()
+    {
+        anim.SetBool("isMoving", (state.Equals(DemonState.Travelling) || state.Equals(DemonState.Chasing)) && !_isKilling);
+    }
+
     private IEnumerator DoorCollisionCoroutine(Door door)
     {
         if (_isKilling) yield return null;
@@ -196,7 +200,7 @@ public class DemonEnemy : MonoBehaviour
         yield return new WaitForSeconds(doorOpenTime);
 
         agent.isStopped = false;
-        anim.SetBool("isMoving", true);
+        IsMovingCheck();
     }
 
     private bool DistanceCheck()
@@ -243,7 +247,6 @@ public class DemonEnemy : MonoBehaviour
         }
 
         _isChasingPlayer = true;
-        anim.SetBool("isMoving", true);
     }
 
     private void OnLostPlayer()
@@ -340,7 +343,6 @@ public class DemonEnemy : MonoBehaviour
             voiceSource.PlayOneShot(searchClip);
         }
 
-        anim.SetBool("isMoving", false);
         yield return new WaitForSeconds(searchTime);
         if (!_isChasingPlayer) onComeplete.Invoke();
     }
@@ -401,7 +403,6 @@ public class DemonEnemy : MonoBehaviour
         agent.SetDestination(lastKnownPosition);
         State = DemonState.Travelling;
         _isChasingPlayer = true;
-        anim.SetBool("isMoving", true);
 
         StartTimer();
 
