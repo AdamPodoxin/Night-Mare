@@ -162,7 +162,7 @@ public class EyeEnemy : MonoBehaviour
         {
             playerCamera.EnterEyeball();
 
-            if (demon.gameObject.activeInHierarchy)
+            if (demon.gameObject.activeInHierarchy || (!demon.gameObject.activeInHierarchy && demon.isSummoning))
             {
                 CallDemon(false);
                 SetColors(trackingColor);
@@ -203,26 +203,55 @@ public class EyeEnemy : MonoBehaviour
 
         SetColors(normalColor);
         ResetPlayerTimer();
-        StartCoroutine(ResumRotateCoroutine());
+        StartCoroutine(ResumeRotateCoroutine());
 
         anim.speed = 1f;
 
         playerCamera.ExitEyeball();
     }
 
-    private IEnumerator ResumRotateCoroutine()
+    private IEnumerator ResumeRotateCoroutine()
     {
         yield return new WaitForSeconds(1f);
         if (!hasSpottedPlayer) StartRotate();
+    }
+
+    private IEnumerator SummonDemonCoroutine(bool useVoiceline, bool isCarryingArtifact)
+    {
+        demon.isSummoning = true;
+
+        yield return new WaitForSeconds(2f);
+
+        demon.isSummoning = false;
+
+        demon.gameObject.SetActive(true);
+        demon.EyeballSummon(useVoiceline, isCarryingArtifact);
     }
 
     public void CallDemon(bool useVoiceline, bool isCarryingArtifact = false)
     {
         Vector3 playerDirection = playerTransform.forward.normalized;
 
-        if (!demon.gameObject.activeInHierarchy) demon.transform.position = spawnDemonWaypoint.position;
-        demon.gameObject.SetActive(true);
-        demon.GotPlayerPosition(playerTransform.position, playerDirection, useVoiceline, isCarryingArtifact);
+        if (demon.gameObject.activeInHierarchy)
+        {
+            demon.EyeballGotPosition(playerTransform.position, playerDirection);
+            demon.EyeballSummon(useVoiceline, isCarryingArtifact);
+        }
+        else
+        {
+            if (demon.isSummoning)
+            {
+                demon.EyeballGotPosition(playerTransform.position, playerDirection);
+            }
+            else
+            {
+                demon.transform.position = spawnDemonWaypoint.position;
+                demon.EyeballGotPosition(playerTransform.position, playerDirection);
+                StartCoroutine(SummonDemonCoroutine(useVoiceline, isCarryingArtifact));
+            }
+        }
+
+        JumpscareEnemy.instance.ActivateJumpscare();
 
         playerTrackTimer = playerTrackWaitTime;
         isTrackingPlayer = false;

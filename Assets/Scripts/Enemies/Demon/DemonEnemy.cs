@@ -22,6 +22,7 @@ public class DemonEnemy : MonoBehaviour
 
     [Space]
 
+    public bool isSummoning = false;
     public float acceptableStoppingDistance = 1.2f;
     public LayerMask ignoreLayers;
 
@@ -356,11 +357,14 @@ public class DemonEnemy : MonoBehaviour
         return lastKnownPosition + lastKnownDirection * predictedDistance; ;
     }
 
-    public void GotPlayerPosition(Vector3 position, Vector3 direction, bool useVoiceline, bool isCarryingArtifact = false)
+    public void EyeballGotPosition(Vector3 position, Vector3 direction)
     {
         lastKnownPosition = _navTargetPosition = position;
         lastKnownDirection = direction;
+    }
 
+    public void EyeballSummon(bool useVoiceline, bool isCarryingArtifact = false)
+    {
         if (isCarryingArtifact && !_isChasingPlayer)
         {
             artifactSource.PlayOneShot(artifactClip);
@@ -370,8 +374,6 @@ public class DemonEnemy : MonoBehaviour
             AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
             voiceSource.PlayOneShot(foundClip);
         }
-
-        JumpscareEnemy.instance.ActivateJumpscare();
 
         agent.SetDestination(lastKnownPosition);
         State = DemonState.Travelling;
