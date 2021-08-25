@@ -15,6 +15,10 @@ public class InfoBox : Interactable
 
     public Transform infoBoxI;
 
+    [Space]
+
+    public string readMessage = "Read";
+
     protected bool isReading = false;
 
     protected Transform camTransform;
@@ -24,7 +28,7 @@ public class InfoBox : Interactable
 
     protected void Start()
     {
-        infoBoxText.text = infoText;
+        UpdateText();
         camTransform = Camera.main.transform;
 
         UpdateBox();
@@ -53,7 +57,7 @@ public class InfoBox : Interactable
     protected void UpdateBox()
     {
         infoBoxObject.gameObject.SetActive(isReading);
-        interactText = isReading ? "Close" : "Read";
+        interactText = isReading ? "Close" : readMessage;
     }
 
     public override void Interact(PlayerInteraction playerInteraction)
@@ -62,5 +66,16 @@ public class InfoBox : Interactable
 
         isReading = !isReading;
         UpdateBox();
+    }
+
+    public void UpdateText()
+    {
+        infoBoxText.text = infoText;
+    }
+
+    public void UpdateText(string newText)
+    {
+        infoText = newText;
+        UpdateText();
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Waypoint
   - Ground
   - Ball
+  - Bear
   layers:
   - Default
   - TransparentFX
