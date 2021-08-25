@@ -13,7 +13,14 @@ public class IntroManager : MonoBehaviour
 
     [Space]
 
+    public GameObject bearPedestal;
+    public InfoBox girlInfoBox;
+
+    [Space]
+
     public GameObject sleepCollider;
+
+    private bool gaveGirlBear = false;
 
     private bool interactedWithBoy = false;
     private bool interactedWithGirl = false;
@@ -26,15 +33,20 @@ public class IntroManager : MonoBehaviour
         {
             infoBoxesInteracted = value;
 
-            if (interactedWithBoy && interactedWithGirl)
-            {
-                momInfoBox.UpdateText(momTextNew);
-            }
+            DoChecks();
+        }
+    }
 
-            if (infoBoxesInteracted == 3)
-            {
-                sleepCollider.SetActive(true);
-            }
+    private void DoChecks()
+    {
+        if (interactedWithBoy && interactedWithGirl && gaveGirlBear)
+        {
+            momInfoBox.UpdateText(momTextNew);
+        }
+
+        if (infoBoxesInteracted == 3)
+        {
+            sleepCollider.SetActive(true);
         }
     }
 
@@ -46,6 +58,8 @@ public class IntroManager : MonoBehaviour
     public void InteractWithGirl()
     {
         interactedWithGirl = true;
+
+        bearPedestal.SetActive(true);
         StartCoroutine(ShowTextCoroutine());
     }
 
@@ -53,5 +67,13 @@ public class IntroManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         crouchText.SetActive(true);
+    }
+
+    public void GaveGirlBear()
+    {
+        gaveGirlBear = true;
+        girlInfoBox.UpdateText("Yay, thank you Daddy!");
+
+        DoChecks();
     }
 }

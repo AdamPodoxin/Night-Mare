@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6786689130150238136}
   - component: {fileID: 5975784259998264040}
   m_Layer: 0
-  m_Name: TeddyBearArtifact_Pickup
+  m_Name: TeddyBear_Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

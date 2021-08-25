@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GlobalEnums;
 
-public class ArtifactPortal : Interactable
+public class BearPedestal : Interactable
 {
-    public ArtifactType artifactType;
-
     private bool isUnlocked = false;
 
     [SerializeField] private GameObject insertedArtifact;
-    [SerializeField] private SoulInteractable soul;
+    [SerializeField] private Material green;
 
     private PlayerInventory playerInventory;
 
@@ -26,17 +24,20 @@ public class ArtifactPortal : Interactable
 
         if (playerInventory != null)
         {
-            if (playerInventory.currentArtifact.Equals(artifactType))
+            if (playerInventory.currentArtifact.Equals(ArtifactType.Bear))
             {
                 if (!isUnlocked)
                 {
                     isUnlocked = true;
+                    FindObjectOfType<IntroManager>().GaveGirlBear();
 
                     playerInventory.RemoveCurrentItem();
-                    soul.Unlock();
 
                     insertedArtifact.SetActive(true);
+                    GetComponent<Renderer>().sharedMaterial = green;
                     GetComponent<AudioSource>().Play();
+
+                    Destroy(this);
                 }
             }
             else
