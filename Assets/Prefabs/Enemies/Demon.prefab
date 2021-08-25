@@ -550,10 +550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a850851520644254695efa495e2bbab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSummoning: 0
   acceptableStoppingDistance: 1.2
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 366
   eyeHeightTransform: {fileID: 1830614599977042227}
   handTransform: {fileID: 737946017058949625}
   searchTime: 4.5
@@ -582,6 +583,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 936e7399771be9048814a2241a77ebc9, type: 3}
   killClip: {fileID: 8300000, guid: 9b271c30e79284547b9b1560c47d9021, type: 3}
   artifactClip: {fileID: 8300000, guid: 1cf3d346e4f41c347bbf9b881ae56969, type: 3}
+  _raycastHit: {fileID: 0}
 --- !u!1 &4901038627457574840
 GameObject:
   m_ObjectHideFlags: 0

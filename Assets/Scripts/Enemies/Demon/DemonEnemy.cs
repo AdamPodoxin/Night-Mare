@@ -85,6 +85,10 @@ public class DemonEnemy : MonoBehaviour
     private bool _isSearching = false;
     private bool _isKilling = false;
 
+    //TEMP
+
+    [SerializeField] private GameObject _raycastHit;
+
     private delegate void OnComeplete();
 
     private void Awake()
@@ -105,10 +109,13 @@ public class DemonEnemy : MonoBehaviour
 
     private void Update()
     {
+        if (_isKilling) return;
+
         if (isTiming) timer += Time.deltaTime;
 
-        if (Physics.Raycast(eyeHeightTransform.position, playerTransform.position - eyeHeightTransform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
+        if (Physics.Raycast(eyeHeightTransform.position, playerCamera.transform.position - eyeHeightTransform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
         {
+            _raycastHit = _hit.collider.gameObject;
             if (_hit.collider.CompareTag("Player"))
             {
                 if (!State.Equals(DemonState.Chasing)) OnFoundPlayer();
@@ -179,6 +186,8 @@ public class DemonEnemy : MonoBehaviour
 
     private IEnumerator DoorCollisionCoroutine(Door door)
     {
+        if (_isKilling) yield return null;
+
         agent.isStopped = true;
         anim.SetBool("isMoving", false);
 
@@ -216,6 +225,8 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnFoundPlayer()
     {
+        if (_isKilling) return;
+
         State = DemonState.Chasing;
         StopTimer();
 
@@ -237,6 +248,8 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnLostPlayer()
     {
+        if (_isKilling) return;
+
         State = DemonState.Travelling;
         StartTimer();
 
@@ -246,6 +259,8 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnReachedLastKnownPosition()
     {
+        if (_isKilling) return;
+
         State = DemonState.Searching;
         _isChasingPlayer = false;
         StopTimer();
@@ -268,6 +283,8 @@ public class DemonEnemy : MonoBehaviour
 
     private void OnReachedWaypoint()
     {
+        if (_isKilling) return;
+
         State = DemonState.Searching;
 
         OnComeplete onComplete = () =>
@@ -306,6 +323,8 @@ public class DemonEnemy : MonoBehaviour
 
     private void Despawn()
     {
+        if (_isKilling) return;
+
         StartCoroutine(DespawnCoroutine());
     }
 
@@ -359,12 +378,16 @@ public class DemonEnemy : MonoBehaviour
 
     public void EyeballGotPosition(Vector3 position, Vector3 direction)
     {
+        if (_isKilling) return;
+
         lastKnownPosition = _navTargetPosition = position;
         lastKnownDirection = direction;
     }
 
     public void EyeballSummon(bool useVoiceline, bool isCarryingArtifact = false)
     {
+        if (_isKilling) return;
+
         if (isCarryingArtifact && !_isChasingPlayer)
         {
             artifactSource.PlayOneShot(artifactClip);
@@ -394,6 +417,8 @@ public class DemonEnemy : MonoBehaviour
 
     public void SwitchWorlds()
     {
+        if (_isKilling) return;
+
         State = DemonState.Despawning;
 
         fps.ToggleChase(false);
