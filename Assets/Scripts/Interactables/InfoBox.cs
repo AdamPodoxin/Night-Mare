@@ -19,9 +19,11 @@ public class InfoBox : Interactable
 
     public string readMessage = "Read";
 
+    [HideInInspector] public bool hasRead = false;
+
     protected bool isReading = false;
 
-    protected Transform camTransform;
+    [SerializeField] protected Transform camTransform;
 
     protected Vector3 _lookPos;
     protected Vector3 _rotation;
@@ -29,7 +31,9 @@ public class InfoBox : Interactable
     protected void Start()
     {
         UpdateText();
-        camTransform = Camera.main.transform;
+
+        if (camTransform == null)
+            camTransform = Camera.main.transform;
 
         UpdateBox();
     }
@@ -63,6 +67,7 @@ public class InfoBox : Interactable
     public override void Interact(PlayerInteraction playerInteraction)
     {
         infoBoxI.gameObject.SetActive(false);
+        hasRead = true;
 
         isReading = !isReading;
         UpdateBox();
@@ -77,5 +82,11 @@ public class InfoBox : Interactable
     {
         infoText = newText;
         UpdateText();
+    }
+
+    public void Close()
+    {
+        isReading = false;
+        UpdateBox();
     }
 }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
+    public Animator fadeAnim;
+
+    [Space]
+
     public GameObject crouchText;
 
     [Space]
 
     public InfoBox momInfoBox;
-    public string momTextNew;
 
     [Space]
 
@@ -32,16 +35,29 @@ public class IntroManager : MonoBehaviour
         set
         {
             infoBoxesInteracted = value;
-
             DoChecks();
         }
+    }
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        fadeAnim.Play("Fade_In");
     }
 
     private void DoChecks()
     {
         if (interactedWithBoy && interactedWithGirl && gaveGirlBear)
         {
-            momInfoBox.UpdateText(momTextNew);
+            momInfoBox.UpdateText
+                (momInfoBox.hasRead
+                ? "You should get to bed now too."
+                : "Honey, thank you so much for these flowers! They smell lovely. You should get to bed now too.");
+
+            momInfoBox.Close();
+            momInfoBox.infoBoxI.gameObject.SetActive(true);
         }
 
         if (infoBoxesInteracted == 3)
@@ -72,7 +88,10 @@ public class IntroManager : MonoBehaviour
     public void GaveGirlBear()
     {
         gaveGirlBear = true;
+
         girlInfoBox.UpdateText("Yay, thank you Daddy!");
+        girlInfoBox.infoBoxI.gameObject.SetActive(true);
+        girlInfoBox.Close();
 
         DoChecks();
     }
