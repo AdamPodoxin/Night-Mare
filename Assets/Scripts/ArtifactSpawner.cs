@@ -44,22 +44,9 @@ public class ArtifactSpawner : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        //Reset the seed when script is disabled
-        dataManager.SetSeed("NSEED");
-    }
-
-    private void OnDestroy()
-    {
-        //Reset the seed when script is destroyed (e.g. scene change)
-        dataManager.SetSeed("NSEED");
-    }
-
     private void OnApplicationQuit()
     {
-        //Reset the seed when game quits
-        dataManager.SetSeed("NSEED");
+        ResetSeed();
     }
 
     private string GenerateIndividualSeed(int zoneIndex)
@@ -125,6 +112,11 @@ public class ArtifactSpawner : MonoBehaviour
         SpawnIndividualArtifact(0, seed);
         SpawnIndividualArtifact(1, seed);
         SpawnIndividualArtifact(2, seed);
+    }
+
+    public void ResetSeed()
+    {
+        dataManager.SetSeed("NSEED");
     }
 }
 
