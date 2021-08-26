@@ -65,6 +65,7 @@ Warrior Pack Bundle 1 - Explosive (https://assetstore.unity.com/packages/3d/anim
 Graphics:
 Raleway Font (https://fonts.google.com/specimen/Raleway)
 Debug Font (https://www.fontspace.com/debug-font-f53756)
+Roboto Condensed Font (https://fonts.google.com/specimen/Roboto+Condensed)
 VHS Tape Insert Static Sounds & Glitch Animation Effects - YouToogle (https://www.youtube.com/watch?v=i-B7NozPcJE)
 TV Color Bars Distorted with Static and Timecode - Joe Jabon (https://www.youtube.com/watch?v=Y62EgHvwa8k)
 A Game Of Soccer Being Played In A Soccer Field - Tom Fisk (https://www.pexels.com/video/a-game-of-soccer-being-played-in-a-soccer-field-3514371/)
