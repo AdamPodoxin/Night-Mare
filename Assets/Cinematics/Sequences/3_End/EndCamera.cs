@@ -8,6 +8,7 @@ public class EndCamera : MonoBehaviour
 
     private void Start()
     {
+        flashAnim.gameObject.SetActive(true);
         flashAnim.Play("Flash_Out");
     }
 }
