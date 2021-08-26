@@ -100,6 +100,13 @@ public class PlayerCamera : MonoBehaviour
     }
 
     public void FullDistort() { distort.intensity.value = distortAmount; }
+    public void NoDistort()
+    {
+        isInEyeball = false;
+
+        distort.intensity.value = 0;
+        redOverlay.SetActive(false);
+    }
 
     public void ToggleChase(bool isChasing)
     {

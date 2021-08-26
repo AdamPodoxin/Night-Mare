@@ -76,6 +76,9 @@ public class NightmareManager : MonoBehaviour
         collapseRed.SetActive(true);
 
         playerCam.ToggleChase(false);
+        playerCam.NoDistort();
         fps.ToggleChase(false);
+
+        FindObjectOfType<BedNightmare>().isDreamCollapsing = true;
     }
 }
