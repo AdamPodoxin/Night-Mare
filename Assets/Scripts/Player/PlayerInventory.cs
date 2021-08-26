@@ -164,5 +164,10 @@ public class PlayerInventory : MonoBehaviour
     {
         soulsCollected++;
         soulsUI.fillAmount = soulsCollected / 3f;
+
+        if (soulsCollected >= 3)
+        {
+            FindObjectOfType<NightmareManager>().StartCollapse();
+        }
     }
 }

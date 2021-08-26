@@ -34,6 +34,10 @@ public class BedNightmare : Interactable
 
     public Animator blinkAnim;
 
+    [Space]
+
+    [HideInInspector] public bool isDreamCollapsing = false;
+
     [SerializeField] private PlayerBrain playerBrain;
 
     public override void Interact(PlayerInteraction playerInteraction)
@@ -41,6 +45,10 @@ public class BedNightmare : Interactable
         if (demon.gameObject.activeInHierarchy)
         {
             Notification.instance.DisplayNotification("Cannot wake up while being hunted");
+        }
+        else if (isDreamCollapsing)
+        {
+            Notification.instance.DisplayNotification("CAN'T WAKE UP");
         }
         else
         {

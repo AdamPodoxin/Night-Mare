@@ -2,12 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using StarterAssets;
 
 public class NightmareManager : MonoBehaviour
 {
     public static NightmareManager instance;
 
-    public Animator blinkAnim;
+    [SerializeField] private Animator blinkAnim;
+
+    [Space]
+
+    [SerializeField] private GameObject enemiesParent;
+    [SerializeField] private GameObject collapseRed;
+
+    [Space]
+
+    [SerializeField] private PlayerCamera playerCam;
+    [SerializeField] private FirstPersonController fps;
+
+    [Space]
+
+    [SerializeField] private BedNightmare bed;
 
     private GameObject[] waypoints;
 
@@ -53,5 +68,14 @@ public class NightmareManager : MonoBehaviour
         //Sorts by ascending order based on distance from position
         waypointsInRadius = waypointsInRadius.OrderBy(w => Vector3.SqrMagnitude(w.position - position)).ToList();
         return waypointsInRadius.ToArray();
+    }
+
+    public void StartCollapse()
+    {
+        enemiesParent.SetActive(false);
+        collapseRed.SetActive(true);
+
+        playerCam.ToggleChase(false);
+        fps.ToggleChase(false);
     }
 }
