@@ -5,9 +5,6 @@ using UnityEngine;
 public class StickyCamera : MonoBehaviour
 {
     public float sensitivity = 30f;
-
-    [Space]
-
     public Vector2 lerpRot = new Vector2(1f, 180f);
 
     private float rotX;
