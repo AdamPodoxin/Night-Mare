@@ -39,6 +39,8 @@ public class IntroManager : MonoBehaviour
         }
     }
 
+    private bool _hasChangedMom = false;
+
     private void Start()
     {
         Cursor.visible = false;
@@ -49,7 +51,12 @@ public class IntroManager : MonoBehaviour
 
     private void DoChecks()
     {
-        if (interactedWithBoy && interactedWithGirl && gaveGirlBear)
+        if (infoBoxesInteracted == 3 && gaveGirlBear)
+        {
+            sleepCollider.SetActive(true);
+        }
+
+        if (interactedWithBoy && interactedWithGirl && gaveGirlBear && !_hasChangedMom)
         {
             momInfoBox.UpdateText
                 (momInfoBox.hasRead
@@ -58,11 +65,8 @@ public class IntroManager : MonoBehaviour
 
             momInfoBox.Close();
             momInfoBox.infoBoxI.gameObject.SetActive(true);
-        }
 
-        if (infoBoxesInteracted == 3)
-        {
-            sleepCollider.SetActive(true);
+            _hasChangedMom = true;
         }
     }
 

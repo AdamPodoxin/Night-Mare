@@ -70,6 +70,6 @@ public class IntroAnimationCamera : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         loadingText.SetActive(true);
-        SceneManager.LoadSceneAsync("2_Game", LoadSceneMode.Single);
+        SceneManager.LoadScene("2_Game", LoadSceneMode.Single);
     }
 }

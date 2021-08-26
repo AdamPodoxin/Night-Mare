@@ -60,7 +60,7 @@ public class PlayerBrain : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         loadingText.SetActive(true);
-        SceneManager.LoadSceneAsync("3_End", LoadSceneMode.Single);
+        SceneManager.LoadScene("3_End", LoadSceneMode.Single);
     }
 
     private IEnumerator DieCoroutine()
