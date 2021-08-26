@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Ball
   - Collapse
+  - Choice
   layers:
   - Default
   - TransparentFX
