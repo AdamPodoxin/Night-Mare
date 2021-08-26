@@ -27,11 +27,6 @@ public class EndManager : MonoBehaviour
     public AudioSource sfxSource;
     public AudioClip igniteClip;
 
-    [Space]
-
-    public AudioSource musicSource;
-    public AudioClip daylight;
-
     public void MakeChoice(string choice)
     {
         StartCoroutine(MakeChoiceCoroutine(choice));
@@ -61,8 +56,6 @@ public class EndManager : MonoBehaviour
         sfxSource.PlayOneShot(igniteClip);
 
         yield return new WaitForSeconds(1f);
-
-        musicSource.PlayOneShot(daylight);
 
         camAnim.enabled = true;
 

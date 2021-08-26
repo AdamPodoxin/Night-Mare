@@ -37,7 +37,9 @@ public class EndHouse : MonoBehaviour
     {
         fade.Play("Fade_Out_Slow");
 
-        yield return new WaitForSeconds(1.5f);
+        FindObjectOfType<DoorHell>().StartFade();
+
+        yield return new WaitForSeconds(4.5f);
 
         soulsCinematic.SetActive(false);
         pictureCinematic.SetActive(true);

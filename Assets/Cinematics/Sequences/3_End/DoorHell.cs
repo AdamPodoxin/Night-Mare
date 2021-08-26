@@ -8,6 +8,8 @@ public class DoorHell : MonoBehaviour
 
     private AudioSource source;
 
+    private bool isFading = false;
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -16,5 +18,15 @@ public class DoorHell : MonoBehaviour
     private void Update()
     {
         source.spatialBlend = spatialBlend;
+
+        if (isFading)
+        {
+            source.volume -= Time.deltaTime * 0.5f;
+        }
+    }
+
+    public void StartFade()
+    {
+        isFading = true;
     }
 }
