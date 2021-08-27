@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject loadingObject;
 
+    [Space]
+
+    public AudioSource globalSFX;
+    public AudioClip playClip;
+
     private DataManager dataManager;
 
     private void Start()
@@ -17,12 +22,14 @@ public class MainMenu : MonoBehaviour
     private IEnumerator PlayCoroutine()
     {
         loadingObject.SetActive(true);
+        globalSFX.PlayOneShot(playClip);
+
         yield return new WaitForSeconds(0.1f);
 
         if (dataManager.GetProgress().hasReadPrompts)
-            SceneManager.LoadScene("2_Game", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("2_Game", LoadSceneMode.Single);
         else
-            SceneManager.LoadScene("1_Intro", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("1_Intro", LoadSceneMode.Single);
     }
 
     public void Play()
