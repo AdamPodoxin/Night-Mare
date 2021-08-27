@@ -5,9 +5,11 @@ using System;
 
 public class CameraScreenshot : MonoBehaviour
 {
+    public KeyCode screenshotKey = KeyCode.F2;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Print))
+        if (Input.GetKeyDown(screenshotKey))
         {
             TakeScreenshot();
         }
@@ -16,7 +18,7 @@ public class CameraScreenshot : MonoBehaviour
     public void TakeScreenshot()
     {
         string path = Application.persistentDataPath + "/Screenshots/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
-        print(path);
+        print("Screenshot " + path + " taken");
 
         ScreenCapture.CaptureScreenshot(path);
     }
