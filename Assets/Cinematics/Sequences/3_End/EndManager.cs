@@ -27,6 +27,12 @@ public class EndManager : MonoBehaviour
     public AudioSource sfxSource;
     public AudioClip igniteClip;
 
+    [Space]
+
+    public MeshRenderer pictureRenderer;
+    public Material dadDead;
+    public Material familyDead;
+
     public void MakeChoice(string choice)
     {
         StartCoroutine(MakeChoiceCoroutine(choice));
@@ -42,11 +48,15 @@ public class EndManager : MonoBehaviour
                 //Sacrifice family
                 blueFlash.gameObject.SetActive(true);
                 blueFlash.Play("Flash_Out");
+
+                pictureRenderer.sharedMaterial = familyDead;
                 break;
             case "R":
                 //Sacrifice dad
                 greenFlash.gameObject.SetActive(true);
                 greenFlash.Play("Flash_Out");
+
+                pictureRenderer.sharedMaterial = dadDead;
                 break;
         }
 
