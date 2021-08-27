@@ -60,6 +60,7 @@ public class PlayerBrain : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         loadingText.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene("3_End", LoadSceneMode.Single);
     }
 
