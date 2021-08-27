@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class PauseMenu : MonoBehaviour
     [Space]
 
     public GameObject pauseMenu;
+    public GameObject quitMenu;
 
     [SerializeField] private bool canTogglePause = true;
     public bool CanTogglePause { get { return canTogglePause; } set { canTogglePause = value; } }
+
+    private string quitAction;
 
     private void Update()
     {
@@ -26,6 +30,18 @@ public class PauseMenu : MonoBehaviour
 
         Cursor.visible = isPaused;
         Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    private void ResetSeed()
+    {
+        try
+        {
+            FindObjectOfType<ArtifactSpawner>().ResetSeed();
+        }
+        catch
+        {
+            Debug.LogWarning("No ArtifactSpawner in scene");
+        }
     }
 
     public void Pause()
@@ -48,5 +64,36 @@ public class PauseMenu : MonoBehaviour
     {
         if (isPaused) UnPause();
         else Pause();
+    }
+
+    public void OpenQuitMenu(string quitAction)
+    {
+        this.quitAction = quitAction;
+        quitMenu.SetActive(true);
+        CanTogglePause = false;
+    }
+
+    public void QuitAction()
+    {
+        if (quitAction.Equals("Menu"))
+        {
+            GoToMenu();
+        }
+        else if (quitAction.Equals("Quit"))
+        {
+            Quit();
+        }
+    }
+
+    public void GoToMenu()
+    {
+        ResetSeed();
+        SceneManager.LoadSceneAsync("0_Menu", LoadSceneMode.Single);
+    }
+
+    public void Quit()
+    {
+        ResetSeed();
+        Application.Quit();
     }
 }

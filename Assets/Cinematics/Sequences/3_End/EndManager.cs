@@ -33,8 +33,14 @@ public class EndManager : MonoBehaviour
     public Material dadDead;
     public Material familyDead;
 
+    private void Start()
+    {
+        FindObjectOfType<PauseMenu>().CanTogglePause = false;
+    }
+
     public void MakeChoice(string choice)
     {
+        FindObjectOfType<PauseMenu>().CanTogglePause = false;
         StartCoroutine(MakeChoiceCoroutine(choice));
     }
 

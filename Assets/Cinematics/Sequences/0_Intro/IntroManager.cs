@@ -47,6 +47,8 @@ public class IntroManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         fadeAnim.Play("Fade_In");
+
+        FindObjectOfType<PauseMenu>().CanTogglePause = false;
     }
 
     private void DoChecks()

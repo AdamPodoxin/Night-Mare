@@ -19,5 +19,7 @@ public class GameManager : MonoBehaviour
             monologue.SetActive(false);
             preNightmare.SetActive(true);
         }
+
+        FindObjectOfType<PauseMenu>().CanTogglePause = false;
     }
 }

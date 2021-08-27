@@ -82,6 +82,8 @@ public class PreNightmareAnimationCamera : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+
+        FindObjectOfType<PauseMenu>().CanTogglePause = true;
     }
 
     public void StartLerp()
