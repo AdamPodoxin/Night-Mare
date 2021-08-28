@@ -16,6 +16,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private bool canTogglePause = true;
     public bool CanTogglePause { get { return canTogglePause; } set { canTogglePause = value; } }
 
+    [Space]
+
+    [SerializeField] private ArtifactSpawner artifactSpawner;
+
     private string quitAction;
 
     private void Update()
@@ -36,7 +40,7 @@ public class PauseMenu : MonoBehaviour
     {
         try
         {
-            FindObjectOfType<ArtifactSpawner>().ResetSeed();
+            artifactSpawner.ResetSeed();
         }
         catch
         {
@@ -88,12 +92,14 @@ public class PauseMenu : MonoBehaviour
     public void GoToMenu()
     {
         ResetSeed();
-        SceneManager.LoadSceneAsync("0_Menu", LoadSceneMode.Single);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("0_Menu", LoadSceneMode.Single);
     }
 
     public void Quit()
     {
         ResetSeed();
+        Time.timeScale = 1f;
         Application.Quit();
     }
 }

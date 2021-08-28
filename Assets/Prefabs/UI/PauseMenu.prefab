@@ -882,6 +882,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1199034995215653352}
   quitMenu: {fileID: 1199034996048490717}
   canTogglePause: 1
+  artifactSpawner: {fileID: 0}
 --- !u!1 &1199034995551900434
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,11 +20,12 @@ public class ArtifactSpawner : MonoBehaviour
 
     [SerializeField] private bool _createNewSeed = true;
 
-    private DataManager dataManager;
+    [SerializeField] private DataManager dataManager;
 
     private void Start()
     {
-        dataManager = FindObjectOfType<DataManager>();
+        if (dataManager == null)
+            dataManager = FindObjectOfType<DataManager>();
 
         mySeed = dataManager.GetProgress().seed;
         _createNewSeed = mySeed.Length != 6;
