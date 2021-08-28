@@ -20,6 +20,8 @@ public class SettingsMenu : MonoBehaviour
     private bool hasPopulated = false;
     private int menuIndex;
 
+    [SerializeField] private SettingsManager settingsManager;
+
     private void PopulateSettings()
     {
         //TEMP
@@ -58,20 +60,21 @@ public class SettingsMenu : MonoBehaviour
                 volumeLabels[index].text = "Master: " + (int)(volumeSliders[index].value * 100f) + "%";
                 break;
             case 1:
-                volumeLabels[index].text = "Sounds: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                volumeLabels[index].text = "Sounds: " + (int)(volumeSliders[index].value * 100f) + "%";
                 break;
             case 2:
-                volumeLabels[index].text = "Voice: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                volumeLabels[index].text = "Voice: " + (int)(volumeSliders[index].value * 100f) + "%";
                 break;
             case 3:
-                volumeLabels[index].text = "Music: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                volumeLabels[index].text = "Music: " + (int)(volumeSliders[index].value * 100f) + "%";
                 break;
         }
     }
 
     public void ApplySettings()
     {
-        //TEMP
-        print("Apply settings");
+        settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
+
+        settingsManager.ApplySettings();
     }
 }
