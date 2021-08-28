@@ -2621,6 +2621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760806642}
   - component: {fileID: 760806641}
+  - component: {fileID: 760806643}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -2654,6 +2655,18 @@ Transform:
   m_Father: {fileID: 2035699024}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &760806643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760806640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a77619853f3c3243a8c434e6663db24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &810706766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4849,6 +4862,8 @@ MonoBehaviour:
   voiceMixer: {fileID: 24100000, guid: bebed9df5a82c8d45a85a220ffecda5b, type: 2}
   musicMixer: {fileID: 24100000, guid: d33041cc33d873b419594e7af161f663, type: 2}
   fps: []
+  subtitles: []
+  settingsMenu: {fileID: 1872141644}
 --- !u!1 &1238618104
 GameObject:
   m_ObjectHideFlags: 0

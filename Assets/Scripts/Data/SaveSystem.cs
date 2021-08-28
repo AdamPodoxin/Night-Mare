@@ -6,7 +6,7 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     //Change these to your preference
-    public enum SaveType { Progress }
+    public enum SaveType { Progress, Settings }
 
     public static void SaveData(SaveType saveType, object saveData)
     {

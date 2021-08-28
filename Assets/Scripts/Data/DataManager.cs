@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     private GameProgress gameProgress = null;
+    private Settings settings;
 
     private void SaveProgress()
     {
@@ -29,5 +30,24 @@ public class DataManager : MonoBehaviour
     {
         gameProgress.seed = seed;
         SaveProgress();
+    }
+
+    private void SaveSettings()
+    {
+        SaveSystem.SaveData(SaveSystem.SaveType.Settings, settings);
+    }
+
+    public Settings GetSettings()
+    {
+        settings = SaveSystem.LoadData<Settings>(SaveSystem.SaveType.Settings);
+        if (settings == null) settings = Settings.Default();
+
+        return settings;
+    }
+
+    public void SetSettings(Settings settings)
+    {
+        this.settings = settings;
+        SaveSettings();
     }
 }

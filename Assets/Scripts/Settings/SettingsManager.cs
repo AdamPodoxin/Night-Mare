@@ -17,6 +17,24 @@ public class SettingsManager : MonoBehaviour
     [Header("Controls")]
     public FirstPersonController[] fps;
 
+    [Header("Gameplay")]
+    public GameObject[] subtitles;
+
+    [Space]
+
+    [SerializeField] private SettingsMenu settingsMenu;
+    private DataManager dataManager;
+
+    private void Start()
+    {
+        dataManager = FindObjectOfType<DataManager>();
+
+        settings = dataManager.GetSettings();
+        ApplySettings();
+
+        if (settingsMenu != null) settingsMenu.Populate();
+    }
+
     public void SetVideoSettings(VideoSettings videoSettings)
     {
         settings.video = videoSettings;
@@ -56,23 +74,59 @@ public class SettingsManager : MonoBehaviour
         }
 
         //Gameplay
+        foreach (GameObject g in subtitles)
+        {
+            g.SetActive(settings.gameplay.subtitles);
+        }
 
+        SaveSettings();
+    }
+
+    public void SaveSettings()
+    {
+        dataManager.SetSettings(settings);
     }
 }
 
 [System.Serializable]
-public struct Settings
+public class Settings
 {
     public VideoSettings video;
     public AudioSettings audio;
     public ControlsSettings controls;
     public GameplaySettings gameplay;
+
+    public Settings()
+    {
+
+    }
+
+    public Settings(VideoSettings video, AudioSettings audio, ControlsSettings controls, GameplaySettings gameplay)
+    {
+        this.video = video;
+        this.audio = audio;
+        this.controls = controls;
+        this.gameplay = gameplay;
+    }
+
+    public static Settings Default()
+    {
+        return new Settings(VideoSettings.Default(), AudioSettings.Default(), ControlsSettings.Default(), GameplaySettings.Default());
+    }
 }
 
 [System.Serializable]
 public class VideoSettings
 {
+    public VideoSettings()
+    {
 
+    }
+
+    public static VideoSettings Default()
+    {
+        return new VideoSettings();
+    }
 }
 
 [System.Serializable]
@@ -96,7 +150,7 @@ public class AudioSettings
         this.musicVolume = musicVolume;
     }
 
-    public AudioSettings Default()
+    public static AudioSettings Default()
     {
         return new AudioSettings(1f, 0f, 0f, 0f);
     }
@@ -117,7 +171,7 @@ public class ControlsSettings
         this.sensitivity = sensitivity;
     }
 
-    public ControlsSettings Default()
+    public static ControlsSettings Default()
     {
         return new ControlsSettings(0.35f);
     }
@@ -138,7 +192,7 @@ public class GameplaySettings
         this.subtitles = subtitles;
     }
 
-    public GameplaySettings Default()
+    public static GameplaySettings Default()
     {
         return new GameplaySettings(true);
     }

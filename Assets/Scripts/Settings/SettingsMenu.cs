@@ -29,16 +29,28 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] private SettingsManager settingsManager;
 
-    private void PopulateSettings()
+    public void Populate()
     {
-        //TEMP
+        //Video
+
+
+        //Audio
+        volumeSliders[0].value = settingsManager.settings.audio.masterVolume;
+        volumeSliders[1].value = settingsManager.settings.audio.sfxVolume;
+        volumeSliders[2].value = settingsManager.settings.audio.voiceVolume;
+        volumeSliders[3].value = settingsManager.settings.audio.musicVolume;
+
+        UpdateVolumeLabel(0);
+        UpdateVolumeLabel(1);
+        UpdateVolumeLabel(2);
+        UpdateVolumeLabel(3);
 
         hasPopulated = true;
     }
 
     public void Open()
     {
-        if (!hasPopulated) PopulateSettings();
+        if (!hasPopulated) Populate();
         settingsMenu.SetActive(true);
     }
 
