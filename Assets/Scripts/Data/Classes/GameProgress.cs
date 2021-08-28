@@ -9,4 +9,10 @@ public class GameProgress
         seed = "NSEED";
         hasReadPrompts = false;
     }
+
+    public GameProgress(string seed, bool hasReadPrompts)
+    {
+        this.seed = seed;
+        this.hasReadPrompts = hasReadPrompts;
+    }
 }

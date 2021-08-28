@@ -133,6 +133,11 @@ public class SettingsManager : MonoBehaviour
     {
         dataManager.SetSettings(settings);
     }
+
+    public void ResetProgress()
+    {
+        dataManager.ResetProgress();
+    }
 }
 
 [System.Serializable]

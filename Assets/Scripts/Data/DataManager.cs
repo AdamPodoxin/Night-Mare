@@ -32,6 +32,12 @@ public class DataManager : MonoBehaviour
         SaveProgress();
     }
 
+    public void ResetProgress()
+    {
+        gameProgress = new GameProgress();
+        SaveProgress();
+    }
+
     private void SaveSettings()
     {
         SaveSystem.SaveData(SaveSystem.SaveType.Settings, settings);

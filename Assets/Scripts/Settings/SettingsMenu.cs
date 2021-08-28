@@ -186,4 +186,9 @@ public class SettingsMenu : MonoBehaviour
     {
         settingsManager.Revert();
     }
+
+    public void ResetProgress()
+    {
+        settingsManager.ResetProgress();
+    }
 }
