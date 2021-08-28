@@ -12,19 +12,24 @@ public class SettingsMenu : MonoBehaviour
     public Button[] headerButtons;
     public GameObject[] menus;
 
-    private bool hasLoaded = false;
+    [Space]
+    [Header("Audio")]
+    public Slider[] volumeSliders;
+    public Text[] volumeLabels;
+
+    private bool hasPopulated = false;
     private int menuIndex;
 
-    private void LoadSettings()
+    private void PopulateSettings()
     {
         //TEMP
 
-        hasLoaded = true;
+        hasPopulated = true;
     }
 
     public void Open()
     {
-        if (!hasLoaded) LoadSettings();
+        if (!hasPopulated) PopulateSettings();
         settingsMenu.SetActive(true);
     }
 
@@ -37,12 +42,30 @@ public class SettingsMenu : MonoBehaviour
     {
         this.menuIndex = menuIndex;
 
-        //headerButtons[menuIndex].Select();
         headerButtons[menuIndex].GetComponent<Image>().color = headerButtons[menuIndex].colors.selectedColor;
         for (int i = 0; i < menus.Length; i++)
         {
             headerButtons[i].enabled = i != menuIndex;
             menus[i].SetActive(i == menuIndex);
+        }
+    }
+
+    public void UpdateVolumeLabel(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                volumeLabels[index].text = "Master: " + (int)(volumeSliders[index].value * 100f) + "%";
+                break;
+            case 1:
+                volumeLabels[index].text = "Sounds: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                break;
+            case 2:
+                volumeLabels[index].text = "Voice: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                break;
+            case 3:
+                volumeLabels[index].text = "Music: " + (int)(((int)volumeSliders[index].value + 80f) * 1.25f) + "%";
+                break;
         }
     }
 
