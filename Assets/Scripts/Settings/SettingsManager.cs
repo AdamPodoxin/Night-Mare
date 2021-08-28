@@ -79,7 +79,18 @@ public class SettingsManager : MonoBehaviour
             g.SetActive(settings.gameplay.subtitles);
         }
 
+        if (settingsMenu != null) settingsMenu.Populate();
         SaveSettings();
+    }
+
+    public void Revert()
+    {
+        SetVideoSettings(VideoSettings.Default());
+        SetAudioSettings(AudioSettings.Default());
+        SetControlsSettings(ControlsSettings.Default());
+        SetGameplaySettings(GameplaySettings.Default());
+
+        ApplySettings();
     }
 
     public void SaveSettings()
@@ -152,7 +163,7 @@ public class AudioSettings
 
     public static AudioSettings Default()
     {
-        return new AudioSettings(1f, 0f, 0f, 0f);
+        return new AudioSettings(1f, 1f, 1f, 1f);
     }
 }
 

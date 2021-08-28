@@ -103,4 +103,9 @@ public class SettingsMenu : MonoBehaviour
 
         settingsManager.ApplySettings();
     }
+
+    public void Revert()
+    {
+        settingsManager.Revert();
+    }
 }
