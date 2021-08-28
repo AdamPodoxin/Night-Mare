@@ -11,8 +11,8 @@ public class SettingsManager : MonoBehaviour
 
     [Space]
     [Header("Video")]
-    public PostProcessVolume normalVolume;
-    public PostProcessVolume nightmareVolume;
+    public PostProcessVolume[] normalVolumes;
+    public PostProcessVolume[] nightmareVolumes;
 
     [Header("Audio")]
     public AudioMixer sfxMixer;
@@ -29,6 +29,12 @@ public class SettingsManager : MonoBehaviour
 
     [SerializeField] private SettingsMenu settingsMenu;
     private DataManager dataManager;
+
+    [Space]
+
+    public float _normalBloomIntensity = 5f;
+    public float _nightmareBloomIntensity = 10f;
+    public float _motionBlurIntensity = 200f;
 
     private void Start()
     {
@@ -70,18 +76,24 @@ public class SettingsManager : MonoBehaviour
         Bloom bloom;
         MotionBlur motionBlur;
 
-        if (normalVolume != null)
+        if (normalVolumes.Length > 0)
         {
-            normalVolume.profile.TryGetSettings(out bloom);
-            bloom.enabled.value = settings.video.bloom;
+            foreach (PostProcessVolume ppv in normalVolumes)
+            {
+                ppv.profile.TryGetSettings(out bloom);
+                bloom.intensity.value = settings.video.bloom ? _normalBloomIntensity : 0f;
+            }
         }
 
-        if (nightmareVolume != null)
+        if (nightmareVolumes.Length > 0)
         {
-            nightmareVolume.profile.TryGetSettings(out bloom);
-            nightmareVolume.profile.TryGetSettings(out motionBlur);
-            bloom.enabled.value = settings.video.bloom;
-            motionBlur.enabled.value = settings.video.motionBlur;
+            foreach (PostProcessVolume ppv in nightmareVolumes)
+            {
+                ppv.profile.TryGetSettings(out bloom);
+                ppv.profile.TryGetSettings(out motionBlur);
+                bloom.intensity.value = settings.video.bloom ? _nightmareBloomIntensity : 0f;
+                motionBlur.shutterAngle.value = settings.video.motionBlur ? _motionBlurIntensity : 0f;
+            }
         }
 
         //Audio

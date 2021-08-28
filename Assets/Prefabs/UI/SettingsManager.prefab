@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &169152416629182472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169152416629182479}
+  - component: {fileID: 169152416629182478}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &169152416629182479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169152416629182472}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &169152416629182478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169152416629182472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826ca23c7aa42a14ea46f40f497aec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    video:
+      width: 0
+      height: 0
+      fullscreen: 0
+      qualityIndex: 0
+      framerate: 0
+      vsync: 0
+      bloom: 0
+      motionBlur: 0
+    audio:
+      masterVolume: 0
+      sfxVolume: 0
+      voiceVolume: 0
+      musicVolume: 0
+    controls:
+      sensitivity: 0
+    gameplay:
+      subtitles: 0
+  normalVolumes: []
+  nightmareVolumes: []
+  sfxMixer: {fileID: 24100000, guid: eeae79e708e25b143815e878adf18780, type: 2}
+  voiceMixer: {fileID: 24100000, guid: bebed9df5a82c8d45a85a220ffecda5b, type: 2}
+  musicMixer: {fileID: 24100000, guid: d33041cc33d873b419594e7af161f663, type: 2}
+  fps: []
+  subtitles: []
+  settingsMenu: {fileID: 0}
+  _normalBloomIntensity: 5
+  _nightmareBloomIntensity: 10
+  _motionBlurIntensity: 200
