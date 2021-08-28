@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using StarterAssets;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.PostProcessing;
+using StarterAssets;
 
 public class SettingsManager : MonoBehaviour
 {
     public Settings settings;
 
     [Space]
+    [Header("Video")]
+    public PostProcessVolume normalVolume;
+    public PostProcessVolume nightmareVolume;
+
     [Header("Audio")]
     public AudioMixer sfxMixer;
     public AudioMixer voiceMixer;
@@ -58,7 +63,26 @@ public class SettingsManager : MonoBehaviour
     public void ApplySettings()
     {
         //Video
+        Screen.SetResolution(settings.video.width, settings.video.height, settings.video.fullscreen, settings.video.framerate);
+        QualitySettings.SetQualityLevel(settings.video.qualityIndex);
+        QualitySettings.vSyncCount = settings.video.vsync ? 1 : 0;
 
+        Bloom bloom;
+        MotionBlur motionBlur;
+
+        if (normalVolume != null)
+        {
+            normalVolume.profile.TryGetSettings(out bloom);
+            bloom.enabled.value = settings.video.bloom;
+        }
+
+        if (nightmareVolume != null)
+        {
+            nightmareVolume.profile.TryGetSettings(out bloom);
+            nightmareVolume.profile.TryGetSettings(out motionBlur);
+            bloom.enabled.value = settings.video.bloom;
+            motionBlur.enabled.value = settings.video.motionBlur;
+        }
 
         //Audio
         AudioListener.volume = settings.audio.masterVolume;
@@ -132,22 +156,32 @@ public class VideoSettings
     public int width;
     public int height;
     public bool fullscreen;
+    public int qualityIndex;
+    public int framerate;
+    public bool vsync;
+    public bool bloom;
+    public bool motionBlur;
 
     public VideoSettings()
     {
 
     }
 
-    public VideoSettings(int width, int height, bool fullscreen)
+    public VideoSettings(int width, int height, bool fullscreen, int qualityIndex, int framerate, bool vsync, bool bloom, bool motionBlur)
     {
         this.width = width;
         this.height = height;
         this.fullscreen = fullscreen;
+        this.qualityIndex = qualityIndex;
+        this.framerate = framerate;
+        this.vsync = vsync;
+        this.bloom = bloom;
+        this.motionBlur = motionBlur;
     }
 
     public static VideoSettings Default()
     {
-        return new VideoSettings();
+        return new VideoSettings(Screen.currentResolution.width, Screen.currentResolution.height, true, QualitySettings.GetQualityLevel(), 60, false, true, true);
     }
 }
 

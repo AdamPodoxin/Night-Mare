@@ -12,7 +12,7 @@ public class SaveSystem : MonoBehaviour
     {
         try
         {
-            string jsonStr = JsonUtility.ToJson(saveData);
+            string jsonStr = JsonUtility.ToJson(saveData, true);
             File.WriteAllText(SaveTypeToPath(saveType), jsonStr);
         }
         catch

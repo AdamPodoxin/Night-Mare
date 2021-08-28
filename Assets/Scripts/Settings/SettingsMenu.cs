@@ -15,6 +15,13 @@ public class SettingsMenu : MonoBehaviour
     [Space]
     [Header("Video")]
     public Dropdown resolutionsDropdown;
+    public Toggle fullscreenToggle;
+    public Dropdown qualityDropdown;
+    public Dropdown framerateDropdown;
+    public Toggle vsyncToggle;
+
+    public Toggle bloomToggle;
+    public Toggle motionBlurToggle;
 
     [Header("Audio")]
     public Slider[] volumeSliders;
@@ -34,6 +41,11 @@ public class SettingsMenu : MonoBehaviour
 
     private Resolution[] resolutions;
 
+    private void Start()
+    {
+        OpenMenu(0);
+    }
+
     public void Populate()
     {
         //Video
@@ -52,8 +64,39 @@ public class SettingsMenu : MonoBehaviour
             resolutionsOptions.Add(option);
         }
 
-        resolutionsDropdown.ClearOptions();
-        resolutionsDropdown.AddOptions(resolutionsOptions);
+        if (!hasPopulated)
+        {
+            resolutionsDropdown.ClearOptions();
+            resolutionsDropdown.AddOptions(resolutionsOptions);
+        }
+
+        string currentResolution = settingsManager.settings.video.width + "x" + settingsManager.settings.video.height;
+        for (int i = 0; i < resolutionsOptions.Count; i++)
+        {
+            if (resolutionsOptions[i].Equals(currentResolution))
+            {
+                resolutionsDropdown.value = i;
+                break;
+            }
+        }
+
+        fullscreenToggle.isOn = settingsManager.settings.video.fullscreen;
+
+        qualityDropdown.value = settingsManager.settings.video.qualityIndex;
+
+        for (int i = 0; i < framerateDropdown.options.Count; i++)
+        {
+            if (framerateDropdown.options[i].text.Equals(settingsManager.settings.video.framerate.ToString()))
+            {
+                framerateDropdown.value = i;
+                break;
+            }
+        }
+
+        vsyncToggle.isOn = settingsManager.settings.video.vsync;
+
+        bloomToggle.isOn = settingsManager.settings.video.bloom;
+        motionBlurToggle.isOn = settingsManager.settings.video.motionBlur;
 
         //Audio
         volumeSliders[0].value = settingsManager.settings.audio.masterVolume;
@@ -118,6 +161,14 @@ public class SettingsMenu : MonoBehaviour
 
     public void ApplySettings()
     {
+        int currentResolutionIndex = resolutionsDropdown.value;
+        string currentResolution = resolutionsDropdown.options[currentResolutionIndex].text;
+
+        int width = int.Parse(currentResolution.Split('x')[0]);
+        int height = int.Parse(currentResolution.Split('x')[1]);
+
+
+        settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn));
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
         settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
         settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn));
