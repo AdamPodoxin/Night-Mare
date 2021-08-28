@@ -129,9 +129,20 @@ public class Settings
 [System.Serializable]
 public class VideoSettings
 {
+    public int width;
+    public int height;
+    public bool fullscreen;
+
     public VideoSettings()
     {
 
+    }
+
+    public VideoSettings(int width, int height, bool fullscreen)
+    {
+        this.width = width;
+        this.height = height;
+        this.fullscreen = fullscreen;
     }
 
     public static VideoSettings Default()

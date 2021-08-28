@@ -13,6 +13,9 @@ public class SettingsMenu : MonoBehaviour
     public GameObject[] menus;
 
     [Space]
+    [Header("Video")]
+    public Dropdown resolutionsDropdown;
+
     [Header("Audio")]
     public Slider[] volumeSliders;
     public Text[] volumeLabels;
@@ -24,15 +27,33 @@ public class SettingsMenu : MonoBehaviour
     [Header("Gameplay")]
     public Toggle subtitlesToggle;
 
+    [SerializeField] private SettingsManager settingsManager;
+
     private bool hasPopulated = false;
     private int menuIndex;
 
-    [SerializeField] private SettingsManager settingsManager;
+    private Resolution[] resolutions;
 
     public void Populate()
     {
         //Video
+        resolutions = Screen.resolutions;
 
+        List<string> resolutionsOptions = new List<string>();
+        foreach (Resolution r in resolutions)
+        {
+            string option = r.width + "x" + r.height;
+
+            if (resolutionsOptions.Contains(option))
+            {
+                continue;
+            }
+
+            resolutionsOptions.Add(option);
+        }
+
+        resolutionsDropdown.ClearOptions();
+        resolutionsDropdown.AddOptions(resolutionsOptions);
 
         //Audio
         volumeSliders[0].value = settingsManager.settings.audio.masterVolume;
