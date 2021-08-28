@@ -109,6 +109,12 @@ public class SettingsMenu : MonoBehaviour
         UpdateVolumeLabel(2);
         UpdateVolumeLabel(3);
 
+        //Controls
+        sensitivitySlider.value = settingsManager.settings.controls.sensitivity;
+
+        //Gameplay
+        subtitlesToggle.isOn = settingsManager.settings.gameplay.subtitles;
+
         hasPopulated = true;
     }
 
