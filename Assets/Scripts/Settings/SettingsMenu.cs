@@ -17,6 +17,11 @@ public class SettingsMenu : MonoBehaviour
     public Slider[] volumeSliders;
     public Text[] volumeLabels;
 
+    [Space]
+    [Header("Controls")]
+    public Slider sensitivitySlider;
+    public Text sensitivityLabel;
+
     private bool hasPopulated = false;
     private int menuIndex;
 
@@ -71,9 +76,15 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+    public void UpdateSensitivityLabel()
+    {
+        sensitivityLabel.text = "Sensitivity: " + (int)(sensitivitySlider.value * 100f) + "%";
+    }
+
     public void ApplySettings()
     {
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
+        settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
 
         settingsManager.ApplySettings();
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
@@ -8,10 +9,15 @@ public class SettingsManager : MonoBehaviour
     public Settings settings;
 
     [Space]
+    [Header("Audio")]
 
     public AudioMixer sfxMixer;
     public AudioMixer voiceMixer;
     public AudioMixer musicMixer;
+
+    [Space]
+    [Header("Controls")]
+    public FirstPersonController[] fps;
 
     public void SetVideoSettings(VideoSettings videoSettings)
     {
@@ -23,12 +29,12 @@ public class SettingsManager : MonoBehaviour
         settings.audio = audioSettings;
     }
 
-    public void SetVideoSettings(ControlsSettings controlsSettings)
+    public void SetControlsSettings(ControlsSettings controlsSettings)
     {
         settings.controls = controlsSettings;
     }
 
-    public void SetVideoSettings(GameplaySettings gameplaySettings)
+    public void SetGameplaySettings(GameplaySettings gameplaySettings)
     {
         settings.gameplay = gameplaySettings;
     }
@@ -37,12 +43,22 @@ public class SettingsManager : MonoBehaviour
     {
         //Video
 
+
         //Audio
         AudioListener.volume = settings.audio.masterVolume;
 
         sfxMixer.SetFloat("Volume", Mathf.Log10(settings.audio.sfxVolume) * 20f);
         voiceMixer.SetFloat("Volume", Mathf.Log10(settings.audio.voiceVolume) * 20f);
         musicMixer.SetFloat("Volume", Mathf.Log10(settings.audio.musicVolume) * 20f);
+
+        //Controls
+        foreach (FirstPersonController f in fps)
+        {
+            f.RotationSpeed = settings.controls.sensitivity;
+        }
+
+        //Gameplay
+
     }
 }
 
@@ -91,7 +107,22 @@ public class AudioSettings
 [System.Serializable]
 public class ControlsSettings
 {
+    public float sensitivity;
 
+    public ControlsSettings()
+    {
+
+    }
+
+    public ControlsSettings(float sensitivity)
+    {
+        this.sensitivity = sensitivity;
+    }
+
+    public ControlsSettings Default()
+    {
+        return new ControlsSettings(0.35f);
+    }
 }
 
 [System.Serializable]
