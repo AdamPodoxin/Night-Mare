@@ -10,12 +10,10 @@ public class SettingsManager : MonoBehaviour
 
     [Space]
     [Header("Audio")]
-
     public AudioMixer sfxMixer;
     public AudioMixer voiceMixer;
     public AudioMixer musicMixer;
 
-    [Space]
     [Header("Controls")]
     public FirstPersonController[] fps;
 
@@ -128,5 +126,20 @@ public class ControlsSettings
 [System.Serializable]
 public class GameplaySettings
 {
+    public bool subtitles;
 
+    public GameplaySettings()
+    {
+
+    }
+
+    public GameplaySettings(bool subtitles)
+    {
+        this.subtitles = subtitles;
+    }
+
+    public GameplaySettings Default()
+    {
+        return new GameplaySettings(true);
+    }
 }

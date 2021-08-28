@@ -17,10 +17,12 @@ public class SettingsMenu : MonoBehaviour
     public Slider[] volumeSliders;
     public Text[] volumeLabels;
 
-    [Space]
     [Header("Controls")]
     public Slider sensitivitySlider;
     public Text sensitivityLabel;
+
+    [Header("Gameplay")]
+    public Toggle subtitlesToggle;
 
     private bool hasPopulated = false;
     private int menuIndex;
@@ -85,6 +87,7 @@ public class SettingsMenu : MonoBehaviour
     {
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
         settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
+        settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn));
 
         settingsManager.ApplySettings();
     }
