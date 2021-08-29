@@ -56,12 +56,24 @@ public class PauseMenu : MonoBehaviour
         UpdatePauseElements();
     }
 
+    private IEnumerator UnPauseCoroutine()
+    {
+        PlayerInteraction pInteraction = FindObjectOfType<PlayerInteraction>();
+        pInteraction.enabled = false;
+
+        yield return new WaitForSeconds(0.2f);
+
+        pInteraction.enabled = true;
+    }
+
     public void UnPause()
     {
         if (!canTogglePause) return;
 
         isPaused = false;
         UpdatePauseElements();
+
+        StartCoroutine(UnPauseCoroutine());
     }
 
     public void TogglePause()
