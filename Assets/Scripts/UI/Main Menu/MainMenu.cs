@@ -20,6 +20,9 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         dataManager = FindObjectOfType<DataManager>();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()

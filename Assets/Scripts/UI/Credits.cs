@@ -27,6 +27,9 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         CreateCredits();
     }
 
