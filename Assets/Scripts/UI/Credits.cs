@@ -19,10 +19,6 @@ public class Credits : MonoBehaviour
     public RectTransform creditsParent;
     public float scrollSpeed = 0.5f;
 
-    [SerializeField] private float scrollTimeMultiplier = 62.12f;
-    private float scrollDuration;
-    private float _scrollTimer = 0f;
-
     private bool _isExiting = false;
 
     private void Start()
@@ -33,25 +29,16 @@ public class Credits : MonoBehaviour
         CreateCredits();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ScrollCredits();
 
-        if (Input.anyKeyDown)
-        {
-            Exit();
-        }
+        if (Input.anyKeyDown) Exit();
     }
 
     private void ScrollCredits()
     {
-        creditsParent.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
-
-        _scrollTimer += Time.deltaTime;
-        if (_scrollTimer >= scrollDuration)
-        {
-            Exit();
-        }
+        creditsParent.Translate(scrollSpeed * Time.fixedDeltaTime * Vector3.up);
     }
 
     public void CreateCredits()
@@ -100,8 +87,6 @@ public class Credits : MonoBehaviour
             leftText.text += '\n';
             rightText.text += '\n';
         }
-
-        scrollDuration = scrollTimeMultiplier * lines.Length / scrollSpeed;
     }
 
     public void Exit()

@@ -331,8 +331,7 @@ MonoBehaviour:
   leftText: {fileID: 79141884}
   rightText: {fileID: 1116404781}
   creditsParent: {fileID: 1195975192}
-  scrollSpeed: 100
-  scrollTimeMultiplier: 62.12
+  scrollSpeed: 125
 --- !u!1001 &999901774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,7 +621,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d33041cc33d873b419594e7af161f663, type: 2}
-  m_audioClip: {fileID: 8300000, guid: dcc3ece576d958e48b3f659a09d59143, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bd4830094706c94409c2aa89754b6d6c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
