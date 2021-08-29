@@ -59,11 +59,13 @@ public class PauseMenu : MonoBehaviour
     private IEnumerator UnPauseCoroutine()
     {
         PlayerInteraction pInteraction = FindObjectOfType<PlayerInteraction>();
-        pInteraction.enabled = false;
 
-        yield return new WaitForSeconds(0.2f);
-
-        pInteraction.enabled = true;
+        if (pInteraction != null)
+        {
+            pInteraction.enabled = false;
+            yield return new WaitForSeconds(0.15f);
+            pInteraction.enabled = true;
+        }
     }
 
     public void UnPause()
