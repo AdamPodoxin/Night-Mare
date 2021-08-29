@@ -332,6 +332,7 @@ MonoBehaviour:
   rightText: {fileID: 1116404781}
   creditsParent: {fileID: 1195975192}
   scrollSpeed: 100
+  scrollTimeMultiplier: 62.12
 --- !u!1 &1116404779
 GameObject:
   m_ObjectHideFlags: 0

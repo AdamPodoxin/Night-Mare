@@ -4,7 +4,15 @@ Inspired by u/WwolfDub on r/gameideas (https://www.reddit.com/r/gameideas/commen
 
 
 
-
+Story : Adam
+Assistant Story : Gabriel
+Programming : Adam
+Level Design : Adam
+Assistant Level Design : Adam
+3D Models : Gabriel
+Voice Acting : Adam
+Graphic Design : Adam
+Assistant Graphic Design : Gabriel
 
 
 --EXTERNAL:
@@ -116,3 +124,9 @@ Les Temps Ont Changé : Cryo Chamber (https://www.youtube.com/watch?v=7UyCz0-Ucx
 
 --Other
 Quick Outline : Chris Nolet (https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488)
+
+
+
+
+
+A Gaming Blobfish Production

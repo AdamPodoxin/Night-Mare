@@ -19,6 +19,10 @@ public class Credits : MonoBehaviour
     public RectTransform creditsParent;
     public float scrollSpeed = 0.5f;
 
+    [SerializeField] private float scrollTimeMultiplier = 62.12f;
+    private float scrollDuration;
+    private float _scrollTimer = 0f;
+
     private bool _isExiting = false;
 
     private void Start()
@@ -30,16 +34,21 @@ public class Credits : MonoBehaviour
     {
         ScrollCredits();
 
-        if (Input.anyKeyDown && !_isExiting)
+        if (Input.anyKeyDown)
         {
-            _isExiting = true;
-            SceneManager.LoadSceneAsync("0_Menu", LoadSceneMode.Single);
+            Exit();
         }
     }
 
     private void ScrollCredits()
     {
         creditsParent.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
+
+        _scrollTimer += Time.deltaTime;
+        if (_scrollTimer >= scrollDuration)
+        {
+            Exit();
+        }
     }
 
     public void CreateCredits()
@@ -53,11 +62,7 @@ public class Credits : MonoBehaviour
         {
             if (line.StartsWith("--"))
             {
-                //newLine = "<b>" + line.Replace("--", "") + "</b>";
-
                 centerText.text += "<b>" + line.Replace("--", "") + "</b>";
-                //leftText.text += '\n';
-                //rightText.text += '\n';
             }
             else if (line.Contains(" : "))
             {
@@ -65,10 +70,15 @@ public class Credits : MonoBehaviour
 
                 leftText.text += splitLine[0];
 
-                int websiteIndex = splitLine[1].IndexOf('(');
-                rightText.text += splitLine[1].Substring(0, websiteIndex);
-
-                //centerText.text += '\n';
+                if (line.Contains("("))
+                {
+                    int websiteIndex = splitLine[1].IndexOf('(');
+                    rightText.text += splitLine[1].Substring(0, websiteIndex);
+                }
+                else
+                {
+                    rightText.text += splitLine[1];
+                }
             }
             else
             {
@@ -80,14 +90,23 @@ public class Credits : MonoBehaviour
                 else
                 {
                     centerText.text += line;
-                    //leftText.text += '\n';
-                    //rightText.text += '\n';
                 }
             }
 
             centerText.text += '\n';
             leftText.text += '\n';
             rightText.text += '\n';
+        }
+
+        scrollDuration = scrollTimeMultiplier * lines.Length / scrollSpeed;
+    }
+
+    public void Exit()
+    {
+        if (!_isExiting)
+        {
+            _isExiting = true;
+            SceneManager.LoadSceneAsync("0_Menu", LoadSceneMode.Single);
         }
     }
 }
