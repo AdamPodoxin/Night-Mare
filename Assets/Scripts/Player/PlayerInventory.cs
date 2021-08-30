@@ -32,6 +32,7 @@ public class PlayerInventory : MonoBehaviour
 
     [Space]
 
+    public bool useVoicelines = false;
     public AudioSource voiceSource;
     public AudioClip a1Son, a1Daughter, a1Wife, a2, a3;
 
@@ -40,6 +41,8 @@ public class PlayerInventory : MonoBehaviour
     private readonly Dictionary<string, GameObject> itemsPickedUp = new Dictionary<string, GameObject>();
 
     private PlayerInputActions playerInputActions;
+
+    private GameSubtitles gameSubtitles;
 
     private void Awake()
     {
@@ -105,35 +108,45 @@ public class PlayerInventory : MonoBehaviour
             currentArtifact = itemPickup.GetComponent<ArtifactPickup>().artifactType;
             artifactsCollected++;
 
-            try
+            if (useVoicelines)
             {
-                AudioClip playClip = null;
-                switch (artifactsCollected)
+                try
                 {
-                    case 1:
-                        switch (currentArtifact)
-                        {
-                            case ArtifactType.Car:
-                                playClip = a1Son;
-                                break;
-                            case ArtifactType.Bear:
-                                playClip = a1Daughter;
-                                break;
-                            case ArtifactType.Flowers:
-                                playClip = a1Wife;
-                                break;
-                        }
-                        break;
-                    case 2:
-                        playClip = a2;
-                        break;
-                    case 3:
-                        playClip = a3;
-                        break;
+                    if (gameSubtitles == null) gameSubtitles = FindObjectOfType<GameSubtitles>();
+
+                    AudioClip playClip = null;
+                    switch (artifactsCollected)
+                    {
+                        case 1:
+                            switch (currentArtifact)
+                            {
+                                case ArtifactType.Car:
+                                    playClip = a1Son;
+                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my son's bed.", 5f);
+                                    break;
+                                case ArtifactType.Bear:
+                                    playClip = a1Daughter;
+                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my daughter's bed.", 5f);
+                                    break;
+                                case ArtifactType.Flowers:
+                                    playClip = a1Wife;
+                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my wife's bed.", 5f);
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            playClip = a2;
+                            gameSubtitles.ShowSubtitles("I need to keep going.");
+                            break;
+                        case 3:
+                            playClip = a3;
+                            gameSubtitles.ShowSubtitles("Almost done.");
+                            break;
+                    }
+                    voiceSource.PlayOneShot(playClip);
                 }
-                voiceSource.PlayOneShot(playClip);
+                catch { }
             }
-            catch { }
         }
         catch
         {

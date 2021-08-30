@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a850851520644254695efa495e2bbab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   isSummoning: 0
   acceptableStoppingDistance: 1.2
   ignoreLayers:
@@ -576,6 +577,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79db63d371ee1234ba7076a2916de707, type: 3}
   - {fileID: 8300000, guid: cd91d82cc97c2bb478030012afc3c985, type: 3}
   - {fileID: 8300000, guid: 4644950a86b90b44c9f77a917180d016, type: 3}
+  foundSubtitles:
+  - There you are.
+  - Found you.
+  - You better run.
+  searchSubtitles:
+  - You cannot hide from me.
+  - I know you're in here.
+  - I'm coming for you.
+  despawnSubtitles:
+  - You cannot run forever.
+  - I'll find you next time.
+  - You don't have much longer.
   footsteps:
   - {fileID: 8300000, guid: 72175023522658844867219bbb760db7, type: 3}
   - {fileID: 8300000, guid: 6474bd75154f21d47aa376706f2ffc1a, type: 3}
@@ -583,7 +596,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 936e7399771be9048814a2241a77ebc9, type: 3}
   killClip: {fileID: 8300000, guid: 9b271c30e79284547b9b1560c47d9021, type: 3}
   artifactClip: {fileID: 8300000, guid: 1cf3d346e4f41c347bbf9b881ae56969, type: 3}
-  _raycastHit: {fileID: 0}
 --- !u!1 &4901038627457574840
 GameObject:
   m_ObjectHideFlags: 0

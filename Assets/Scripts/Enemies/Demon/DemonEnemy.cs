@@ -50,6 +50,14 @@ public class DemonEnemy : MonoBehaviour
     public AudioClip[] searchVoiceLines;
     public AudioClip[] despawnVoiceLines;
 
+    [Space]
+
+    public string[] foundSubtitles;
+    public string[] searchSubtitles;
+    public string[] despawnSubtitles;
+
+    [Space]
+
     public AudioClip[] footsteps;
 
     public AudioClip killClip;
@@ -77,6 +85,8 @@ public class DemonEnemy : MonoBehaviour
     private FirstPersonController fps;
     private PlayerCamera playerCamera;
 
+    private GameSubtitles gameSubtitles;
+
     private RaycastHit _hit;
     private bool _isChasingPlayer;
     private Vector3 _navTargetPosition;
@@ -101,6 +111,8 @@ public class DemonEnemy : MonoBehaviour
 
         fps = FindObjectOfType<FirstPersonController>();
         playerCamera = FindObjectOfType<PlayerCamera>();
+
+        gameSubtitles = FindObjectOfType<GameSubtitles>();
 
         playerMoveSpeed = fps.MoveSpeed;
 
@@ -244,6 +256,7 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip foundClip = foundVoiceLines[foundIndex];
             voiceSource.PlayOneShot(foundClip);
+            gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
         }
 
         _isChasingPlayer = true;
@@ -341,6 +354,7 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip searchClip = searchVoiceLines[searchIndex];
             voiceSource.PlayOneShot(searchClip);
+            gameSubtitles.ShowSubtitles(searchSubtitles[searchIndex]);
         }
 
         yield return new WaitForSeconds(searchTime);
@@ -359,6 +373,7 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip despawnClip = despawnVoiceLines[despawnIndex];
             voiceSource.PlayOneShot(despawnClip);
+            gameSubtitles.ShowSubtitles(despawnSubtitles[despawnIndex]);
         }
 
         yield return new WaitForSeconds(searchTime);
@@ -393,11 +408,14 @@ public class DemonEnemy : MonoBehaviour
         if (isCarryingArtifact && !_isChasingPlayer)
         {
             artifactSource.PlayOneShot(artifactClip);
+            gameSubtitles.ShowSubtitles("MY ARTIFACT!");
         }
         else if (useVoiceline)
         {
-            AudioClip foundClip = foundVoiceLines[Random.Range(0, foundVoiceLines.Length)];
+            int foundIndex = Random.Range(0, foundVoiceLines.Length);
+            AudioClip foundClip = foundVoiceLines[foundIndex];
             voiceSource.PlayOneShot(foundClip);
+            gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
         }
 
         agent.SetDestination(lastKnownPosition);
