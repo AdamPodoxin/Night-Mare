@@ -11,19 +11,29 @@ public class PlayerInventory : MonoBehaviour
     public Transform hand;
     public Transform currentWorld;
 
+    [Space]
+
     public float droppingForce = 150f;
+
+    [Space]
 
     public Item currentItem = null;
     public ArtifactType currentArtifact;
 
-    [SerializeField] private int soulsCollected = 0;
-    public int SoulsCollected { get { return SoulsCollected; } }
+    [Space]
 
-    public Image soulsUI;
+    [SerializeField] private int soulsCollected = 0;
+    [SerializeField] private int artifactsCollected = 0;
 
     [Space]
 
+    public Image soulsUI;
     public Text dropText;
+
+    [Space]
+
+    public AudioSource voiceSource;
+    public AudioClip a1Son, a1Daughter, a1Wife, a2, a3;
 
     private GameObject currentItemObject = null;
 
@@ -93,6 +103,37 @@ public class PlayerInventory : MonoBehaviour
         try
         {
             currentArtifact = itemPickup.GetComponent<ArtifactPickup>().artifactType;
+            artifactsCollected++;
+
+            try
+            {
+                AudioClip playClip = null;
+                switch (artifactsCollected)
+                {
+                    case 1:
+                        switch (currentArtifact)
+                        {
+                            case ArtifactType.Car:
+                                playClip = a1Son;
+                                break;
+                            case ArtifactType.Bear:
+                                playClip = a1Daughter;
+                                break;
+                            case ArtifactType.Flowers:
+                                playClip = a1Wife;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        playClip = a2;
+                        break;
+                    case 3:
+                        playClip = a3;
+                        break;
+                }
+                voiceSource.PlayOneShot(playClip);
+            }
+            catch { }
         }
         catch
         {

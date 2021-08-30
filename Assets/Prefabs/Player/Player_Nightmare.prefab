@@ -878,8 +878,15 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   currentArtifact: 0
   soulsCollected: 0
+  artifactsCollected: 0
   soulsUI: {fileID: 0}
   dropText: {fileID: 2061164146}
+  voiceSource: {fileID: 0}
+  a1Son: {fileID: 8300000, guid: a2841e20fa1b39a4d8377151eb6ddb2c, type: 3}
+  a1Daughter: {fileID: 8300000, guid: d5f97865eb29e074987489b1fab70801, type: 3}
+  a1Wife: {fileID: 8300000, guid: 4f2e66c4b9007df43818173ad417e99c, type: 3}
+  a2: {fileID: 8300000, guid: 223a9ec16861cb74996d06f5697162e8, type: 3}
+  a3: {fileID: 8300000, guid: ac8cb82ce10c2e645af9e3223cdc1742, type: 3}
 --- !u!95 &5418347224370357508
 Animator:
   serializedVersion: 3
@@ -1319,6 +1326,12 @@ MonoBehaviour:
   interaction: {fileID: 390308467}
   inventory: {fileID: 9108705837241926807}
   camAnim: {fileID: 5418347224370357508}
+  blinkAnim: {fileID: 0}
+  redOverlay: {fileID: 0}
+  flash: {fileID: 0}
+  loadingText: {fileID: 0}
+  globalSFX: {fileID: 0}
+  collapseInside: {fileID: 0}
 --- !u!1 &7783821300111389831
 GameObject:
   m_ObjectHideFlags: 0
