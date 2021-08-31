@@ -90,6 +90,9 @@ namespace StarterAssets
         [HideInInspector] public PlayerInput input;
         private PlayerInputActions playerInputActions;
 
+        private bool _isChasing = false;
+        private bool _isCrouching = false;
+
         private const float _threshold = 0.01f;
 
         private void Awake()
@@ -185,6 +188,8 @@ namespace StarterAssets
             float speedOffset = 0.1f;
             float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
+            targetSpeed = _isCrouching ? crouchMoveSpeed : (_isChasing ? chaseMoveSpeed : normalMoveSpeed);
+
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
             {
@@ -223,7 +228,7 @@ namespace StarterAssets
             _controller.height = crouchHeight;
             _capsuleCollider.height = crouchHeight;
 
-            MoveSpeed = crouchMoveSpeed;
+            _isCrouching = true;
         }
 
         private void StopCrouch(InputAction.CallbackContext obj)
@@ -234,12 +239,12 @@ namespace StarterAssets
             _controller.height = normalHeight;
             _capsuleCollider.height = normalHeight;
 
-            MoveSpeed = normalMoveSpeed;
+            _isCrouching = false;
         }
 
         public void ToggleChase(bool isChasing)
         {
-            MoveSpeed = isChasing ? chaseMoveSpeed : normalMoveSpeed;
+            _isChasing = isChasing;
         }
 
         private void JumpAndGravity()
