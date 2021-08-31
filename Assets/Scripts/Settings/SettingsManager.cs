@@ -24,6 +24,7 @@ public class SettingsManager : MonoBehaviour
 
     [Header("Gameplay")]
     public GameObject[] subtitles;
+    public GameSubtitles gameSubtitles;
 
     [Space]
 
@@ -36,7 +37,7 @@ public class SettingsManager : MonoBehaviour
     public float _nightmareBloomIntensity = 10f;
     public float _motionBlurIntensity = 200f;
 
-    private void Start()
+    private void Awake()
     {
         dataManager = FindObjectOfType<DataManager>();
 
@@ -74,7 +75,6 @@ public class SettingsManager : MonoBehaviour
         QualitySettings.vSyncCount = settings.video.vsync ? 1 : 0;
 
         Bloom bloom;
-        MotionBlur motionBlur;
 
         if (normalVolumes.Length > 0)
         {
@@ -90,7 +90,7 @@ public class SettingsManager : MonoBehaviour
             foreach (PostProcessVolume ppv in nightmareVolumes)
             {
                 ppv.profile.TryGetSettings(out bloom);
-                ppv.profile.TryGetSettings(out motionBlur);
+                ppv.profile.TryGetSettings(out MotionBlur motionBlur);
                 bloom.intensity.value = settings.video.bloom ? _nightmareBloomIntensity : 0f;
                 motionBlur.shutterAngle.value = settings.video.motionBlur ? _motionBlurIntensity : 0f;
             }
@@ -114,6 +114,8 @@ public class SettingsManager : MonoBehaviour
         {
             g.SetActive(settings.gameplay.subtitles);
         }
+
+        if (gameSubtitles != null) gameSubtitles.UseSubtitles = settings.gameplay.subtitles;
 
         if (settingsMenu != null) settingsMenu.Populate();
         SaveSettings();

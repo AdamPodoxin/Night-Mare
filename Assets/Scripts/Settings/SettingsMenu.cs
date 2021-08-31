@@ -37,7 +37,6 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private SettingsManager settingsManager;
 
     private bool hasPopulated = false;
-    private int menuIndex;
 
     private Resolution[] resolutions;
 
@@ -131,8 +130,6 @@ public class SettingsMenu : MonoBehaviour
 
     public void OpenMenu(int menuIndex)
     {
-        this.menuIndex = menuIndex;
-
         headerButtons[menuIndex].GetComponent<Image>().color = headerButtons[menuIndex].colors.selectedColor;
         for (int i = 0; i < menus.Length; i++)
         {

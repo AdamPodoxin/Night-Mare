@@ -7,6 +7,9 @@ public class GameSubtitles : MonoBehaviour
 {
     [SerializeField] private Text subtitlesText;
 
+    private bool useSubtitles = true;
+    public bool UseSubtitles { get { return useSubtitles; } set { useSubtitles = value; } }
+
     private Animator anim;
 
     private void Start()
@@ -16,13 +19,12 @@ public class GameSubtitles : MonoBehaviour
 
     public void ShowSubtitles(string text)
     {
-        if (!gameObject.activeInHierarchy) return;
         ShowSubtitles(text, 3f);
     }
 
     public void ShowSubtitles(string text, float duration)
     {
-        if (!gameObject.activeInHierarchy) return;
+        if (!useSubtitles) return;
 
         subtitlesText.text = text;
         anim.Play("Subtitles_FadeIn");
