@@ -256,7 +256,8 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip foundClip = foundVoiceLines[foundIndex];
             voiceSource.PlayOneShot(foundClip);
-            gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
+
+            if (gameSubtitles != null) gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
         }
 
         _isChasingPlayer = true;
@@ -354,7 +355,8 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip searchClip = searchVoiceLines[searchIndex];
             voiceSource.PlayOneShot(searchClip);
-            gameSubtitles.ShowSubtitles(searchSubtitles[searchIndex]);
+
+            if (gameSubtitles != null) gameSubtitles.ShowSubtitles(searchSubtitles[searchIndex]);
         }
 
         yield return new WaitForSeconds(searchTime);
@@ -373,7 +375,8 @@ public class DemonEnemy : MonoBehaviour
 
             AudioClip despawnClip = despawnVoiceLines[despawnIndex];
             voiceSource.PlayOneShot(despawnClip);
-            gameSubtitles.ShowSubtitles(despawnSubtitles[despawnIndex]);
+
+            if (gameSubtitles != null) gameSubtitles.ShowSubtitles(despawnSubtitles[despawnIndex]);
         }
 
         yield return new WaitForSeconds(searchTime);
@@ -408,14 +411,16 @@ public class DemonEnemy : MonoBehaviour
         if (isCarryingArtifact && !_isChasingPlayer)
         {
             artifactSource.PlayOneShot(artifactClip);
-            gameSubtitles.ShowSubtitles("MY ARTIFACT!");
+
+            if (gameSubtitles != null) gameSubtitles.ShowSubtitles("MY ARTIFACT!");
         }
         else if (useVoiceline)
         {
             int foundIndex = Random.Range(0, foundVoiceLines.Length);
             AudioClip foundClip = foundVoiceLines[foundIndex];
             voiceSource.PlayOneShot(foundClip);
-            gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
+
+            if (gameSubtitles != null) gameSubtitles.ShowSubtitles(foundSubtitles[foundIndex]);
         }
 
         agent.SetDestination(lastKnownPosition);
