@@ -84,6 +84,15 @@ public class PauseMenu : MonoBehaviour
         else Pause();
     }
 
+    public void OpenSettingsMenu()
+    {
+        try
+        {
+            FindObjectOfType<SettingsMenu>().Open();
+        }
+        catch { }
+    }
+
     public void OpenQuitMenu(string quitAction)
     {
         this.quitAction = quitAction;
