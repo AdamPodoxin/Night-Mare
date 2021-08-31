@@ -2829,6 +2829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1411806037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5400234976501327732, guid: b7fc4902b92b02b499500ec9b039ecd5, type: 3}
+  m_PrefabInstance: {fileID: 1411806032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1458607757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2857,9 +2862,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 169152416629182478, guid: 3a7d89b88deae7e438e13012bc10d910, type: 3}
+      propertyPath: crosshairs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 169152416629182478, guid: 3a7d89b88deae7e438e13012bc10d910, type: 3}
       propertyPath: subtitles.Array.data[0]
       value: 
       objectReference: {fileID: 1807162739}
+    - target: {fileID: 169152416629182478, guid: 3a7d89b88deae7e438e13012bc10d910, type: 3}
+      propertyPath: crosshairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1411806037}
     - target: {fileID: 169152416629182478, guid: 3a7d89b88deae7e438e13012bc10d910, type: 3}
       propertyPath: normalVolumes.Array.size
       value: 3

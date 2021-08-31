@@ -33,6 +33,7 @@ public class SettingsMenu : MonoBehaviour
 
     [Header("Gameplay")]
     public Toggle subtitlesToggle;
+    public Toggle crosshairToggle;
 
     [SerializeField] private SettingsManager settingsManager;
 
@@ -113,6 +114,7 @@ public class SettingsMenu : MonoBehaviour
 
         //Gameplay
         subtitlesToggle.isOn = settingsManager.settings.gameplay.subtitles;
+        crosshairToggle.isOn = settingsManager.settings.gameplay.showCrosshair;
 
         hasPopulated = true;
     }
@@ -174,7 +176,7 @@ public class SettingsMenu : MonoBehaviour
         settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn));
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
         settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
-        settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn));
+        settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn, crosshairToggle.isOn));
 
         settingsManager.ApplySettings();
     }

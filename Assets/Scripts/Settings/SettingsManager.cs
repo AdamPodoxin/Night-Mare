@@ -26,6 +26,8 @@ public class SettingsManager : MonoBehaviour
     public GameObject[] subtitles;
     public GameSubtitles gameSubtitles;
 
+    public GameObject[] crosshairs;
+
     [Space]
 
     [SerializeField] private SettingsMenu settingsMenu;
@@ -116,6 +118,11 @@ public class SettingsManager : MonoBehaviour
         }
 
         if (gameSubtitles != null) gameSubtitles.UseSubtitles = settings.gameplay.subtitles;
+
+        foreach (GameObject g in crosshairs)
+        {
+            g.SetActive(settings.gameplay.showCrosshair);
+        }
 
         if (settingsMenu != null) settingsMenu.Populate();
         SaveSettings();
@@ -256,19 +263,21 @@ public class ControlsSettings
 public class GameplaySettings
 {
     public bool subtitles;
+    public bool showCrosshair;
 
     public GameplaySettings()
     {
 
     }
 
-    public GameplaySettings(bool subtitles)
+    public GameplaySettings(bool subtitles, bool showCrosshair)
     {
         this.subtitles = subtitles;
+        this.showCrosshair = showCrosshair;
     }
 
     public static GameplaySettings Default()
     {
-        return new GameplaySettings(true);
+        return new GameplaySettings(true, true);
     }
 }
