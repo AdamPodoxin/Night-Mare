@@ -39,20 +39,35 @@ public class SettingsMenu : MonoBehaviour
 
     private bool hasPopulated = false;
 
-    private Resolution[] resolutions;
+    private Resolution[] _resolutions;
+
+    private AudioSource _source;
+
+    private void Awake()
+    {
+        _source = GetComponent<AudioSource>();
+        StartCoroutine(AwakeSFXCoroutine());
+    }
 
     private void Start()
     {
         OpenMenu(0);
     }
 
+    private IEnumerator AwakeSFXCoroutine()
+    {
+        _source.volume = 0f;
+        yield return new WaitForSeconds(0.25f);
+        _source.volume = 1f;
+    }
+
     public void Populate()
     {
         //Video
-        resolutions = Screen.resolutions;
+        _resolutions = Screen.resolutions;
 
         List<string> resolutionsOptions = new List<string>();
-        foreach (Resolution r in resolutions)
+        foreach (Resolution r in _resolutions)
         {
             string option = r.width + "x" + r.height;
 
