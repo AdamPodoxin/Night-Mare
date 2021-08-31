@@ -92,6 +92,8 @@ public class DemonEnemy : MonoBehaviour
     private Vector3 _navTargetPosition;
     private Vector3 _predictedPosition;
 
+    private Vector3 _lookAtPosition;
+
     private int _prevFoundIndex = -1;
     private int _prevSearchIndex = -1;
     private int _prevDespawnIndex = -1;
@@ -125,7 +127,8 @@ public class DemonEnemy : MonoBehaviour
 
         if (isTiming) timer += Time.deltaTime;
 
-        if (Physics.Raycast(eyeHeightTransform.position, playerCamera.transform.position - eyeHeightTransform.position, out _hit, Mathf.Infinity, ~ignoreLayers))
+        _lookAtPosition = fps.isCrouching ? fps.transform.position : playerCamera.transform.position;
+        if (Physics.Raycast(eyeHeightTransform.position, (_lookAtPosition - eyeHeightTransform.position).normalized, out _hit, Mathf.Infinity, ~ignoreLayers))
         {
             if (_hit.collider.CompareTag("Player"))
             {

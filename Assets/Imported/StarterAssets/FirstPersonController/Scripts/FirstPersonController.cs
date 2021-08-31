@@ -64,11 +64,14 @@ namespace StarterAssets
         [Header("Crouch")]
         public float normalHeight = 2.5f;
         public float crouchHeight = 1f;
+        public bool isCrouching = false;
 
-        [SerializeField]
-        private float normalMoveSpeed = 5f,
-            crouchMoveSpeed = 2f,
-            chaseMoveSpeed = 5.5f;
+        [Space]
+
+        [Header("Move Speed")]
+        [SerializeField] private float normalMoveSpeed = 5f;
+        [SerializeField] private float crouchMoveSpeed = 2f;
+        [SerializeField] private float chaseMoveSpeed = 5.5f;
 
         // cinemachine
         [HideInInspector] public float cinemachineTargetPitch;
@@ -91,7 +94,6 @@ namespace StarterAssets
         private PlayerInputActions playerInputActions;
 
         private bool _isChasing = false;
-        private bool _isCrouching = false;
 
         private const float _threshold = 0.01f;
 
@@ -188,7 +190,7 @@ namespace StarterAssets
             float speedOffset = 0.1f;
             float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
-            targetSpeed = _isCrouching ? crouchMoveSpeed : (_isChasing ? chaseMoveSpeed : normalMoveSpeed);
+            targetSpeed = isCrouching ? crouchMoveSpeed : (_isChasing ? chaseMoveSpeed : normalMoveSpeed);
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -228,7 +230,7 @@ namespace StarterAssets
             _controller.height = crouchHeight;
             _capsuleCollider.height = crouchHeight;
 
-            _isCrouching = true;
+            isCrouching = true;
         }
 
         private void StopCrouch(InputAction.CallbackContext obj)
@@ -239,7 +241,7 @@ namespace StarterAssets
             _controller.height = normalHeight;
             _capsuleCollider.height = normalHeight;
 
-            _isCrouching = false;
+            isCrouching = false;
         }
 
         public void ToggleChase(bool isChasing)
