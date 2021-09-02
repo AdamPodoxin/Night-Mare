@@ -93,7 +93,7 @@ namespace StarterAssets
         [HideInInspector] public PlayerInput input;
         private PlayerInputActions playerInputActions;
 
-        private bool _isChasing = false;
+        public bool isChasing = false;
 
         private const float _threshold = 0.01f;
 
@@ -190,7 +190,7 @@ namespace StarterAssets
             float speedOffset = 0.1f;
             float inputMagnitude = input.analogMovement ? input.move.magnitude : 1f;
 
-            targetSpeed = isCrouching ? crouchMoveSpeed : (_isChasing ? chaseMoveSpeed : normalMoveSpeed);
+            targetSpeed = isCrouching ? crouchMoveSpeed : (isChasing ? chaseMoveSpeed : normalMoveSpeed);
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -246,7 +246,7 @@ namespace StarterAssets
 
         public void ToggleChase(bool isChasing)
         {
-            _isChasing = isChasing;
+            this.isChasing = isChasing;
         }
 
         private void JumpAndGravity()

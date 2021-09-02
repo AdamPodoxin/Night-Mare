@@ -220,6 +220,8 @@ public class EyeEnemy : MonoBehaviour
     {
         demon.isSummoning = true;
 
+        demon.TogglePlayerChase();
+
         yield return new WaitForSeconds(2f);
 
         demon.isSummoning = false;
@@ -236,6 +238,7 @@ public class EyeEnemy : MonoBehaviour
         {
             demon.EyeballGotPosition(playerTransform.position, playerDirection);
             demon.EyeballSummon(useVoiceline, isCarryingArtifact);
+            demon.TogglePlayerChase();
         }
         else
         {

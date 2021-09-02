@@ -42,7 +42,7 @@ public class BedNightmare : Interactable
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
-        if (demon.gameObject.activeInHierarchy)
+        if (nightmareFps.isChasing)
         {
             Notification.instance.DisplayNotification("Cannot wake up while being hunted");
         }

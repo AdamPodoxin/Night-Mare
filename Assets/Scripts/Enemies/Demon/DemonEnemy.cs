@@ -431,9 +431,7 @@ public class DemonEnemy : MonoBehaviour
         _isChasingPlayer = true;
 
         StartTimer();
-
-        fps.ToggleChase(true);
-        playerCamera.ToggleChase(true);
+        TogglePlayerChase();
     }
 
     public void PlayFootstep()
@@ -452,5 +450,11 @@ public class DemonEnemy : MonoBehaviour
         playerCamera.ToggleChase(false);
 
         gameObject.SetActive(false);
+    }
+
+    public void TogglePlayerChase()
+    {
+        fps.ToggleChase(true);
+        playerCamera.ToggleChase(true);
     }
 }
