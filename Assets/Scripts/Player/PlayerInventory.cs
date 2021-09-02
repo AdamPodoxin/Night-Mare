@@ -77,7 +77,7 @@ public class PlayerInventory : MonoBehaviour
         return null;
     }
 
-    public bool PickupItem(Item item, ItemPickup itemPickup)
+    public bool PickupItem(Item item, ItemPickup itemPickup, bool switchWorlds = false)
     {
         if (!currentArtifact.Equals(ArtifactType.Null))
         {
@@ -106,46 +106,50 @@ public class PlayerInventory : MonoBehaviour
         try
         {
             currentArtifact = itemPickup.GetComponent<ArtifactPickup>().artifactType;
-            artifactsCollected++;
 
-            if (useVoicelines)
+            if (!switchWorlds)
             {
-                try
-                {
-                    if (gameSubtitles == null) gameSubtitles = FindObjectOfType<GameSubtitles>();
+                artifactsCollected++;
 
-                    AudioClip playClip = null;
-                    switch (artifactsCollected)
+                if (useVoicelines)
+                {
+                    try
                     {
-                        case 1:
-                            switch (currentArtifact)
-                            {
-                                case ArtifactType.Car:
-                                    playClip = a1Son;
-                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my son's bed.", 5f);
-                                    break;
-                                case ArtifactType.Bear:
-                                    playClip = a1Daughter;
-                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my daughter's bed.", 5f);
-                                    break;
-                                case ArtifactType.Flowers:
-                                    playClip = a1Wife;
-                                    gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my wife's bed.", 5f);
-                                    break;
-                            }
-                            break;
-                        case 2:
-                            playClip = a2;
-                            gameSubtitles.ShowSubtitles("I need to keep going.");
-                            break;
-                        case 3:
-                            playClip = a3;
-                            gameSubtitles.ShowSubtitles("Almost done.");
-                            break;
+                        if (gameSubtitles == null) gameSubtitles = FindObjectOfType<GameSubtitles>();
+
+                        AudioClip playClip = null;
+                        switch (artifactsCollected)
+                        {
+                            case 1:
+                                switch (currentArtifact)
+                                {
+                                    case ArtifactType.Car:
+                                        playClip = a1Son;
+                                        gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my son's bed.", 5f);
+                                        break;
+                                    case ArtifactType.Bear:
+                                        playClip = a1Daughter;
+                                        gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my daughter's bed.", 5f);
+                                        break;
+                                    case ArtifactType.Flowers:
+                                        playClip = a1Wife;
+                                        gameSubtitles.ShowSubtitles("Okay, gotta wake up and put it on my wife's bed.", 5f);
+                                        break;
+                                }
+                                break;
+                            case 2:
+                                playClip = a2;
+                                gameSubtitles.ShowSubtitles("I need to keep going.");
+                                break;
+                            case 3:
+                                playClip = a3;
+                                gameSubtitles.ShowSubtitles("Almost done.");
+                                break;
+                        }
+                        voiceSource.PlayOneShot(playClip);
                     }
-                    voiceSource.PlayOneShot(playClip);
+                    catch { }
                 }
-                catch { }
             }
         }
         catch

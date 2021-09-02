@@ -84,7 +84,7 @@ public class BedNightmare : Interactable
         Item currentItem = nightmareInventory.currentItem;
         if (currentItem != null)
         {
-            normalInventory.PickupItem(currentItem, currentItem.pickup.GetComponent<ItemPickup>());
+            normalInventory.PickupItem(currentItem, currentItem.pickup.GetComponent<ItemPickup>(), true);
             nightmareInventory.HideCurrentItem();
         }
 
