@@ -103,7 +103,7 @@ public class SettingsManager : MonoBehaviour
             }
         }
 
-        UpdateBrightness(settings.video.brightness);
+        RenderSettings.ambientLight = Color.Lerp(darkest, brightest, settings.video.brightness);
 
         //Audio
         AudioListener.volume = settings.audio.masterVolume;
@@ -217,6 +217,7 @@ public class VideoSettings
         this.vsync = vsync;
         this.bloom = bloom;
         this.motionBlur = motionBlur;
+        this.brightness = brightness;
     }
 
     public static VideoSettings Default()
