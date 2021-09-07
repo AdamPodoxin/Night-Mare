@@ -10888,6 +10888,8 @@ MonoBehaviour:
   vsyncToggle: {fileID: 6035526266864533944}
   bloomToggle: {fileID: 6035526268587764304}
   motionBlurToggle: {fileID: 6035526268061833889}
+  brightnessSlider: {fileID: 0}
+  brightnessLabel: {fileID: 0}
   volumeSliders:
   - {fileID: 6035526267941069131}
   - {fileID: 6035526267623833628}

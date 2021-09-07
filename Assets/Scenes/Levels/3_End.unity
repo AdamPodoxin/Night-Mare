@@ -9174,6 +9174,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1896206956, guid: ba20fa20aa5a2194b8d508736fe73ae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6035526267746769075, guid: ba20fa20aa5a2194b8d508736fe73ae5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -15951,6 +15955,7 @@ MonoBehaviour:
       vsync: 0
       bloom: 0
       motionBlur: 0
+      brightness: 0
     audio:
       masterVolume: 0
       sfxVolume: 0
@@ -15967,6 +15972,8 @@ MonoBehaviour:
   nightmareVolumes:
   - {fileID: 2122554378}
   - {fileID: 2800461362513419251}
+  darkest: {r: 0.047, g: 0.047, b: 0.047, a: 1}
+  brightest: {r: 0.236, g: 0.236, b: 0.236, a: 1}
   sfxMixer: {fileID: 24100000, guid: eeae79e708e25b143815e878adf18780, type: 2}
   voiceMixer: {fileID: 24100000, guid: bebed9df5a82c8d45a85a220ffecda5b, type: 2}
   musicMixer: {fileID: 24100000, guid: d33041cc33d873b419594e7af161f663, type: 2}

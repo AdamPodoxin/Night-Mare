@@ -14,6 +14,11 @@ public class SettingsManager : MonoBehaviour
     public PostProcessVolume[] normalVolumes;
     public PostProcessVolume[] nightmareVolumes;
 
+    [Space]
+
+    private Color darkest = new Color(0.047f, 0.047f, 0.047f, 1f);
+    private Color brightest = new Color(0.236f, 0.236f, 0.236f, 1f);
+
     [Header("Audio")]
     public AudioMixer sfxMixer;
     public AudioMixer voiceMixer;
@@ -98,6 +103,8 @@ public class SettingsManager : MonoBehaviour
             }
         }
 
+        UpdateBrightness(settings.video.brightness);
+
         //Audio
         AudioListener.volume = settings.audio.masterVolume;
 
@@ -126,6 +133,12 @@ public class SettingsManager : MonoBehaviour
 
         if (settingsMenu != null) settingsMenu.Populate();
         SaveSettings();
+    }
+
+    public void UpdateBrightness(float brightness)
+    {
+        RenderSettings.ambientLight = Color.Lerp(darkest, brightest, brightness);
+        settings.video.brightness = brightness;
     }
 
     public void Revert()
@@ -187,13 +200,14 @@ public class VideoSettings
     public bool vsync;
     public bool bloom;
     public bool motionBlur;
+    public float brightness;
 
     public VideoSettings()
     {
 
     }
 
-    public VideoSettings(int width, int height, bool fullscreen, int qualityIndex, int framerate, bool vsync, bool bloom, bool motionBlur)
+    public VideoSettings(int width, int height, bool fullscreen, int qualityIndex, int framerate, bool vsync, bool bloom, bool motionBlur, float brightness)
     {
         this.width = width;
         this.height = height;
@@ -207,7 +221,7 @@ public class VideoSettings
 
     public static VideoSettings Default()
     {
-        return new VideoSettings(Screen.currentResolution.width, Screen.currentResolution.height, true, QualitySettings.GetQualityLevel(), 60, false, true, true);
+        return new VideoSettings(Screen.currentResolution.width, Screen.currentResolution.height, true, QualitySettings.GetQualityLevel(), 60, false, true, true, 0f);
     }
 }
 

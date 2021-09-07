@@ -23,6 +23,9 @@ public class SettingsMenu : MonoBehaviour
     public Toggle bloomToggle;
     public Toggle motionBlurToggle;
 
+    public Slider brightnessSlider;
+    public Text brightnessLabel;
+
     [Header("Audio")]
     public Slider[] volumeSliders;
     public Text[] volumeLabels;
@@ -113,6 +116,9 @@ public class SettingsMenu : MonoBehaviour
         bloomToggle.isOn = settingsManager.settings.video.bloom;
         motionBlurToggle.isOn = settingsManager.settings.video.motionBlur;
 
+        brightnessSlider.value = settingsManager.settings.video.brightness;
+        brightnessLabel.text = "Brightness: " + (int)(settingsManager.settings.video.brightness * 100f) + "%";
+
         //Audio
         volumeSliders[0].value = settingsManager.settings.audio.masterVolume;
         volumeSliders[1].value = settingsManager.settings.audio.sfxVolume;
@@ -179,6 +185,14 @@ public class SettingsMenu : MonoBehaviour
         sensitivityLabel.text = "Sensitivity: " + (int)(sensitivitySlider.value * 100f) + "%";
     }
 
+    public void UpdateBrightness()
+    {
+        float brightness = brightnessSlider.value;
+
+        brightnessLabel.text = "Brightness: " + (int)(brightness * 100f) + "%";
+        settingsManager.UpdateBrightness(brightness);
+    }
+
     public void ApplySettings()
     {
         int currentResolutionIndex = resolutionsDropdown.value;
@@ -187,8 +201,7 @@ public class SettingsMenu : MonoBehaviour
         int width = int.Parse(currentResolution.Split('x')[0]);
         int height = int.Parse(currentResolution.Split('x')[1]);
 
-
-        settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn));
+        settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn, brightnessSlider.value));
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
         settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
         settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn, crosshairToggle.isOn));
