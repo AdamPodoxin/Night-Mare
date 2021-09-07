@@ -3922,7 +3922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!23 &443829321
 MeshRenderer:
@@ -25849,6 +25849,7 @@ MonoBehaviour:
   chaseMoveSpeed: 5.5
   cinemachineTargetPitch: 0
   input: {fileID: 0}
+  isChasing: 0
 --- !u!4 &5861764074986201248
 Transform:
   m_ObjectHideFlags: 0
@@ -36715,7 +36716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!23 &7406906024709446152
 MeshRenderer:
@@ -37830,7 +37831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!41 &7406906025101553313
 OcclusionPortal:

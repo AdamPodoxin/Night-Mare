@@ -84599,7 +84599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!1 &7406906023902382576
 GameObject:
@@ -107449,7 +107449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!1 &7406906025649975985
 GameObject:
@@ -110659,7 +110659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 0
-  hour: 10
+  hour: 9
   clockSpeed: 1
 --- !u!33 &7406906025834156177
 MeshFilter:
