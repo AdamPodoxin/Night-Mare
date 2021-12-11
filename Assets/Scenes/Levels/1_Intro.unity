@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeAnim: {fileID: 375009384}
-  crouchText: {fileID: 756742187}
+  crouchTextTrigger: {fileID: 1716057126}
   momInfoBox: {fileID: 485070693}
   bearPedestal: {fileID: 1121454053}
   girlInfoBox: {fileID: 1924055317}
@@ -3016,6 +3016,64 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1322192905529598591, guid: f726a2eae36f72d468fadd09c9c68c86, type: 3}
   m_PrefabInstance: {fileID: 1471778542}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1716057126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716057127}
+  - component: {fileID: 1716057128}
+  - component: {fileID: 1716057129}
+  m_Layer: 0
+  m_Name: CrouchText_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1716057127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716057126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.42, y: 1.72, z: 2.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8068492789754720085}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1716057128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716057126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.85, y: 3, z: 0.6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1716057129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716057126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005995c2044a4d34ba670d6cda01d827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crouchText: {fileID: 756742187}
 --- !u!1001 &1807162737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118115,6 +118173,7 @@ Transform:
   - {fileID: 3701401404242924840}
   - {fileID: 8337051704456132813}
   - {fileID: 1121454054}
+  - {fileID: 1716057127}
   m_Father: {fileID: 7406906025094407959}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

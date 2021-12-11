@@ -8,7 +8,7 @@ public class IntroManager : MonoBehaviour
 
     [Space]
 
-    public GameObject crouchText;
+    public GameObject crouchTextTrigger;
 
     [Space]
 
@@ -82,13 +82,7 @@ public class IntroManager : MonoBehaviour
         interactedWithGirl = true;
 
         bearPedestal.SetActive(true);
-        StartCoroutine(ShowTextCoroutine());
-    }
-
-    private IEnumerator ShowTextCoroutine()
-    {
-        yield return new WaitForSeconds(3f);
-        crouchText.SetActive(true);
+        crouchTextTrigger.SetActive(true);
     }
 
     public void GaveGirlBear()
