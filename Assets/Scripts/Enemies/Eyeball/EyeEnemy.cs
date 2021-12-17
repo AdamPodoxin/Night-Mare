@@ -158,6 +158,9 @@ public class EyeEnemy : MonoBehaviour
 
     public void PlayerEnterVision()
     {
+        if (demon.State.Equals(GlobalEnums.DemonState.Killing))
+            return;
+
         if (!isTrackingPlayer)
         {
             playerCamera.EnterEyeball();
