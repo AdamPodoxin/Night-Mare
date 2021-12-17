@@ -62,6 +62,7 @@ Flower : Brian31 (https://www.turbosquid.com/3d-models/3d-model-plant-flower-147
 desktop picture frame : DHK_krm (https://www.turbosquid.com/3d-models/free-frame-desktop-picture-3d-model/1059351)
 Christmas Gifts : Bretwalda Games (https://assetstore.unity.com/packages/3d/props/interior/christmas-gifts-52190)
 Christmas Decoration Props : Padia 3D (https://assetstore.unity.com/packages/3d/props/interior/christmas-decoration-props-159202)
+FREE Christmas Assets / Low Poly : BRAiNBOX (https://assetstore.unity.com/packages/3d/props/free-christmas-assets-low-poly-13102)
 
 
 --Textures
