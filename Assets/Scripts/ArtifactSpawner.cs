@@ -68,8 +68,11 @@ public class ArtifactSpawner : MonoBehaviour
             int locationIndex = int.Parse("" + seed[1 + artifactIndex * 2]);
 
             Vector3 position = zones[zoneIndex].locations[locationIndex].position;
+            Vector3 rotation = zones[zoneIndex].locations[locationIndex].eulerAngles;
 
-            Instantiate(artifact, transform).transform.position = position;
+            GameObject spawnedArtifact = Instantiate(artifact, transform);
+            spawnedArtifact.transform.position = position;
+            spawnedArtifact.transform.eulerAngles += rotation;
         }
         catch
         {
