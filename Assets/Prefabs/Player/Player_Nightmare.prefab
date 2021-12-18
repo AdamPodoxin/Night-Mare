@@ -881,6 +881,7 @@ MonoBehaviour:
   artifactsCollected: 0
   soulsUI: {fileID: 0}
   dropText: {fileID: 2061164146}
+  useVoicelines: 0
   voiceSource: {fileID: 0}
   a1Son: {fileID: 8300000, guid: a2841e20fa1b39a4d8377151eb6ddb2c, type: 3}
   a1Daughter: {fileID: 8300000, guid: d5f97865eb29e074987489b1fab70801, type: 3}
@@ -1122,11 +1123,13 @@ MonoBehaviour:
   BottomClamp: -90
   normalHeight: 2.5
   crouchHeight: 0.7
+  isCrouching: 0
   normalMoveSpeed: 4.5
   crouchMoveSpeed: 2
   chaseMoveSpeed: 5.5
   cinemachineTargetPitch: 0
   input: {fileID: 0}
+  isChasing: 0
 --- !u!114 &4443308719983381089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1347,7 @@ GameObject:
   - component: {fileID: 7783821300111389835}
   m_Layer: 7
   m_Name: Capsule
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
