@@ -13,15 +13,13 @@ public class Door : Interactable
 
     private Animator anim;
     private AudioSource source;
-    private OcclusionPortal occlusionPortal;
 
-    [SerializeField] private bool isInAnimation = false;
+    private bool isInAnimation = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
-        occlusionPortal = GetComponent<OcclusionPortal>();
     }
 
     private void OnEnable()
@@ -46,8 +44,6 @@ public class Door : Interactable
         interactText = "Close";
         isOpen = true;
 
-        if (occlusionPortal != null) occlusionPortal.open = true;
-
         anim.Play("Open");
         source.PlayOneShot(openClip);
     }
@@ -61,12 +57,6 @@ public class Door : Interactable
         source.PlayOneShot(closeClip);
     }
 
-    public void AnimatingTrue() { isInAnimation = true; }
-
-    public void AnimatingFalse()
-    {
-        isInAnimation = false;
-
-        if (occlusionPortal != null) occlusionPortal.open = isOpen;
-    }
+    public void AnimatingTrue() => isInAnimation = true; 
+    public void AnimatingFalse() => isInAnimation = false;
 }
