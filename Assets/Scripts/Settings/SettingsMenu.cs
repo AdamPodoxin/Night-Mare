@@ -17,6 +17,7 @@ public class SettingsMenu : MonoBehaviour
     public Dropdown resolutionsDropdown;
     public Toggle fullscreenToggle;
     public Dropdown qualityDropdown;
+    public Dropdown shadowsDropdown;
     public Dropdown framerateDropdown;
     public Toggle vsyncToggle;
 
@@ -64,9 +65,8 @@ public class SettingsMenu : MonoBehaviour
         _source.volume = 1f;
     }
 
-    public void Populate()
+    private void PopulateVideo()
     {
-        //Video
         _resolutions = Screen.resolutions;
 
         List<string> resolutionsOptions = new List<string>();
@@ -102,6 +102,8 @@ public class SettingsMenu : MonoBehaviour
 
         qualityDropdown.value = settingsManager.settings.video.qualityIndex;
 
+        shadowsDropdown.value = settingsManager.settings.video.shadowsIndex;
+
         for (int i = 0; i < framerateDropdown.options.Count; i++)
         {
             if (framerateDropdown.options[i].text.Equals(settingsManager.settings.video.framerate.ToString()))
@@ -118,8 +120,10 @@ public class SettingsMenu : MonoBehaviour
 
         brightnessSlider.value = settingsManager.settings.video.brightness;
         brightnessLabel.text = "Brightness: " + (int)(settingsManager.settings.video.brightness * 100f) + "%";
+    }
 
-        //Audio
+    private void PopulateAudio()
+    {
         volumeSliders[0].value = settingsManager.settings.audio.masterVolume;
         volumeSliders[1].value = settingsManager.settings.audio.sfxVolume;
         volumeSliders[2].value = settingsManager.settings.audio.voiceVolume;
@@ -129,15 +133,27 @@ public class SettingsMenu : MonoBehaviour
         UpdateVolumeLabel(1);
         UpdateVolumeLabel(2);
         UpdateVolumeLabel(3);
+    }
 
-        //Controls
+    private void PopulateControls()
+    {
         sensitivitySlider.value = settingsManager.settings.controls.sensitivity;
+    }
 
-        //Gameplay
+    private void PopulateGameplay()
+    {
         subtitlesToggle.isOn = settingsManager.settings.gameplay.subtitles;
         crosshairToggle.isOn = settingsManager.settings.gameplay.showCrosshair;
 
         hasPopulated = true;
+    }
+
+    public void Populate()
+    {
+        PopulateVideo();
+        PopulateAudio();
+        PopulateControls();
+        PopulateGameplay();
     }
 
     public void Open()
@@ -146,10 +162,7 @@ public class SettingsMenu : MonoBehaviour
         settingsMenu.SetActive(true);
     }
 
-    public void Close()
-    {
-        settingsMenu.SetActive(false);
-    }
+    public void Close() => settingsMenu.SetActive(false);
 
     public void OpenMenu(int menuIndex)
     {
@@ -180,10 +193,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void UpdateSensitivityLabel()
-    {
-        sensitivityLabel.text = "Sensitivity: " + (int)(sensitivitySlider.value * 100f) + "%";
-    }
+    public void UpdateSensitivityLabel() => sensitivityLabel.text = "Sensitivity: " + (int)(sensitivitySlider.value * 100f) + "%";
 
     public void UpdateBrightness()
     {
@@ -201,7 +211,7 @@ public class SettingsMenu : MonoBehaviour
         int width = int.Parse(currentResolution.Split('x')[0]);
         int height = int.Parse(currentResolution.Split('x')[1]);
 
-        settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn, brightnessSlider.value));
+        settingsManager.SetVideoSettings(new VideoSettings(width, height, fullscreenToggle.isOn, qualityDropdown.value, shadowsDropdown.value, int.Parse(framerateDropdown.options[framerateDropdown.value].text), vsyncToggle.isOn, bloomToggle.isOn, motionBlurToggle.isOn, brightnessSlider.value));
         settingsManager.SetAudioSettings(new AudioSettings(volumeSliders[0].value, volumeSliders[1].value, volumeSliders[2].value, volumeSliders[3].value));
         settingsManager.SetControlsSettings(new ControlsSettings(sensitivitySlider.value));
         settingsManager.SetGameplaySettings(new GameplaySettings(subtitlesToggle.isOn, crosshairToggle.isOn));
@@ -209,13 +219,6 @@ public class SettingsMenu : MonoBehaviour
         settingsManager.ApplySettings();
     }
 
-    public void Revert()
-    {
-        settingsManager.Revert();
-    }
-
-    public void ResetProgress()
-    {
-        settingsManager.ResetProgress();
-    }
+    public void Revert() => settingsManager.Revert();
+    public void ResetProgress() => settingsManager.ResetProgress();
 }

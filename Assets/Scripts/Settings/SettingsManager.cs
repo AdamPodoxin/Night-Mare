@@ -44,9 +44,13 @@ public class SettingsManager : MonoBehaviour
     public float _nightmareBloomIntensity = 10f;
     public float _motionBlurIntensity = 200f;
 
+    private Light[] _lights;
+
     private void Awake()
     {
         dataManager = FindObjectOfType<DataManager>();
+
+        _lights = FindObjectsOfType<Light>();
 
         settings = dataManager.GetSettings();
         ApplySettings();
@@ -54,31 +58,33 @@ public class SettingsManager : MonoBehaviour
         if (settingsMenu != null) settingsMenu.Populate();
     }
 
-    public void SetVideoSettings(VideoSettings videoSettings)
+    public void SetVideoSettings(VideoSettings videoSettings) => settings.video = videoSettings;
+    public void SetAudioSettings(AudioSettings audioSettings) => settings.audio = audioSettings;
+    public void SetControlsSettings(ControlsSettings controlsSettings) => settings.controls = controlsSettings;
+    public void SetGameplaySettings(GameplaySettings gameplaySettings) => settings.gameplay = gameplaySettings;
+
+    private static LightShadows IndexToLightShadow(int i)
     {
-        settings.video = videoSettings;
+        return i switch
+        {
+            0 => LightShadows.None,
+            1 => LightShadows.Hard,
+            2 => LightShadows.Soft,
+            _ => LightShadows.None,
+        };
     }
 
-    public void SetAudioSettings(AudioSettings audioSettings)
+    private void ApplyVideo()
     {
-        settings.audio = audioSettings;
-    }
-
-    public void SetControlsSettings(ControlsSettings controlsSettings)
-    {
-        settings.controls = controlsSettings;
-    }
-
-    public void SetGameplaySettings(GameplaySettings gameplaySettings)
-    {
-        settings.gameplay = gameplaySettings;
-    }
-
-    public void ApplySettings()
-    {
-        //Video
         Screen.SetResolution(settings.video.width, settings.video.height, settings.video.fullscreen, settings.video.framerate);
         QualitySettings.SetQualityLevel(settings.video.qualityIndex);
+
+        var shadowType = IndexToLightShadow(settings.video.shadowsIndex);
+        foreach (Light light in _lights)
+        {
+            light.shadows = shadowType;
+        }
+
         QualitySettings.vSyncCount = settings.video.vsync ? 1 : 0;
 
         Bloom bloom;
@@ -104,21 +110,32 @@ public class SettingsManager : MonoBehaviour
         }
 
         RenderSettings.ambientLight = Color.Lerp(darkest, brightest, settings.video.brightness);
+    }
 
-        //Audio
+    private void ApplyAudio()
+    {
         AudioListener.volume = settings.audio.masterVolume;
 
         sfxMixer.SetFloat("Volume", Mathf.Log10(settings.audio.sfxVolume) * 20f);
         voiceMixer.SetFloat("Volume", Mathf.Log10(settings.audio.voiceVolume) * 20f);
         musicMixer.SetFloat("Volume", Mathf.Log10(settings.audio.musicVolume) * 20f);
+    }
 
-        //Controls
+    private void ApplyControls()
+    {
+        foreach (FirstPersonController f in fps)
+        {
+            f.RotationSpeed = settings.controls.sensitivity;
+        }
+    }
+
+    private void ApplyGameplay()
+    {
         foreach (FirstPersonController f in fps)
         {
             f.RotationSpeed = settings.controls.sensitivity;
         }
 
-        //Gameplay
         foreach (GameObject g in subtitles)
         {
             g.SetActive(settings.gameplay.subtitles);
@@ -130,6 +147,14 @@ public class SettingsManager : MonoBehaviour
         {
             g.SetActive(settings.gameplay.showCrosshair);
         }
+    }
+
+    public void ApplySettings()
+    {
+        ApplyVideo();
+        ApplyAudio();
+        ApplyControls();
+        ApplyGameplay();
 
         if (settingsMenu != null) settingsMenu.Populate();
         SaveSettings();
@@ -170,11 +195,6 @@ public class Settings
     public ControlsSettings controls;
     public GameplaySettings gameplay;
 
-    public Settings()
-    {
-
-    }
-
     public Settings(VideoSettings video, AudioSettings audio, ControlsSettings controls, GameplaySettings gameplay)
     {
         this.video = video;
@@ -196,23 +216,21 @@ public class VideoSettings
     public int height;
     public bool fullscreen;
     public int qualityIndex;
+    public int shadowsIndex;
     public int framerate;
     public bool vsync;
     public bool bloom;
     public bool motionBlur;
     public float brightness;
 
-    public VideoSettings()
-    {
-
-    }
-
-    public VideoSettings(int width, int height, bool fullscreen, int qualityIndex, int framerate, bool vsync, bool bloom, bool motionBlur, float brightness)
+    public VideoSettings() { }
+    public VideoSettings(int width, int height, bool fullscreen, int qualityIndex, int shadowsIndex, int framerate, bool vsync, bool bloom, bool motionBlur, float brightness)
     {
         this.width = width;
         this.height = height;
         this.fullscreen = fullscreen;
         this.qualityIndex = qualityIndex;
+        this.shadowsIndex = shadowsIndex;
         this.framerate = framerate;
         this.vsync = vsync;
         this.bloom = bloom;
@@ -222,7 +240,7 @@ public class VideoSettings
 
     public static VideoSettings Default()
     {
-        return new VideoSettings(Screen.currentResolution.width, Screen.currentResolution.height, true, QualitySettings.GetQualityLevel(), 60, false, true, true, 0f);
+        return new VideoSettings(Screen.currentResolution.width, Screen.currentResolution.height, true, QualitySettings.GetQualityLevel(), 2, 60, false, true, true, 0f);
     }
 }
 
